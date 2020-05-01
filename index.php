@@ -225,10 +225,15 @@
             </article>
         </div>
     </section>
-    <section>
-        <article>
-            <div>
-                <h2>Como usar la aplicación</h2>
+    <section id='contenido'>
+        <article class='contenido_landing'>
+            <div class='titular_info'>
+                <div class='img_titular'>
+                    <img src="img/question.svg" width='50px' alt="">
+                </div>
+                <div class='titulo_titular'>
+                    <h2>Cómo usar la aplicación</h2>
+                </div>
             </div>
             <div>
                 <p>
@@ -244,9 +249,14 @@
                 </p>
             </div>
         </article>
-        <article>
-            <div>
-                <h2>Como garantizamos la seguridad de nuestros usuarios</h2>
+        <article class='contenido_landing'>
+            <div class='titular_info'>
+                <div class='img_titular'>
+                    <img src="img/secure.svg" width='50px' alt="">
+                </div>
+                <div class='titulo_titular'>
+                    <h2>Cómo garantizamos la seguridad de nuestros usuarios</h2>
+                </div>
             </div>
             <div>
                 <p>
