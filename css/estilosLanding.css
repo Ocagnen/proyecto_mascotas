@@ -110,27 +110,74 @@ div>label {
     font-weight: bolder;
 }
 
+#div_btn_filt {
+    display: flex;
+    margin: 5%;
+}
+
+#btn_filtrar {
+    background: green;
+    color: white;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bolder;
+    cursor: pointer;
+    border: 1px solid rgb(0, 5, 0);
+    text-decoration: none;
+    margin: 0 auto;
+    border-radius: 6px;
+    width: 20vh;
+    padding: 2%;
+    box-shadow: 0 0 4px;
+}
+
+#anuncios {
+    display: flex;
+    flex-direction: column;
+}
+
+#anuncios h2 {
+    text-align: center;
+    border-bottom: 1px solid green;
+    margin-bottom: 0;
+}
+
 #tipos_mascota {
     display: flex;
     flex-direction: row;
-    margin: 4% auto;
 }
 
 #tipos_mascota div {
-    margin: 1%;
+    margin: 2% auto;
 }
 
-#tipos_mascota button {
-    background: rgb(41, 133, 36);
-    border: none;
-    color: white;
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: 700;
+#tipos_mascota div button {
+    background: transparent;
     cursor: pointer;
-    border: 2px solid rgb(3, 88, 3);
-    text-decoration: none;
-    border-radius: 6px;
+    border: none;
+}
+
+#contenido_anuncios {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    height: 80vh;
+}
+
+#contenido_anuncios article {
+    display: flex;
+    flex-direction: column;
+    margin: 2% auto;
+}
+
+#contenido_anuncios table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#contenido_anuncios table th {
+    background-color: #78ed99;
+    color: black;
 }
 
 

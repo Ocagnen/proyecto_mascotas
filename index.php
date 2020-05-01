@@ -96,41 +96,48 @@
                         </select>
                     </div>                    
                 </div>
-                <div>
-                    <button type="submit">FILTRAR</button>
+                <div id='div_btn_filt'>
+                    <button id='btn_filtrar' type="submit">FILTRAR</button>
                 </div>
             </form>
         </div>        
     </section>
-    <section>
+    <section id='anuncios'>
         <div>
             <h2>ANUNCIOS</h2>
         </div>
         <div id='tipos_mascota'>
             <div>
-                <button>Perros</button>
+                <button><img src="img/logo.svg" alt=""></button>
             </div>
             <div>
-                <button>Gatos</button>
+                <button><img src="img/cats.svg" alt=""></button>
             </div>
             <div>
-                <button>Otros</button>
+                <button><img src="img/pets.svg" alt=""></button>
             </div>
         </div>
-        <div>
+        <div id='contenido_anuncios'>
             <article>
                 <div>
                     <img width='300px' src="img/anuncio1.jpg" alt="">
                 </div>
                 <div>
-                   <table>
+                   <table border="1">
                        <tr>
+                           <th>Datos</th>
                            <td>Datos</td>
                        </tr>
                        <tr>
+                           <th>Datos</th>
                            <td>Datos</td>
                        </tr>
                        <tr>
+                           <th>Datos</th>
+                           <td>Datos</td>
+                       </tr>
+                       <tr>
+                           <th>Datos</th>
                            <td>Datos</td>
                        </tr>
                    </table>
@@ -149,14 +156,17 @@
                     <img width='300px' src="img/anuncio1.jpg" alt="">
                 </div>
                 <div>
-                   <table>
+                   <table border="1">
                        <tr>
+                           <th>Datos</th>
                            <td>Datos</td>
                        </tr>
                        <tr>
+                           <th>Datos</th>
                            <td>Datos</td>
                        </tr>
                        <tr>
+                           <th>Datos</th>
                            <td>Datos</td>
                        </tr>
                    </table>
@@ -175,14 +185,17 @@
                     <img width='300px' src="img/anuncio1.jpg" alt="">
                 </div>
                 <div>
-                   <table>
+                   <table border="1">
                        <tr>
+                           <th>Datos</th>
                            <td>Datos</td>
                        </tr>
                        <tr>
+                           <th>Datos</th>
                            <td>Datos</td>
                        </tr>
                        <tr>
+                           <th>Datos</th>
                            <td>Datos</td>
                        </tr>
                    </table>
