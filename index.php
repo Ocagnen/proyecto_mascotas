@@ -119,31 +119,33 @@
         </div>
         <div id='contenido_anuncios'>
             <article>
-                <div>
-                    <img width='300px' src="img/anuncio1.jpg" alt="">
+                <div class='img_anuncio'>
+                    <img src="img/anuncio1.jpg" alt="">
                 </div>
                 <div>
-                   <table border="1">
+                   <table>
                        <tr>
-                           <th>Datos</th>
-                           <td>Datos</td>
+                           <th>Fecha de entrega</th>
+                           <td>10/02/2020 a las 12:20</td>
                        </tr>
                        <tr>
-                           <th>Datos</th>
-                           <td>Datos</td>
+                           <th>Fecha de recogida</th>
+                           <td>14/02/2020 a las 12:20</td>
                        </tr>
                        <tr>
-                           <th>Datos</th>
-                           <td>Datos</td>
+                           <th>Tipo de mascota</th>
+                           <td><img src="img/cats.svg" alt=""></td>
                        </tr>
                        <tr>
-                           <th>Datos</th>
-                           <td>Datos</td>
+                           <th>Descripción</th>
+                           <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut odio eget ex ultricies
+                    blandit ac quis dolor. Proin dignissim sodales ante ut ullamcorper. Morbi dapibus egestas eros
+                    tincidunt condimentum.</td>
                        </tr>
                    </table>
                 </div>
-                <div>
-                    <div>
+                <div class='botones_anuncio'>
+                    <div class='boton_usuario'>
                         <button>USUARIO</button>
                     </div>
                     <div>
@@ -152,27 +154,33 @@
                 </div>
             </article>
             <article>
-                <div>
-                    <img width='300px' src="img/anuncio1.jpg" alt="">
+                <div class='img_anuncio'>
+                    <img src="img/anuncio1.jpg" alt="">
                 </div>
                 <div>
-                   <table border="1">
+                <table>
                        <tr>
-                           <th>Datos</th>
-                           <td>Datos</td>
+                           <th>Fecha de entrega</th>
+                           <td>10/02/2020 a las 12:20</td>
                        </tr>
                        <tr>
-                           <th>Datos</th>
-                           <td>Datos</td>
+                           <th>Fecha de recogida</th>
+                           <td>14/02/2020 a las 12:20</td>
                        </tr>
                        <tr>
-                           <th>Datos</th>
-                           <td>Datos</td>
+                           <th>Tipo de mascota</th>
+                           <td><img src="img/pets.svg" alt=""></td>
+                       </tr>
+                       <tr>
+                           <th>Descripción</th>
+                           <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut odio eget ex ultricies
+                    blandit ac quis dolor. Proin dignissim sodales ante ut ullamcorper. Morbi dapibus egestas eros
+                    tincidunt condimentum.</td>
                        </tr>
                    </table>
                 </div>
-                <div>
-                    <div>
+                <div class='botones_anuncio' >
+                    <div class='boton_usuario' >
                         <button>USUARIO</button>
                     </div>
                     <div>
@@ -181,27 +189,33 @@
                 </div>
             </article>
             <article>
-                <div>
-                    <img width='300px' src="img/anuncio1.jpg" alt="">
+                <div class='img_anuncio'>
+                    <img src="img/anuncio1.jpg" alt="">
                 </div>
                 <div>
-                   <table border="1">
+                <table>
                        <tr>
-                           <th>Datos</th>
-                           <td>Datos</td>
+                           <th>Fecha de entrega</th>
+                           <td>10/02/2020 a las 12:20</td>
                        </tr>
                        <tr>
-                           <th>Datos</th>
-                           <td>Datos</td>
+                           <th>Fecha de recogida</th>
+                           <td>14/02/2020 a las 12:20</td>
                        </tr>
                        <tr>
-                           <th>Datos</th>
-                           <td>Datos</td>
+                           <th>Tipo de mascota</th>
+                           <td><img src="img/logo.svg" alt=""></td>
+                       </tr>
+                       <tr>
+                           <th>Descripción</th>
+                           <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut odio eget ex ultricies
+                    blandit ac quis dolor. Proin dignissim sodales ante ut ullamcorper. Morbi dapibus egestas eros
+                    tincidunt condimentum.</td>
                        </tr>
                    </table>
                 </div>
-                <div>
-                    <div>
+                <div class='botones_anuncio'>
+                    <div class='boton_usuario'>
                         <button>USUARIO</button>
                     </div>
                     <div>

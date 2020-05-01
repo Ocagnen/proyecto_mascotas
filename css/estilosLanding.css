@@ -168,15 +168,28 @@ div>label {
     display: flex;
     flex-direction: column;
     margin: 2% auto;
+    padding: 5%;
+}
+
+.img_anuncio {
+    margin: 0 auto;
+}
+
+.img_anuncio img {
+    width: 100%;
 }
 
 #contenido_anuncios table {
-    border-collapse: collapse;
     width: 100%;
 }
 
 #contenido_anuncios table th {
     background-color: #78ed99;
+    color: black;
+}
+
+#contenido_anuncios table td {
+    background-color: #c7e6d0;
     color: black;
 }
 
