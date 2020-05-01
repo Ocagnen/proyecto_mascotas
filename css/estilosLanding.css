@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*-------------------------VERSIÓN MÓVIL------------------------*/
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: rgb(41, 133, 36);
+}
+
+header div {
+    flex: 1;
+    margin: 1%;
+}
+
+#nombre_empresa {
+    flex: 30%;
+}
+
+#logo_empresa {
+    width: 5vh;
+    padding: 1%;
+}
+
+#titular_web {
+    font-size: 4vh;
+    font-weight: 900;
+}
+
+#bars {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+#logo_usuario {
+    padding: 3%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+header div {
+    display: flex;
+}
+
+#menu_cabecera {
+    display: none;
+}
+
+
+/*
+
+header {
+    display: flex;
+    flex-direction: row;
+}
+
+#logo_empresa {
+    width: 10vh;
+}
+
+#nombre_empresa {
+    display: flex;
+    flex-direction: row;
+}
+*/

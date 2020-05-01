@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilosLanding.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> 
+    <script src="jq/jquery-3.1.1.min.js" type="text/javascript"></script>	
+    <script src="js/script.js"></script>
     <title>Proyecto mascotas</title>
 </head>
 <body>
     <header>
         <div id='nombre_empresa'>
+            <h1 id='titular_web'>Mascotas</h1>
             <img src="img/logo.svg" alt="logo_empresa" id='logo_empresa'>
-            <h1 id='titular_web'>PROYECTO</h1>
         </div>
         <div>
-            <nav>
+            <div id='wrapper'>
+                <img id='bars' src="img/bars_green.svg" alt="">
+            </div>
+            <nav id='menu_cabecera'>
                 <ul>
                     <li>
                         <a href="">Inicio</a>
@@ -34,12 +40,14 @@
             </nav>
         </div>
         <div>
-            <a href=""><img width="90px" src="img/usuarios/usuario1.jpg" alt="Usuario" id="logo_usuario"></a>
-        </div>
-        <div>
+            <a href=""><img src="img/usuarios/usuario1.jpg" alt="Usuario" id="logo_usuario"></a>
+        </div>        
+    </header>
+    <section>
+    <div id='imagen_cabecera'>
             <img width='100%' src="img/cabecera2.jpg" alt="cabecera">
         </div>
-    </header>
+    </section>
     <section>
         <div>
             <ul>
