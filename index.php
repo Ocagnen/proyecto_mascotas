@@ -77,7 +77,7 @@
                     </select>  
                 </div>
                 <div>
-                    <label for="">Localidad: </label>
+                    <label for="">Localidad:</label>
                     <select name="" id="">
                         <option value="">Almería</option>
                     </select>
@@ -87,6 +87,94 @@
                 </div>
             </form>
         </div>
+    </section>
+    <section>
+        <div>
+            <h2>ANUNCIOS</h2>
+        </div>
+        <div>
+            <article>
+                <div>
+                    <img width='300px' src="img/anuncio1.jpg" alt="">
+                </div>
+                <div>
+                   <table>
+                       <tr>
+                           <td>Datos</td>
+                       </tr>
+                       <tr>
+                           <td>Datos</td>
+                       </tr>
+                       <tr>
+                           <td>Datos</td>
+                       </tr>
+                   </table>
+                </div>
+                <div>
+                    <div>
+                        <button>USUARIO</button>
+                    </div>
+                    <div>
+                        <button>Solicitar</button>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <div>
+                    <img width='300px' src="img/anuncio1.jpg" alt="">
+                </div>
+                <div>
+                   <table>
+                       <tr>
+                           <td>Datos</td>
+                       </tr>
+                       <tr>
+                           <td>Datos</td>
+                       </tr>
+                       <tr>
+                           <td>Datos</td>
+                       </tr>
+                   </table>
+                </div>
+                <div>
+                    <div>
+                        <button>USUARIO</button>
+                    </div>
+                    <div>
+                        <button>Solicitar</button>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <div>
+                    <img width='300px' src="img/anuncio1.jpg" alt="">
+                </div>
+                <div>
+                   <table>
+                       <tr>
+                           <td>Datos</td>
+                       </tr>
+                       <tr>
+                           <td>Datos</td>
+                       </tr>
+                       <tr>
+                           <td>Datos</td>
+                       </tr>
+                   </table>
+                </div>
+                <div>
+                    <div>
+                        <button>USUARIO</button>
+                    </div>
+                    <div>
+                        <button>Solicitar</button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section>
+        
     </section>
 </body>
 </html>
