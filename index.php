@@ -15,28 +15,26 @@
             <h1 id='titular_web'>Mascotas</h1>
             <img src="img/logo.svg" alt="logo_empresa" id='logo_empresa'>
         </div>
-        <div>
-            <div id='wrapper'>
-                <img id='bars' src="img/bars_green.svg" alt="">
-            </div>
+        <div id='wrapper'>
+            <img id='bars' src="img/bars_green.svg" alt="">
+        </div>
+        <div id='cabecera_lista'>            
             <nav id='menu_cabecera'>
-                <ul>
-                    <li>
-                        <a href="">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="">Términos y condiciones</a>
-                    </li>
-                    <li>
-                        <a href="">Contacto</a>
-                    </li>
-                    <li>
-                        <a href="">Iniciar sesión</a> 
-                    </li>
-                    <li>
-                        <a href="">Registrarse</a> 
-                    </li>
-                </ul>
+                <div>
+                    <a href="">Inicio</a>
+                </div>
+                <div>
+                    <a href="">Terminos y condiciones</a>
+                </div>
+                <div>
+                    <a href="">Contacto</a>
+                </div>
+                <div>
+                    <a href="">Iniciar Sesión</a>
+                </div>
+                <div>
+                    <a href="">Registrarse</a>
+                </div>
             </nav>
         </div>
         <div>
