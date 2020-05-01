@@ -181,6 +181,7 @@ div>label {
 
 #contenido_anuncios table {
     width: 100%;
+    padding: 1%;
 }
 
 #contenido_anuncios table th {
@@ -191,6 +192,51 @@ div>label {
 #contenido_anuncios table td {
     background-color: #c7e6d0;
     color: black;
+}
+
+.botones_anuncio {
+    display: flex;
+    flex-direction: column;
+}
+
+.botones_anuncio div {
+    margin: 0.5%;
+    width: 100%;
+    text-align: center;
+}
+
+.boton_usuario button {
+    width: 80%;
+    padding: 2%;
+    background: transparent;
+    font-size: 1em;
+    border: none;
+    color: green;
+    font-weight: bolder;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 6px;
+    text-decoration: underline;
+}
+
+.boton_solicitar {
+    width: 80%;
+    text-align: center;
+}
+
+.boton_solicitar button {
+    width: 80%;
+    padding: 2%;
+    background: green;
+    font-size: 1em;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 6px;
 }
 
 

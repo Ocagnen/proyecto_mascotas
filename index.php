@@ -146,9 +146,9 @@
                 </div>
                 <div class='botones_anuncio'>
                     <div class='boton_usuario'>
-                        <button>USUARIO</button>
+                        <button>Javier Ocaña Infante</button>
                     </div>
-                    <div>
+                    <div class='boton_solicitar'>
                         <button>Solicitar</button>
                     </div>
                 </div>
@@ -181,9 +181,9 @@
                 </div>
                 <div class='botones_anuncio' >
                     <div class='boton_usuario' >
-                        <button>USUARIO</button>
+                        <button>Javier Ocaña Infante</button>
                     </div>
-                    <div>
+                    <div class='boton_solicitar'>
                         <button>Solicitar</button>
                     </div>
                 </div>
@@ -216,9 +216,9 @@
                 </div>
                 <div class='botones_anuncio'>
                     <div class='boton_usuario'>
-                        <button>USUARIO</button>
+                        <button>Javier Ocaña Infante</button>
                     </div>
-                    <div>
+                    <div class='boton_solicitar'>
                         <button>Solicitar</button>
                     </div>
                 </div>
