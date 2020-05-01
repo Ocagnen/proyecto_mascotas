@@ -83,6 +83,56 @@ header div {
     font-size: larger;
 }
 
+#form_inicio {
+    display: flex;
+    flex-direction: column;
+}
+
+.campos_busqueda {
+    display: flex;
+    flex-direction: column;
+}
+
+.campos_busqueda div {
+    padding: 1.4%;
+}
+
+.campos_busqueda input,
+select {
+    width: 80%;
+    border: 2px solid #78ed99;
+    color: rgb(2, 85, 2);
+    border-radius: 6px;
+}
+
+div>label {
+    color: green;
+    font-weight: bolder;
+}
+
+#tipos_mascota {
+    display: flex;
+    flex-direction: row;
+    margin: 4% auto;
+}
+
+#tipos_mascota div {
+    margin: 1%;
+}
+
+#tipos_mascota button {
+    background: rgb(41, 133, 36);
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid rgb(3, 88, 3);
+    text-decoration: none;
+    border-radius: 6px;
+}
+
 
 /*
 #menu_cabecera {

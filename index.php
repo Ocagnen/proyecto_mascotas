@@ -46,57 +46,76 @@
             <img width='100%' src="img/cabecera2.jpg" alt="cabecera">
         </div>
     </section>
-    <section>
-        <div>
-            <ul>
-                <li>
-                    <button>Perros</button>
-                </li>
-                <li>
-                    <button>Gatos</button>
-                </li>
-                <li>
-                    <button>Otros</button>
-                </li>
-            </ul>
-        </div>
+    <section id='form_inicio'>
         <div>
             <form action="" method="post">
-                <div>
-                    <label for="">Fecha de entrega:</label>
-                    <input type="date" name="" id="">
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="">Fecha de entrega:</label>
+                    </div>
+                    <div>
+                        <input type="date" name="" id="">
+                    </div>
                 </div>
-                <div>
-                    <label for="">Hora de entrega desde las:</label>
-                    <select name="" id="">
-                        <option value="">00:00</option>
-                    </select>
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="">Hora de entrega desde las:</label>
+                    </div>
+                    <div>
+                        <select name="" id="">
+                            <option value="">00:00</option>
+                            <option value="">01:00</option>
+                        </select>
+                    </div>                    
                 </div>
-                <div>
-                    <label for="">Fecha de recogida:</label>
-                    <input type="date" name="" id="">
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="">Fecha de recogida:</label> 
+                    </div>
+                    <div>
+                        <input type="date" name="" id="">
+                    </div>
                 </div>
-                <div>
-                    <label for="">Hora de recogida desde las:</label>
-                    <select name="" id="">
-                        <option value="">00:00</option>
-                    </select>  
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="">Hora de recogida desde las:</label>
+                    </div>
+                    <div>
+                        <select name="" id="">
+                            <option value="">00:00</option>
+                        </select>  
+                    </div>                    
                 </div>
-                <div>
-                    <label for="">Localidad:</label>
-                    <select name="" id="">
-                        <option value="">Almería</option>
-                    </select>
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="">Localidad:</label>
+                    </div>
+                    <div>
+                        <select name="" id="">
+                            <option value="">Almería</option>
+                        </select>
+                    </div>                    
                 </div>
                 <div>
                     <button type="submit">FILTRAR</button>
                 </div>
             </form>
-        </div>
+        </div>        
     </section>
     <section>
         <div>
             <h2>ANUNCIOS</h2>
+        </div>
+        <div id='tipos_mascota'>
+            <div>
+                <button>Perros</button>
+            </div>
+            <div>
+                <button>Gatos</button>
+            </div>
+            <div>
+                <button>Otros</button>
+            </div>
         </div>
         <div>
             <article>
