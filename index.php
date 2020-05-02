@@ -52,7 +52,7 @@
                     <div>
                         <label for="">Fecha de entrega:</label>
                     </div>
-                    <div>
+                    <div class='input_form'>
                         <input type="date" name="" id="">
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     <div>
                         <label for="">Hora de entrega desde las:</label>
                     </div>
-                    <div>
+                    <div class='input_form'>
                         <select name="" id="">
                             <option value="">00:00</option>
                             <option value="">01:00</option>
@@ -71,7 +71,7 @@
                     <div>
                         <label for="">Fecha de recogida:</label> 
                     </div>
-                    <div>
+                    <div class='input_form'>
                         <input type="date" name="" id="">
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                     <div>
                         <label for="">Hora de recogida desde las:</label>
                     </div>
-                    <div>
+                    <div class='input_form'>
                         <select name="" id="">
                             <option value="">00:00</option>
                         </select>  
@@ -89,7 +89,7 @@
                     <div>
                         <label for="">Localidad:</label>
                     </div>
-                    <div>
+                    <div class='input_form'>
                         <select name="" id="">
                             <option value="">Almería</option>
                         </select>
@@ -121,7 +121,7 @@
                 <div class='img_anuncio'>
                     <img src="img/anuncio1.jpg" alt="">
                 </div>
-                <div>
+                <div class='container_tabla'>
                    <table>
                        <tr>
                            <th>Fecha de entrega</th>
@@ -156,7 +156,7 @@
                 <picture class='img_anuncio'>
                     <img src="img/anuncio1.jpg" alt="">
                 </picture>
-                <div>
+                <div class='container_tabla'>
                 <table>
                        <tr>
                            <th>Fecha de entrega</th>
@@ -191,7 +191,7 @@
                 <picture class='img_anuncio'>
                     <img src="img/anuncio1.jpg" alt="">
                 </picture>
-                <div>
+                <div class='container_tabla'>
                 <table>
                        <tr>
                            <th>Fecha de entrega</th>

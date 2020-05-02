@@ -110,6 +110,8 @@ select {
     border: 2px solid #78ed99;
     color: rgb(2, 85, 2);
     border-radius: 6px;
+    height: 5vh;
+    font-size: 2vh;
 }
 
 div>label {
@@ -209,7 +211,6 @@ div>label {
 
 .botones_anuncio div {
     margin: 0.5%;
-    width: 100%;
     text-align: center;
 }
 
@@ -229,7 +230,7 @@ div>label {
 }
 
 .boton_solicitar {
-    width: 80%;
+    width: 100%;
     text-align: center;
 }
 
@@ -308,7 +309,7 @@ footer {
 
 /*-----------------------------------VERSIÓN TABLET----------------------------------------*/
 
-@media all and (min-width: 700px) and (max-width: 1000px) {
+@media all and (min-width: 700px) and (max-width: 1030px) {
     #contenedor_foto_perfil a {
         margin: 0 auto;
     }
@@ -318,6 +319,55 @@ footer {
     }
     #menu_cabecera div {
         margin: 0;
+    }
+    .campos_busqueda div {
+        padding: 1%;
+    }
+    div>label {
+        color: green;
+        font-weight: bolder;
+        font-size: 1.7vh;
+    }
+    .campos_busqueda input,
+    select {
+        font-size: 1.7vh;
+    }
+    #anuncios h2 {
+        font-size: 3vh;
+    }
+    #contenido_anuncios article {
+        flex-direction: row;
+        margin: 0 auto;
+        padding: 5%;
+        flex-wrap: wrap;
+    }
+    #contenido_anuncios table {
+        padding: 0%;
+    }
+    .img_anuncio {
+        margin: 0;
+        width: 40%;
+    }
+    .img_anuncio img {
+        width: 100%;
+        padding: 0.7%;
+    }
+    .container_tabla {
+        width: 60%;
+    }
+    .botones_anuncio {
+        width: 100%;
+        flex-direction: row;
+    }
+    .boton_usuario {
+        width: 40%;
+    }
+    .boton_solicitar {
+        width: 60%;
+        text-align: center;
+    }
+    .botones_anuncio button {
+        margin-right: 100%;
     }
 }
 
