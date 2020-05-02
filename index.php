@@ -273,10 +273,10 @@
         </article>
     </section>
     <footer>
-        <div>
+        <div id='logo_footer'>
             <h3 id='nombre_footer'>Au Pet</h3>
         </div>
-        <div>
+        <div id='direcciones_footer'>
             <div  class='enlace_footer'>
                 <a href="">¿Dónde me registro?</a>
             </div>
@@ -305,7 +305,7 @@
                 </a>
             </div>
         </div>
-        <div>
+        <div id='container_derechos'>
             <p>©2020 Au Pet. Todos los derechos reservados.</p>
         </div>
     </footer>

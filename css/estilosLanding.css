@@ -369,6 +369,31 @@ footer {
     .botones_anuncio button {
         margin-right: 100%;
     }
+    footer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1%;
+        padding-top: 2%;
+    }
+    #container_derechos {
+        width: 100%;
+    }
+    #logo_footer {
+        width: 20%;
+    }
+    #direcciones_footer {
+        width: 60%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .enlace_footer {
+        width: 50%;
+        margin: 3% 0%;
+    }
+    #redes_sociales_footer {
+        width: 20%;
+    }
 }
 
 
