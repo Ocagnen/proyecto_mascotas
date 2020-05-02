@@ -544,6 +544,9 @@ footer {
     #redes_sociales_footer {
         width: 10%;
     }
+    footer a {
+        cursor: pointer;
+    }
 }
 
 

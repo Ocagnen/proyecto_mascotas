@@ -20,19 +20,19 @@
         <div id='cabecera_lista'>            
             <nav id='menu_cabecera'>
                 <div>
-                    <a href="">Inicio</a>
+                    <a href="index.php">Inicio</a>
                 </div>
                 <div>
-                    <a href="">Términos y condiciones</a>
+                    <a href="terminos.php">Términos y condiciones</a>
                 </div>
                 <div>
                     <a href="">Contacto</a>
                 </div>
                 <div>
-                    <a href="">Iniciar Sesión</a>
+                    <a href="registro.php">Iniciar Sesión</a>
                 </div>
                 <div>
-                    <a href="">Registrarse</a>
+                    <a href="registro.php">Registrarse</a>
                 </div>
             </nav>
         </div>
