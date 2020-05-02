@@ -442,6 +442,24 @@ footer {
     #nombre_empresa {
         flex: 20%;
     }
+    #form_inicio {
+        padding: 0 5%;
+    }
+    form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 4% 0;
+    }
+    .campos_busqueda {
+        width: 20%;
+    }
+    #div_btn_filt {
+        margin: 0%;
+    }
+    #btn_filtrar {
+        padding: 8%;
+    }
 }
 
 

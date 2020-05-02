@@ -42,7 +42,7 @@
     </header>
     <section>
         <picture id='imagen_cabecera'>
-            <img width='100%' src="img/cabecera2.jpg" alt="cabecera">
+            <img width='100%' src="img/cabecera3.jpg" alt="cabecera">
         </picture>
     </section>
     <section id='form_inicio'>

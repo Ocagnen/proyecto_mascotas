@@ -30,4 +30,23 @@ $(document).ready(function() {
             $(this).css('background-color', 'green');
         }
     });
+
+    if ($(window).width() > 1030) {
+        $('#cabecera_lista div').mouseenter(function() {
+            $(this).css('background-color', '#b6ffcb');
+        });
+        $('#cabecera_lista div').mouseleave(function() {
+            $(this).css('background-color', 'transparent');
+        });
+
+        $('#cabecera_lista a').mouseenter(function() {
+            $(this).css('text-decoration', 'underline');
+        });
+        $('#cabecera_lista a').mouseleave(function() {
+            $(this).css('text-decoration', 'none');
+        });
+
+
+    }
+
 });
