@@ -460,6 +460,55 @@ footer {
     #btn_filtrar {
         padding: 8%;
     }
+    #tipos_mascota {
+        width: 40%;
+        margin: 0 auto;
+    }
+    #anuncios h2 {
+        font-size: 3vh;
+    }
+    #contenido_anuncios article {
+        padding: 2%;
+        flex-direction: row;
+        margin: 0 auto;
+        border-radius: 16px;
+        margin: 2%;
+        box-shadow: rgba(2, 26, 3, 0.192) 0px 0.4pt 4pt, rgba(41, 49, 41, 0.274) 0px 2pt 8pt;
+    }
+    #contenido_anuncios table {
+        padding: 0%;
+    }
+    #contenido_anuncios th,
+    td {
+        padding: 2%;
+        border-radius: 7%;
+        box-shadow: rgba(2, 26, 3, 0.192) 0px 0.4pt 4pt, rgba(41, 49, 41, 0.274) 0px 2pt 8pt;
+    }
+    .img_anuncio {
+        margin: 1%;
+        width: 20%;
+    }
+    .img_anuncio img {
+        width: 100%;
+        padding: 0.7%;
+        border-radius: 16px;
+        box-shadow: rgba(2, 26, 3, 0.192) 0px 0.4pt 4pt, rgba(41, 49, 41, 0.274) 0px 2pt 8pt;
+    }
+    .container_tabla {
+        width: 50%;
+        margin: 1%;
+    }
+    .botones_anuncio {
+        width: 30%;
+        flex-direction: column;
+    }
+    .boton_usuario {
+        width: 100%;
+    }
+    .boton_solicitar {
+        width: 100%;
+        text-align: center;
+    }
     #contenido {
         flex-direction: row;
         padding-top: 1%;
