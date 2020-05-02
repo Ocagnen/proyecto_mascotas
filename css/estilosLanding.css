@@ -8,6 +8,11 @@ html {
     height: 100%;
 }
 
+@font-face {
+    font-family: 'Cream Cake';
+    src: url('cream_cake/Cream Cake.ttf') format('truetype');
+}
+
 
 /*-------------------------VERSIÓN MÓVIL------------------------*/
 
@@ -34,8 +39,10 @@ header div {
 }
 
 #titular_web {
-    font-size: 4vh;
+    font-size: 7vh;
     font-weight: 900;
+    font-family: 'Cream Cake';
+    margin: 0;
 }
 
 #bars {
@@ -140,6 +147,7 @@ div>label {
     text-align: center;
     border-bottom: 1px solid green;
     margin-bottom: 0;
+    color: green;
 }
 
 #tipos_mascota {
@@ -269,6 +277,32 @@ footer {
     display: flex;
     flex-direction: column;
     text-align: center;
+    padding: 4%;
+}
+
+#nombre_footer {
+    font-family: 'Cream Cake';
+    font-size: 3rem;
+    margin: 0;
+}
+
+.enlace_footer {
+    margin: 5%;
+}
+
+.enlace_footer a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#redes_sociales_footer {
+    display: flex;
+}
+
+#redes_sociales_footer div {
+    display: flex;
+    margin: 0 auto;
 }
 
 

@@ -12,8 +12,7 @@
 <body>
     <header>
         <div id='nombre_empresa'>
-            <h1 id='titular_web'>Mascotas</h1>
-            <img src="img/logo.svg" alt="logo_empresa" id='logo_empresa'>
+            <h1 id='titular_web'>Au Pet</h1>    
         </div>
         <div id='wrapper'>
             <img id='bars' src="img/bars_green.svg" alt="">
@@ -42,9 +41,9 @@
         </div>        
     </header>
     <section>
-    <div id='imagen_cabecera'>
+        <picture id='imagen_cabecera'>
             <img width='100%' src="img/cabecera2.jpg" alt="cabecera">
-        </div>
+        </picture>
     </section>
     <section id='form_inicio'>
         <div>
@@ -154,9 +153,9 @@
                 </div>
             </article>
             <article>
-                <div class='img_anuncio'>
+                <picture class='img_anuncio'>
                     <img src="img/anuncio1.jpg" alt="">
-                </div>
+                </picture>
                 <div>
                 <table>
                        <tr>
@@ -189,9 +188,9 @@
                 </div>
             </article>
             <article>
-                <div class='img_anuncio'>
+                <picture class='img_anuncio'>
                     <img src="img/anuncio1.jpg" alt="">
-                </div>
+                </picture>
                 <div>
                 <table>
                        <tr>
@@ -228,9 +227,9 @@
     <section id='contenido'>
         <article class='contenido_landing'>
             <div class='titular_info'>
-                <div class='img_titular'>
+                <picture class='img_titular'>
                     <img src="img/question.svg" width='50px' alt="">
-                </div>
+                </picture>
                 <div class='titulo_titular'>
                     <h2>Cómo usar la aplicación</h2>
                 </div>
@@ -251,9 +250,9 @@
         </article>
         <article class='contenido_landing'>
             <div class='titular_info'>
-                <div class='img_titular'>
+                <picture class='img_titular'>
                     <img src="img/secure.svg" width='50px' alt="">
-                </div>
+                </picture>
                 <div class='titulo_titular'>
                     <h2>Cómo garantizamos la seguridad de nuestros usuarios</h2>
                 </div>
@@ -275,28 +274,39 @@
     </section>
     <footer>
         <div>
-            <img src="" alt="">
-            <h3>PROYECTO</h3>
+            <h3 id='nombre_footer'>Au Pet</h3>
         </div>
         <div>
-            <ul>
-                <li>
-                    <a href="">Link1</a>
-                </li>
-                <li>
-                    <a href="">Link1</a>
-                </li>
-                <li>
-                    <a href="">Link1</a>
-                </li>
-                <li>
-                    <a href="">Link1</a>
-                </li>
-            </ul>
+            <div  class='enlace_footer'>
+                <a href="">¿Dónde me registro?</a>
+            </div>
+            <div class='enlace_footer'>
+                <a href="">¿Cómo inicio sesión?</a>
+            </div>
+            <div class='enlace_footer'>
+                <a href="">Contacto</a>
+            </div>
+            <div class='enlace_footer'>
+                <a href="">Términos y condiciones</a>
+            </div>
+            <div class='enlace_footer'>
+                <a href="">Preguntas frecuentes</a>
+            </div>
+        </div>
+        <div id='redes_sociales_footer'>
+            <div>
+                <a href="">
+                    <img src="img/socialMedia/facebook.svg" alt="">
+                </a>
+            </div>
+            <div>
+                <a href="">
+                    <img src="img/socialMedia/insta.svg" alt="">
+                </a>
+            </div>
         </div>
         <div>
-            <img src="img/socialMedia/facebook.svg" alt="">
-            <img src="img/socialMedia/facebook.svg" alt="">
+            <p>©2020 Au Pet. Todos los derechos reservados.</p>
         </div>
     </footer>
 </body>
