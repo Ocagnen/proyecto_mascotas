@@ -8,6 +8,11 @@ html {
     height: 100%;
 }
 
+body {
+    width: 100%;
+    height: 100%;
+}
+
 @font-face {
     font-family: 'Cream Cake';
     src: url('cream_cake/Cream Cake.ttf') format('truetype');
@@ -393,6 +398,49 @@ footer {
     }
     #redes_sociales_footer {
         width: 20%;
+    }
+}
+
+
+/*-----------------------------------VERSIÓN ESCRITORIO----------------------------------------*/
+
+@media all and (min-width:1030px) {
+    #titular_web {
+        font-size: 4em;
+        margin: 0 auto;
+    }
+    #header {
+        flex-wrap: nowrap;
+    }
+    #wrapper {
+        display: none;
+    }
+    #cabecera_lista {
+        order: 0;
+        display: flex;
+        flex-direction: row;
+        flex: 60%;
+        background-color: transparent;
+        border-top: 1px solid green;
+        border-bottom: 1px solid green;
+    }
+    #menu_cabecera {
+        flex-direction: row;
+        margin: 0;
+        width: 100%;
+    }
+    #menu_cabecera div {
+        margin: 0%;
+        padding: 1%;
+    }
+    #menu_cabecera a {
+        align-self: center;
+        color: green;
+        font-size: 1em;
+        font-weight: 900;
+    }
+    #nombre_empresa {
+        flex: 20%;
     }
 }
 

@@ -23,7 +23,7 @@
                     <a href="">Inicio</a>
                 </div>
                 <div>
-                    <a href="">Terminos y condiciones</a>
+                    <a href="">Términos y condiciones</a>
                 </div>
                 <div>
                     <a href="">Contacto</a>
