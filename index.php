@@ -36,7 +36,7 @@
                 </div>
             </nav>
         </div>
-        <div>
+        <div id='contenedor_foto_perfil'>
             <a href=""><img src="img/usuarios/usuario1.jpg" alt="Usuario" id="logo_usuario"></a>
         </div>        
     </header>
