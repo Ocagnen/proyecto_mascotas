@@ -26,7 +26,7 @@
                     <a href="terminos.php">Términos y condiciones</a>
                 </div>
                 <div>
-                    <a href="">Contacto</a>
+                    <a href="contacto.php">Contacto</a>
                 </div>
                 <div>
                     <a href="registro.php">Iniciar Sesión</a>
@@ -37,7 +37,7 @@
             </nav>
         </div>
         <div id='contenedor_foto_perfil'>
-            <a href=""><img src="img/usuarios/usuario1.jpg" alt="Usuario" id="logo_usuario"></a>
+            <a href="usuario.php"><img src="img/usuarios/usuario1.jpg" alt="Usuario" id="logo_usuario"></a>
         </div>        
     </header>
     <section>

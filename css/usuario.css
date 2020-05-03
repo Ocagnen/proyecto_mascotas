@@ -96,31 +96,23 @@ header div {
     font-size: larger;
 }
 
-#contenido {
+#container_usuario {
     display: flex;
     flex-direction: column;
-    padding: 4%;
+}
+
+#nombre_usu {
     text-align: center;
 }
 
-.contenido_terminos {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-top: 2%;
+#foto_usu {
+    width: 50%;
+    margin: 0 auto;
 }
 
-.contenido_terminos h2 {
-    margin: 0;
-    color: green;
-}
-
-.contenido_terminos p {
-    text-align: left;
-}
-
-#texto_terminos {
-    padding: 1% 8%;
+#foto_usu img {
+    width: 100%;
+    border-radius: 6px;
 }
 
 footer {
