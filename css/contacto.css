@@ -365,6 +365,42 @@ footer {
     #nombre_empresa {
         flex: 20%;
     }
+    #bloques_contacto {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    #correo {
+        width: 60%;
+    }
+    .cuerpo_form {
+        padding: 0;
+    }
+    .campos_busqueda div {
+        margin: 2%;
+    }
+    form {
+        padding: 4% 1%;
+        padding-bottom: 0;
+    }
+    #redes_sociales_contacto {
+        margin: 0;
+        width: 40%;
+    }
+    #fqa {
+        width: 100%;
+        margin-bottom: 0;
+        ;
+    }
+    #container_preguntas {
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-top: 1px solid green;
+        border-bottom: 1px solid green;
+        margin-bottom: 0;
+    }
+    .preguntas_frec {
+        width: 46%;
+    }
     footer {
         flex-direction: row;
         flex-wrap: wrap;
