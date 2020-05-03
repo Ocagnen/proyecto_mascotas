@@ -1,0 +1,413 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'Cream Cake';
+    src: url('cream_cake/Cream Cake.ttf') format('truetype');
+}
+
+
+/*-------------------------VERSIÓN MÓVIL------------------------*/
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    color: rgb(41, 133, 36);
+}
+
+header div {
+    flex: 1;
+    margin: 1%;
+}
+
+#nombre_empresa {
+    flex: 30%;
+}
+
+#logo_empresa {
+    width: 5vh;
+    padding: 1%;
+}
+
+#titular_web {
+    font-size: 7vh;
+    font-weight: 900;
+    font-family: 'Cream Cake';
+    margin: 0;
+}
+
+#bars {
+    margin-left: auto;
+    cursor: pointer;
+    width: 20pt;
+    height: 20pt;
+}
+
+#logo_usuario {
+    padding: 3%;
+    width: 9vh;
+    height: 9vh;
+    border-radius: 50%;
+}
+
+header div {
+    display: flex;
+}
+
+#cabecera_lista {
+    display: none;
+    order: 5;
+    flex: 100%;
+    background-color: green;
+}
+
+#menu_cabecera {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+#menu_cabecera div {
+    margin: 2%;
+    padding: 3%;
+    border-bottom: 1px solid white;
+}
+
+#menu_cabecera a {
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: larger;
+}
+
+#bloques_contacto,
+#redes_sociales_contacto,
+#fqa,
+#container_preguntas {
+    display: flex;
+    flex-direction: column;
+    margin: 1%;
+    margin-bottom: 5%;
+}
+
+label {
+    color: green;
+    font-weight: bolder;
+}
+
+.campos_busqueda input {
+    width: 90%;
+    border: 2px solid #78ed99;
+    color: rgb(2, 85, 2);
+    border-radius: 6px;
+    height: 5vh;
+    font-size: 2.2vh;
+    padding: 1%;
+}
+
+textarea {
+    width: 90%;
+    height: 17vh;
+    border: 2px solid #78ed99;
+    color: rgb(2, 85, 2);
+    border-radius: 6px;
+    font-size: 1.5vh;
+    padding: 1%;
+}
+
+.titulo_form {
+    text-align: center;
+    color: green;
+    font-weight: 900;
+}
+
+.cuerpo_form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    box-shadow: rgba(2, 26, 3, 0.192) 0px 0.4pt 4pt, rgba(41, 49, 41, 0.274) 0px 2pt 8pt;
+    padding: 4%;
+    margin: 2% auto;
+    width: 90%;
+    overflow: hidden;
+}
+
+.campos_busqueda div {
+    margin: 4% 2%;
+}
+
+#div_btn_enviar_cont {
+    display: flex;
+    margin: 5%;
+}
+
+#btn_enviar_cont {
+    background: green;
+    color: white;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bolder;
+    cursor: pointer;
+    border: 1px solid rgb(0, 5, 0);
+    text-decoration: none;
+    margin: 0 auto;
+    border-radius: 6px;
+    width: 20vh;
+    padding: 2%;
+    box-shadow: 0 0 4px;
+}
+
+#contenido_redes_sociales div {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 60%;
+}
+
+#contenido_redes_sociales div a {
+    display: flex;
+    align-self: center;
+    margin: 4%;
+    color: rgb(0, 102, 128);
+    font-weight: 700;
+}
+
+#contenido_redes_sociales div img {
+    width: 40px;
+    height: 40px;
+    margin: 4%;
+}
+
+.preguntas_frec {
+    margin: 1%;
+}
+
+.pregunta {
+    text-align: center;
+    color: green;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.pregunta h3 {
+    cursor: pointer;
+}
+
+.respuesta {
+    display: none;
+}
+
+.respuesta p {
+    margin: 0;
+    padding: 5% 5%;
+    font-weight: 400;
+    background-color: #b0ebc1;
+    border-radius: 6px;
+}
+
+footer {
+    border-top: 1px solid black;
+    background-color: #78ed99;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 4%;
+}
+
+#nombre_footer {
+    font-family: 'Cream Cake';
+    font-size: 3rem;
+    margin: 0;
+}
+
+.enlace_footer {
+    margin: 5%;
+}
+
+.enlace_footer a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#redes_sociales_footer {
+    display: flex;
+}
+
+#redes_sociales_footer div {
+    display: flex;
+    margin: 0 auto;
+}
+
+
+/*-----------------------------------VERSIÓN TABLET----------------------------------------*/
+
+@media all and (min-width: 700px) and (max-width: 1030px) {
+    #contenedor_foto_perfil a {
+        margin: 0 auto;
+    }
+    #bars {
+        width: 30pt;
+        height: 30pt;
+    }
+    #menu_cabecera div {
+        margin: 0;
+    }
+    label {
+        color: green;
+        font-weight: bolder;
+        font-size: 1.7vh;
+    }
+    .campos_busqueda div {
+        margin: 2%;
+    }
+    #contenido_redes_sociales {
+        display: flex;
+        flex-direction: row;
+    }
+    #contenido_redes_sociales div {
+        width: 30%;
+    }
+    #container_preguntas {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .titulo_form {
+        margin: 1%;
+    }
+    .preguntas_frec {
+        width: 46%;
+    }
+    .pregunta {
+        width: 100%;
+    }
+    footer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1%;
+        padding-top: 2%;
+    }
+    #container_derechos {
+        width: 100%;
+    }
+    #logo_footer {
+        width: 20%;
+    }
+    #direcciones_footer {
+        width: 60%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .enlace_footer {
+        width: 50%;
+        margin: 3% 0%;
+    }
+    #redes_sociales_footer {
+        width: 20%;
+    }
+}
+
+
+/*-----------------------------------VERSIÓN ESCRITORIO----------------------------------------*/
+
+@media all and (min-width:1030px) {
+    #titular_web {
+        font-size: 4em;
+        margin: 0 auto;
+    }
+    #header {
+        flex-wrap: nowrap;
+    }
+    #wrapper {
+        display: none;
+    }
+    #cabecera_lista {
+        order: 0;
+        display: flex;
+        flex-direction: row;
+        flex: 60%;
+        background-color: transparent;
+        border-top: 1px solid green;
+        border-bottom: 1px solid green;
+    }
+    #menu_cabecera {
+        flex-direction: row;
+        margin: 0;
+        width: 100%;
+    }
+    #menu_cabecera div {
+        margin: 0%;
+        padding: 1%;
+    }
+    #menu_cabecera a {
+        align-self: center;
+        color: green;
+        font-size: 1em;
+        font-weight: 900;
+    }
+    #nombre_empresa {
+        flex: 20%;
+    }
+    footer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1%;
+        padding-top: 2%;
+    }
+    #container_derechos {
+        width: 100%;
+    }
+    #logo_footer {
+        width: 20%;
+    }
+    #direcciones_footer {
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .enlace_footer {
+        width: 30%;
+        margin: 1% 0%;
+    }
+    #redes_sociales_footer {
+        width: 10%;
+    }
+}
+
+
+/*
+#menu_cabecera {
+    display: none;
+}
+header {
+    display: flex;
+    flex-direction: row;
+}
+
+#logo_empresa {
+    width: 10vh;
+}
+
+#nombre_empresa {
+    display: flex;
+    flex-direction: row;
+}
+*/
