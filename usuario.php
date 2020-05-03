@@ -49,13 +49,20 @@
             </div>
             <div id='foto_usu'>
                 <img src="img/usuarios/usuario2.jpg" alt="">
+                <div id="promedio" class="estrellas_valor">
+                <img src="img/star.svg" alt="">
+                <img src="img/star.svg" alt="">
+                <img src="img/star.svg" alt="">
+                <img src="img/star.svg" alt="">
+                <img src="img/darkstar.svg" alt="">
+            </div>
             </div>
             <div id='desc_usu'>
                 <p>
-                    sajdpoa sme aishaois aks aka kas array_key_lastaka
-                    asas asas aaaaaaaaaas sa ssaksñasña
-                    asaaaaaaaa
-                    assss asjkab dakjsbd dkjasdk asda nskjdakj
+                    <i>"sajdpoa sme aishaois aks aka kas array_key_lastaka
+                        asas asas aaaaaaaaaas sa ssaksñasña
+                        asaaaaaaaa
+                        assss asjkab dakjsbd dkjasdk asda nskjdakj"</i>
                 </p>
             </div>
             <div id='menu_usu'>
@@ -82,11 +89,43 @@
                         </p>
                     </div>
                     <div class="estrellas_valor">
-                    <img src="img/star.svg" alt="">
+                        <img src="img/star2.svg" alt="">
+                        <img src="img/star2.svg" alt="">
+                        <img src="img/star2.svg" alt="">
+                        <img src="img/star2.svg" alt="">
+                    </div>
+                </div>
+                <div class="valoracion">
+                    <div class="usuario_valor">
+                        <h3>Usuario</h3>
+                    </div>
+                    <div class="comentario_valor">
+                        <p>
+                            Cuidoo muy bien de mi perro. RECOMENDADO
+                        </p>
+                    </div>
+                    <div class="estrellas_valor">
+                        <img src="img/star2.svg" alt="">
+                        <img src="img/star2.svg" alt="">
+                        <img src="img/star2.svg" alt="">
+                        <img src="img/darkstar.svg" alt="">
+                        <img src="img/darkstar.svg" alt="">
+
+                    </div>
+                </div>
+                <div class="valoracion">
+                    <div class="usuario_valor">
+                        <h3>Usuario</h3>
+                    </div>
+                    <div class="comentario_valor">
+                        <p>
+                            Cuidoo muy bien de mi perro. RECOMENDADO
+                        </p>
+                    </div>
+                    <div class="estrellas_valor">
                         <img src="img/star.svg" alt="">
                         <img src="img/star.svg" alt="">
-                        <img src="img/star.svg" alt="">
-                        <img src="img/star.svg" alt="">
+
                     </div>
                 </div>
                 <div class="valoracion">
@@ -102,37 +141,8 @@
                         <img src="img/star.svg" alt="">
                         <img src="img/star.svg" alt="">
                         <img src="img/star.svg" alt="">
-                    </div>
-                </div>
-                <div class="valoracion">
-                    <div class="usuario_valor">
-                        <h3>Usuario</h3>
-                    </div>
-                    <div class="comentario_valor">
-                        <p>
-                            Cuidoo muy bien de mi perro. RECOMENDADO
-                        </p>
-                    </div>
-                    <div class="estrellas_valor">
                         <img src="img/star.svg" alt="">
-                        <img src="img/star.svg" alt="">
-                    </div>
-                </div>
-                <div class="valoracion">
-                    <div class="usuario_valor">
-                        <h3>Usuario</h3>
-                    </div>
-                    <div class="comentario_valor">
-                        <p>
-                            Cuidoo muy bien de mi perro. RECOMENDADO
-                        </p>
-                    </div>
-                    <div class="estrellas_valor">
-                        <img src="img/star.svg" alt="">
-                        <img src="img/star.svg" alt="">
-                        <img src="img/star.svg" alt="">
-                        <img src="img/star.svg" alt="">
-                        <img src="img/star.svg" alt="">
+                        <img src="img/darkstar.svg" alt="">
                     </div>
                 </div>
             </div>

@@ -115,6 +115,82 @@ header div {
     border-radius: 6px;
 }
 
+#desc_usu {
+    width: 80%;
+    margin: 2% auto;
+    border-radius: 6px;
+    padding: 2%;
+    box-shadow: rgba(2, 26, 3, 0.192) 0px 0.4pt 4pt, rgba(41, 49, 41, 0.274) 0px 2pt 8pt;
+}
+
+#menu_usu {
+    width: 60%;
+    margin: 1% auto;
+}
+
+#promedio {
+    width: 50%;
+    margin: 5% auto;
+    justify-content: center;
+}
+
+#promedio img {
+    width: 20%;
+}
+
+.btn_menu button {
+    width: 100%;
+    margin: 1% 0;
+    padding: 1%;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2em;
+    font-weight: 800;
+    background-color: green;
+    border-radius: 6px;
+    color: white;
+}
+
+#valoraciones,
+#valoraciones_usu,
+.valoracion {
+    display: flex;
+    flex-direction: column;
+}
+
+#valoraciones {
+    margin: 5% 1%;
+}
+
+.valoracion {
+    margin: 5%;
+}
+
+.usuario_valor {
+    font-size: 0.9em;
+}
+
+.usuario_valor h3 {
+    margin: 0;
+}
+
+.comentario_valor {
+    margin: 2% 0;
+    padding: 2%;
+    border-radius: 6px;
+    box-shadow: rgba(2, 26, 3, 0.192) 0px 0.4pt 4pt, rgba(41, 49, 41, 0.274) 0px 2pt 8pt;
+}
+
+.estrellas_valor {
+    display: flex;
+    flex-direction: row;
+}
+
+.estrellas_valor img {
+    width: 7%;
+}
+
 footer {
     border-top: 1px solid black;
     background-color: #78ed99;
@@ -162,6 +238,32 @@ footer {
     }
     #menu_cabecera div {
         margin: 0;
+    }
+    #datos_usuario {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    #nombre_usu {
+        width: 100%;
+    }
+    #foto_usu {
+        width: 30%;
+        margin: 0 4%;
+    }
+    #desc_usu {
+        width: 50%;
+        height: max-content;
+        align-self: center;
+    }
+    .valoracion {
+        margin: 2% 5%;
+    }
+    .estrellas_valor img {
+        width: 4%;
+    }
+    .comentario_valor {
+        padding: 1%;
     }
     footer {
         flex-direction: row;
