@@ -46,7 +46,14 @@ $(document).ready(function() {
             $(this).css('text-decoration', 'none');
         });
 
-
     }
+
+    $('.pregunta h3').click(function() {
+        if ($(this).parent('.pregunta').siblings().css('display') == 'none') {
+            $(this).parent('.pregunta').siblings().slideDown();
+        } else {
+            $(this).parent('.pregunta').siblings().slideUp();
+        }
+    });
 
 });

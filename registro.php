@@ -26,7 +26,7 @@
                     <a href="terminos.php">Términos y condiciones</a>
                 </div>
                 <div>
-                    <a href="">Contacto</a>
+                    <a href="contacto.php">Contacto</a>
                 </div>
                 <div>
                     <a href="registro.php">Iniciar Sesión</a>
