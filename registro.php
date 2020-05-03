@@ -175,20 +175,20 @@
             <h3 id='nombre_footer'>Au Pet</h3>
         </div>
         <div id='direcciones_footer'>
-            <div  class='enlace_footer'>
-                <a href="">¿Dónde me registro?</a>
+        <div  class='enlace_footer'>
+                <a href="registro.php#reg">¿Dónde me registro?</a>
             </div>
             <div class='enlace_footer'>
-                <a href="">¿Cómo inicio sesión?</a>
+                <a href="registro.php#ini">¿Cómo inicio sesión?</a>
             </div>
             <div class='enlace_footer'>
-                <a href="">Contacto</a>
+                <a href="contacto.php#correo">Contacto</a>
             </div>
             <div class='enlace_footer'>
-                <a href="">Términos y condiciones</a>
+                <a href="terminos.php">Términos y condiciones</a>
             </div>
             <div class='enlace_footer'>
-                <a href="">Preguntas frecuentes</a>
+                <a href="contacto.php#container_preguntas">Preguntas frecuentes</a>
             </div>
         </div>
         <div id='redes_sociales_footer'>
