@@ -56,4 +56,24 @@ $(document).ready(function() {
         }
     });
 
+    $('.btn_menu').mouseenter(function() {
+        $(this).children('button').css('background-color', '#b6ffcb');
+        $(this).children('button').css('color', 'green');
+    });
+    $('.btn_menu').mouseleave(function() {
+        $(this).children('button').css('background-color', 'green');
+        $(this).children('button').css('color', 'white');
+    });
+
+    $('.boton_solicitar button').mouseenter(function() {
+        $(this).css('background-color', '#b6ffcb');
+        $(this).css('border', '1px solid green');
+        $(this).css('color', 'green');
+    });
+    $('.boton_solicitar button').mouseleave(function() {
+        $(this).css('background-color', 'green');
+        $(this).css('border', '1px solid white');
+        $(this).css('color', 'white');
+    });
+
 });
