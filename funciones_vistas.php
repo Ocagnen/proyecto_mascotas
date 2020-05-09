@@ -1,5 +1,6 @@
 <?php
 
+
     function consumir_servicio_REST($url,$metodo,$datos=null){
 
         //url contra la que atacamos
@@ -43,8 +44,29 @@
                 return array ("mensaje"=>$obj->mensaje);
             } else {
                 return array ("usuario"=>$obj->usuario);
-            }
-            
+            }           
 
+    }
+
+    function getAnuncios($url){
+        $obj = consumir_servicio_REST($url."obtenerAnuncios","GET");
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        } else if(isset($obj->anuncios)){
+            return array ("anuncios"=>$obj->anuncios);
+        } else {
+            return array ("mensaje"=>$obj->mensaje);
+        }
+    }
+
+    function obtenerTipo($valor){
+        switch($valor){
+            case "Perro":
+                return "logo.svg";
+            case "Gato":
+                return "cats.svg";
+            default:
+                return "pets.svg";
+        }
     }
 ?>

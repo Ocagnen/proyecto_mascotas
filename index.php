@@ -1,6 +1,9 @@
 <?php
     session_name("mascotas");
     session_start();
+    $url_const = "http://localhost/ProyectoMascotas/REST/";
+    require "funciones_vistas.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -127,111 +130,52 @@
             </div>
         </div>
         <div id='contenido_anuncios'>
-            <article>
-                <div class='img_anuncio'>
-                    <img src="img/anuncio1.jpg" alt="">
-                </div>
-                <div class='container_tabla'>
-                   <table>
-                       <tr>
-                           <th>Fecha de entrega</th>
-                           <td>10/02/2020 a las 12:20</td>
-                       </tr>
-                       <tr>
-                           <th>Fecha de recogida</th>
-                           <td>14/02/2020 a las 12:20</td>
-                       </tr>
-                       <tr>
-                           <th>Tipo de mascota</th>
-                           <td><img src="img/cats.svg" alt=""></td>
-                       </tr>
-                       <tr>
-                           <th>Descripción</th>
-                           <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut odio eget ex ultricies
-                    blandit ac quis dolor. Proin dignissim sodales ante ut ullamcorper. Morbi dapibus egestas eros
-                    tincidunt condimentum.</td>
-                       </tr>
-                   </table>
-                </div>
-                <div class='botones_anuncio'>
-                    <div class='boton_usuario'>
-                        <button>Javier Ocaña Infante</button>
-                    </div>
-                    <div class='boton_solicitar'>
-                        <button>Solicitar</button>
-                    </div>
-                </div>
-            </article>
-            <article>
-                <picture class='img_anuncio'>
-                    <img src="img/anuncio1.jpg" alt="">
-                </picture>
-                <div class='container_tabla'>
-                <table>
-                       <tr>
-                           <th>Fecha de entrega</th>
-                           <td>10/02/2020 a las 12:20</td>
-                       </tr>
-                       <tr>
-                           <th>Fecha de recogida</th>
-                           <td>14/02/2020 a las 12:20</td>
-                       </tr>
-                       <tr>
-                           <th>Tipo de mascota</th>
-                           <td><img src="img/pets.svg" alt=""></td>
-                       </tr>
-                       <tr>
-                           <th>Descripción</th>
-                           <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut odio eget ex ultricies
-                    blandit ac quis dolor. Proin dignissim sodales ante ut ullamcorper. Morbi dapibus egestas eros
-                    tincidunt condimentum.</td>
-                       </tr>
-                   </table>
-                </div>
-                <div class='botones_anuncio' >
-                    <div class='boton_usuario' >
-                        <button>Javier Ocaña Infante</button>
-                    </div>
-                    <div class='boton_solicitar'>
-                        <button>Solicitar</button>
-                    </div>
-                </div>
-            </article>
-            <article>
-                <picture class='img_anuncio'>
-                    <img src="img/anuncio1.jpg" alt="">
-                </picture>
-                <div class='container_tabla'>
-                <table>
-                       <tr>
-                           <th>Fecha de entrega</th>
-                           <td>10/02/2020 a las 12:20</td>
-                       </tr>
-                       <tr>
-                           <th>Fecha de recogida</th>
-                           <td>14/02/2020 a las 12:20</td>
-                       </tr>
-                       <tr>
-                           <th>Tipo de mascota</th>
-                           <td><img src="img/logo.svg" alt=""></td>
-                       </tr>
-                       <tr>
-                           <th>Descripción</th>
-                           <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut odio eget ex ultricies
-                    blandit ac quis dolor. Proin dignissim sodales ante ut ullamcorper. Morbi dapibus egestas eros
-                    tincidunt condimentum.</td>
-                       </tr>
-                   </table>
-                </div>
-                <div class='botones_anuncio'>
-                    <div class='boton_usuario'>
-                        <button>Javier Ocaña Infante</button>
-                    </div>
-                    <div class='boton_solicitar'>
-                        <button>Solicitar</button>
-                    </div>
-                </div>
-            </article>
+            <?php
+                $anuncios = getAnuncios($url_const);
+                if(isset($anuncios["mensaje"])){
+                    echo "<h3>No existen anuncios en este momento</h3>";
+                } else if(isset($anuncios["anuncios"])){
+                    foreach ($anuncios as $key => $value) {
+                        foreach ($value as $key2 => $value2) {
+                            echo $value2->idAnuncio;
+                            echo "<article>";
+                                echo "<div class='img_anuncio'>";
+                                    echo "<img src='img/$value2->foto' alt='$value2->foto'>";
+                                echo "</div>";
+                                echo "<div class='container_tabla'>";
+                                echo "<table>";
+                                    echo "<tr>";
+                                        echo "<th>Fecha de entrega</th>";
+                                        echo "<td>".date_format(date_create($value2->fecha_entrega),"d/m/Y")." a las ".date_format(date_create($value2->hora_entrega),'H:i')."</td>";
+                                    echo "</tr>";
+                                    echo "<tr>";
+                                        echo "<th>Fecha de recogida</th>";
+                                        echo "<td>".date_format(date_create($value2->fecha_devolucion),"d/m/Y")." a las ".date_format(date_create($value2->hora_devolucion),'H:i')."</td>";
+                                    echo "</tr>";
+                                    echo "<tr>";
+                                        echo "<th>Tipo de mascota</th>";
+                                        echo "<td><img src='img/".obtenerTipo($value2->tipo_mascota)."' alt='tipo de mascota'></td>";
+                                    echo "</tr>";
+                                    echo "<tr>";
+                                        echo "<th>Descripción</th>";
+                                        echo "<td>".$value2->descripcion."</td>";
+                                    echo "</tr>";
+                                echo "</table>";
+                                echo "</div>";
+                                echo "<div class='botones_anuncio'>";
+                                    echo "<div class='boton_usuario'>";
+                                        echo "<button>Javier Ocaña Infante</button>";
+                                    echo "</div>";
+                                    echo "<div class='boton_solicitar'>";
+                                        echo "<button>Solicitar</button>";
+                                    echo "</div>";
+                                echo "</div>";
+                            echo "</article>";
+                        }
+                    }
+                }
+            ?>
+            
         </div>
     </section>
     <section id='contenido'>

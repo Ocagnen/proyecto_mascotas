@@ -16,6 +16,10 @@ $app->post('/login', function(){
     echo json_encode(hacerLogin($_POST["correo"],$_POST["clave"]),JSON_FORCE_OBJECT);
 });
 
+$app->get('/obtenerAnuncios', function(){
+    echo json_encode(obtenerAnuncios(),JSON_FORCE_OBJECT);
+});
+
 
 
 
