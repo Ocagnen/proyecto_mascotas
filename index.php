@@ -1,3 +1,8 @@
+<?php
+    session_name("mascotas");
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -37,7 +42,12 @@
             </nav>
         </div>
         <div id='contenedor_foto_perfil'>
-            <a href="usuario.php"><img src="img/usuarios/usuario1.jpg" alt="Usuario" id="logo_usuario"></a>
+        <?php
+                if(isset($_SESSION["usuario"])){
+                    $imagen = $_SESSION["usuario"]->foto;
+                    echo "<a href='usuario.php'><img src='img/usuarios/$imagen' alt='Usuario' id='logo_usuario'></a>";
+                } 
+            ?>
         </div>        
     </header>
     <section>
