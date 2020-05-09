@@ -4,6 +4,8 @@
     $url_const = "http://localhost/ProyectoMascotas/REST/";
     require "funciones_vistas.php";
 
+    echo calcularTarifaMin("Perro", "2020-05-05","2020-05-05", "12:00:00", "15:00:00");
+
     if(isset($_POST["btn_usuario_anuncio"])){
 
         if($_POST["btn_usuario_anuncio"]==$_SESSION["usuario"]->idUsuario){
@@ -13,6 +15,26 @@
         $_SESSION["idAutor"] = $_POST["btn_usuario_anuncio"];
         header("Location: usuario.php");
         exit;
+    }
+    $anunciosMostrar = "todos";
+    if(isset($_POST["filtrar_perros"])){
+        
+        if(!isset($_SESSION["marcado"])){
+            $_SESSION["marcado"] = $_POST["filtrar_perros"];
+            $anunciosMostrar = $_POST["filtrar_perros"];
+
+        } else {
+
+            if($_POST["filtrar_perros"]==$_SESSION["marcado"]){
+                $anunciosMostrar = "todos";
+                $_SESSION["marcado"] = "todos";
+            } else {
+                $anunciosMostrar = $_POST["filtrar_perros"];
+                $_SESSION["marcado"] = $_POST["filtrar_perros"];
+    
+            }    
+        }       
+        
     }
 
 ?>
@@ -25,6 +47,8 @@
     <link rel="stylesheet" href="css/estilosLanding.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> 
     <script src="jq/jquery-3.1.1.min.js" type="text/javascript"></script>	
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <script src="js/script.js"></script>
     <title>Proyecto mascotas</title>
 </head>
@@ -132,25 +156,41 @@
         <div id='tipos_mascota'>
             <div>
                 <form action="index.php" method="post">
-                    <button type="submit" name="filtrar_perros"><img src="img/logo.svg" alt=""></button>
+                    <button type="submit" value="Perro" name="filtrar_perros" <?php
+                        if($anunciosMostrar=="Perro"){
+                            echo "style='background-color: green;'";
+                        }
+                    ?>><img src="img/logo.svg" alt=""></button>
                 </form>
             </div>
             <div>
                 <form action="index.php" method="post">
-                    <button type="submit" name="filtrar_gatos"><img src="img/cats.svg" alt=""></button>
+                    <button type="submit" value="Gato" name="filtrar_perros"  <?php
+                        if($anunciosMostrar=="Gato"){
+                            echo "style='background-color: green;'";
+                        }
+                    ?>><img src="img/cats.svg" alt=""></button>
                 </form>
             </div>
             <div>
                 <form action="index.php" method="post">
-                    <button type="submit" name="filtrar_otros"><img src="img/pets.svg" alt=""></button>
+                    <button type="submit" value="Otros" name="filtrar_perros"  <?php
+                        if($anunciosMostrar=="Otros"){
+                            echo "style='background-color: green;'";
+                        }
+                    ?>><img src="img/pets.svg" alt=""></button>
                 </form>
             </div>
         </div>
         <div id='contenido_anuncios'>
             <?php
-                $anuncios = getAnuncios($url_const);
+                if($anunciosMostrar=="todos"){
+                    $anuncios = getAnuncios($url_const);
+                } else {
+                    $anuncios = getAnunciosTipo($anunciosMostrar,$url_const);
+                }
                 if(isset($anuncios["mensaje"])){
-                    echo "<h3>No existen anuncios en este momento</h3>";
+                    echo "<h3 id='mensaje_vacio'>No existen anuncios en este momento</h3>";
                 } else if(isset($anuncios["anuncios"])){
                     foreach ($anuncios as $key => $value) {
                         foreach ($value as $key2 => $value2) {
@@ -173,6 +213,10 @@
                                         echo "<td><img src='img/".obtenerTipo($value2->tipo_mascota)."' alt='tipo de mascota'></td>";
                                     echo "</tr>";
                                     echo "<tr>";
+                                        echo "<th>Localidad</th>";
+                                        echo "<td>$value2->ciudad</td>";
+                                    echo "</tr>";
+                                    echo "<tr>";
                                         echo "<th>Descripción</th>";
                                         echo "<td>".$value2->descripcion."</td>";
                                     echo "</tr>";
@@ -185,8 +229,26 @@
                                         echo "</form>";
                                         echo "</div>";
                                     echo "<div class='boton_solicitar'>";
-                                        echo "<button>Solicitar</button>";
-                                    echo "</div>";
+                                        echo "<a href='#ex$value2->idAnuncio' rel='modal:open'><button>Solicitar</button></a>";
+                                        echo "<div id='ex$value2->idAnuncio' class='modal'>";
+                                            ?>
+                                                <p>"Establezca la cantidad por la que está dispuesto a ofrecer sus servicios al anunciante"</p>
+                                                <form action="index.php" method="post">
+                                                    <div>
+                                                        <div>
+                                                            <label for="cantidad">Tarifa:</label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="number" name="" id="">
+                                                        </div>
+                                                        <div>
+                                                            <button>Enviar</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            <?php
+                                        echo "</div>";
+                                        echo "</div>";
                                 echo "</div>";
                             echo "</article>";
                         }

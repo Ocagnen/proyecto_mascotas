@@ -258,6 +258,11 @@ div>label {
     margin: 0 auto;
 }
 
+#mensaje_vacio {
+    text-align: center;
+    color: green;
+}
+
 #contenido {
     display: flex;
     flex-direction: column;

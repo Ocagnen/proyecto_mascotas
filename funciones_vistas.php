@@ -112,4 +112,52 @@
        }
        return round($total/$numeroValoraciones);
     }
+
+    function getAnunciosTipo($tipo,$url){
+        $obj = consumir_servicio_REST($url."obtenerAnunciosTipo/$tipo","GET");
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        } else if(isset($obj->anuncios)){
+            return array ("anuncios"=>$obj->anuncios);
+        } else {
+            return array ("mensaje"=>$obj->mensaje);
+        }
+    }
+
+    function calcularTarifaMin($tipo_mascota, $fecha_entrega,$fecha_devolucion, $hora_entrega, $hora_devolucion){
+        
+        $date1 =  date_create($fecha_entrega);
+        $date2 = date_create($fecha_devolucion);
+        $diff=date_diff($date1,$date2);
+        $diasTotales = $diff->format("%a");
+
+        if($diasTotales == 0){
+            $hour1 = explode(":",$hora_entrega)[0];
+            $hour2 = explode(":",$hora_devolucion)[0];
+
+            $diferencia_horas = $hour2-$hour1;
+
+            if($diferencia_horas >= 0 && $diferencia_horas <= 2){
+                return 4;
+            } else if($diferencia_horas > 2 && $diferencia_horas < 4) {
+                return 6;
+            } else {
+                return 8;
+            }
+
+        } else {
+            switch($tipo_mascota){
+                case "Perro":
+                    return $diasTotales*8;
+                    break;
+                case "Gato":
+                    return $diasTotales*5;
+                    break;
+                case "Otros":
+                    return $diasTotales*3;
+                    break;
+            }
+        }
+
+    }
 ?>
