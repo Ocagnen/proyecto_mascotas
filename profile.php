@@ -2,12 +2,6 @@
     session_name("mascotas");
     session_start();
     $url_const = "http://localhost/ProyectoMascotas/REST/";
-    require "funciones_vistas.php";
-
-
-    if(isset($_SESSION["idAutor"])){
-        $usuarioVisitado = obtenerUsuario($_SESSION["idAutor"],$url_const);
-    } 
 
 ?>
 
@@ -63,7 +57,7 @@
     <section id="container_usuario">
         <article id='datos_usuario'>
             <div id='nombre_usu'>
-                <h3><?php echo $usuarioVisitado["usuario"]->nombre; echo "&nbsp;"; echo $usuarioVisitado["usuario"]->apellidos; ?></h3>
+                <h3><?php  ?></h3>
             </div>
             <div id='foto_usu'>
                 <img src="img/usuarios/usuario2.jpg" alt="">
@@ -82,6 +76,17 @@
                         asaaaaaaaa
                         assss asjkab dakjsbd dkjasdk asda nskjdakj"</i>
                 </p>
+            </div>
+            <div id='menu_usu'>
+                <div class='btn_menu'>
+                    <button>Anuncios</button>
+                </div>
+                <div class='btn_menu'>
+                    <button>Solicitudes</button>
+                </div>
+                <div class='btn_menu'>
+                    <button>Transacciones</button>
+                </div>
             </div>
         </article>
         <article id='valoraciones'>

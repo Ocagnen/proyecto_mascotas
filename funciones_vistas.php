@@ -82,4 +82,9 @@
                 return "pets.svg";
         }
     }
+
+    function accederPerfil($idAutor){
+        $_SESSION["idAutor"] = $idAutor;
+        header("Location: usuario.php");
+    }
 ?>

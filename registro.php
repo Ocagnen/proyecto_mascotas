@@ -59,7 +59,7 @@
             <?php
                 if(isset($_SESSION["usuario"])){
                     $imagen = $_SESSION["usuario"]->foto;
-                    echo "<a href='usuario.php'><img src='img/usuarios/$imagen' alt='Usuario' id='logo_usuario'></a>";
+                    echo "<a href='profile.php'><img src='img/usuarios/$imagen' alt='Usuario' id='logo_usuario'></a>";
                 } 
             ?>
         </div>        

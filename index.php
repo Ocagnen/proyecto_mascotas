@@ -4,6 +4,12 @@
     $url_const = "http://localhost/ProyectoMascotas/REST/";
     require "funciones_vistas.php";
 
+    if(isset($_POST["btn_usuario_anuncio"])){
+        $_SESSION["idAutor"] = $_POST["btn_usuario_anuncio"];
+        header("Location: usuario.php");
+        exit;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +54,7 @@
         <?php
                 if(isset($_SESSION["usuario"])){
                     $imagen = $_SESSION["usuario"]->foto;
-                    echo "<a href='usuario.php'><img src='img/usuarios/$imagen' alt='Usuario' id='logo_usuario'></a>";
+                    echo "<a href='profile.php'><img src='img/usuarios/$imagen' alt='Usuario' id='logo_usuario'></a>";
                 } 
             ?>
         </div>        
@@ -163,8 +169,10 @@
                                 echo "</div>";
                                 echo "<div class='botones_anuncio'>";
                                     echo "<div class='boton_usuario'>";
-                                        echo "<button>".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->nombre." ".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->apellidos."</button>";
-                                    echo "</div>";
+                                        echo "<form action='index.php' method='post'>";
+                                            echo "<button class='btn_usuario_anuncio' name='btn_usuario_anuncio' value='$value2->idUsuarioAutor'>".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->nombre." ".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->apellidos."</button>";
+                                        echo "</form>";
+                                        echo "</div>";
                                     echo "<div class='boton_solicitar'>";
                                         echo "<button>Solicitar</button>";
                                     echo "</div>";

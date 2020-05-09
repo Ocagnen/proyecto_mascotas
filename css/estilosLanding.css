@@ -254,6 +254,10 @@ div>label {
     border-radius: 6px;
 }
 
+.btn_usuario_anuncio {
+    margin: 0 auto;
+}
+
 #contenido {
     display: flex;
     flex-direction: column;
