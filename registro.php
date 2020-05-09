@@ -1,3 +1,22 @@
+<?php
+
+    require "funciones_vistas.php";
+    $url_const = "http://localhost/ProyectoMascotas/REST/";
+    session_name("mascotas");
+    session_start();
+
+    $error_login = false;
+    if(isset($_POST["btn_inicio"])){
+        $valores = comprobarLogin($_POST["correo_log"],$_POST["pass_log"],$url_const);
+        if(isset($valores["usuario"])){
+            $_SESSION["usuario"] = $valores["usuario"];
+            header("Location:index.php");
+            exit;
+        } else {
+            $error_login = true;
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -144,27 +163,36 @@
         <article id='ini'>
             <div class='titulo_form'>
                 <h2>INICIAR SESIÓN</h2>
+                <?php
+                    if($error_login){
+                        echo "<h3 style='color:red'>Usuario incorrecto</h3>";
+                    }
+                ?>
             </div>
             <div class='cuerpo_form'>  
-            <form action="" method="post">
+            <form action="registro.php" method="post">
                 <div class='campos_busqueda'>
                     <div>
-                        <label for="">Usuario:</label>
+                        <label for="correo_log">Correo:</label>
                     </div>
                     <div class='input_form'>
-                        <input type="text" name="" id="">
+                        <input required type="text" name="correo_log" id="correo_log" value='<?php
+                            if(isset($_POST["btn_inicio"])){
+                                echo $_POST["correo_log"];
+                            }
+                        ?>'>
                     </div>
                 </div>
                 <div class='campos_busqueda'>
                     <div>
-                        <label for="">Contraseña:</label>
+                        <label for="pass_log">Contraseña:</label>
                     </div>
                     <div class='input_form'>
-                        <input type="password" name="" id="">
+                        <input required type="password" name="pass_log" id="pass_log">
                     </div>
                 </div>
                 <div id='div_btn_inicio'>
-                    <button id='btn_inicio' type="submit">ENTRAR</button>
+                    <button id='btn_inicio' name="btn_inicio" type="submit">ENTRAR</button>
                 </div>
             </form>
             </div>

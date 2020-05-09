@@ -12,6 +12,13 @@ $app = new \Slim\Slim();
 // Indicamos el tipo de contenido y condificaci�n que devolveremos desde el framework Slim
 $app->contentType('application/json; charset=utf-8');
 
+$app->post('/login', function(){
+    echo json_encode(hacerLogin($_POST["correo"],$_POST["clave"]),JSON_FORCE_OBJECT);
+});
+
+
+
+
 $app->run();
 
 ?>

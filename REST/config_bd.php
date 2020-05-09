@@ -2,5 +2,5 @@
 define("servidor","localhost");
 define("usuario","jose");
 define("clave","josefa");
-define("bd","proyecto_mascotas");
+define("bd","bd_mascotas");
 ?>
