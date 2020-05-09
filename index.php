@@ -131,13 +131,19 @@
         </div>
         <div id='tipos_mascota'>
             <div>
-                <button><img src="img/logo.svg" alt=""></button>
+                <form action="index.php" method="post">
+                    <button type="submit" name="filtrar_perros"><img src="img/logo.svg" alt=""></button>
+                </form>
             </div>
             <div>
-                <button><img src="img/cats.svg" alt=""></button>
+                <form action="index.php" method="post">
+                    <button type="submit" name="filtrar_gatos"><img src="img/cats.svg" alt=""></button>
+                </form>
             </div>
             <div>
-                <button><img src="img/pets.svg" alt=""></button>
+                <form action="index.php" method="post">
+                    <button type="submit" name="filtrar_otros"><img src="img/pets.svg" alt=""></button>
+                </form>
             </div>
         </div>
         <div id='contenido_anuncios'>

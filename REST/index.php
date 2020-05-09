@@ -28,7 +28,9 @@ $app->get('/obtenerValoraciones/:idUsuario', function($idUsuario){
     echo json_encode(obtenerValoraciones($idUsuario),JSON_FORCE_OBJECT);
 });
 
-
+$app->get('/obtenerAnunciosTipo/:tipo', function($tipo){
+    echo json_encode(obtenerAnunciosTipo($tipo),JSON_FORCE_OBJECT);
+});
 
 
 
