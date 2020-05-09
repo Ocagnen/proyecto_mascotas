@@ -44,7 +44,7 @@
                     <a href="contacto.php">Contacto</a>
                 </div>
                 <div>
-                    <a href="registro.php">Iniciar Sesión</a>
+                    <a href="registro.php">Iniciar sesión</a>
                 </div>
                 <div>
                     <a href="registro.php">Registrarse</a>
@@ -66,7 +66,7 @@
                 <h3><?php echo $usuarioVisitado["usuario"]->nombre; echo "&nbsp;"; echo $usuarioVisitado["usuario"]->apellidos; ?></h3>
             </div>
             <div id='foto_usu'>
-                <img src="img/usuarios/usuario2.jpg" alt="">
+                <img src="img/usuarios/<?php echo $usuarioVisitado["usuario"]->foto;?>" alt="">
                 <div id="promedio" class="estrellas_valor">
                 <img src="img/star2.svg" alt="">
                 <img src="img/star2.svg" alt="">
@@ -77,10 +77,7 @@
             </div>
             <div id='desc_usu'>
                 <p>
-                    <i>"sajdpoa sme aishaois aks aka kas array_key_lastaka
-                        asas asas aaaaaaaaaas sa ssaksñasña
-                        asaaaaaaaa
-                        assss asjkab dakjsbd dkjasdk asda nskjdakj"</i>
+                    <i>"<?php echo $usuarioVisitado["usuario"]->descripcion; ?>"</i>
                 </p>
             </div>
         </article>

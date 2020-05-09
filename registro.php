@@ -48,7 +48,7 @@
                     <a href="contacto.php">Contacto</a>
                 </div>
                 <div>
-                    <a href="registro.php">Iniciar Sesión</a>
+                    <a href="registro.php">Iniciar sesión</a>
                 </div>
                 <div>
                     <a href="registro.php">Registrarse</a>

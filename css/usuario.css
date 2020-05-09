@@ -191,9 +191,33 @@ header div {
     width: 7%;
 }
 
+.btn_acceder_coment {
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    color: green;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn_acceder_coment:hover {
+    text-decoration: underline;
+}
+
 #valoraciones_usu {
     height: 60vh;
     overflow: scroll;
+}
+
+#btn_cerrar_sesion {
+    background-color: transparent;
+    font-size: 0.7em;
+    cursor: pointer;
+    border: none;
+}
+
+#btn_cerrar_sesion:hover {
+    text-decoration: underline;
 }
 
 footer {

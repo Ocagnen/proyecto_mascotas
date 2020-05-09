@@ -1,7 +1,20 @@
 <?php
     session_name("mascotas");
     session_start();
+    require "funciones_vistas.php";
     $url_const = "http://localhost/ProyectoMascotas/REST/";
+
+    if(isset($_POST["btn_cerrar_sesion"])){
+        session_destroy();
+        header("Location: registro.php");
+        exit;
+    }
+
+    if(isset($_POST["btn_acceder_coment"])){
+        $_SESSION["idAutor"] = $_POST["btn_acceder_coment"];
+        header("Location: usuario.php");
+        exit;
+    }
 
 ?>
 
@@ -38,7 +51,7 @@
                     <a href="contacto.php">Contacto</a>
                 </div>
                 <div>
-                    <a href="registro.php">Iniciar Sesión</a>
+                    <a href="registro.php">Iniciar sesión</a>
                 </div>
                 <div>
                     <a href="registro.php">Registrarse</a>
@@ -57,24 +70,30 @@
     <section id="container_usuario">
         <article id='datos_usuario'>
             <div id='nombre_usu'>
-                <h3><?php  ?></h3>
+                <h3><?php echo $_SESSION["usuario"]->nombre; echo "&nbsp;"; echo $_SESSION["usuario"]->apellidos;  ?>
+                    <form action="profile.php" method="post">
+                        <button type="submit" id='btn_cerrar_sesion' name='btn_cerrar_sesion'>(Cerrar sesión)</button>
+                    </form>
+                </h3>
             </div>
             <div id='foto_usu'>
-                <img src="img/usuarios/usuario2.jpg" alt="">
+                <img src="img/usuarios/<?php echo $_SESSION["usuario"]->foto;?>" alt="">
                 <div id="promedio" class="estrellas_valor">
-                <img src="img/star2.svg" alt="">
-                <img src="img/star2.svg" alt="">
-                <img src="img/star2.svg" alt="">
-                <img src="img/star2.svg" alt="">
-                <img src="img/stargrey.svg" alt="">
+                <?php
+                    $valoracion = obtenerValoracionMedia($_SESSION["usuario"]->idUsuario,$url_const);
+                    for ($i=0; $i < $valoracion ; $i++) { 
+                        echo "<img src='img/star2.svg' alt='valoracion positiva'>"; 
+                    }
+
+                    for ($i=0; $i < (5 -$valoracion) ; $i++) { 
+                        echo "<img src='img/stargrey.svg' alt='valoracion negativa'>";
+                    }
+                ?>
             </div>
             </div>
             <div id='desc_usu'>
                 <p>
-                    <i>"sajdpoa sme aishaois aks aka kas array_key_lastaka
-                        asas asas aaaaaaaaaas sa ssaksñasña
-                        asaaaaaaaa
-                        assss asjkab dakjsbd dkjasdk asda nskjdakj"</i>
+                    <i>"<?php echo $_SESSION["usuario"]->descripcion;?>"</i>
                 </p>
             </div>
             <div id='menu_usu'>
@@ -91,110 +110,40 @@
         </article>
         <article id='valoraciones'>
             <div id='valoraciones_usu'>
-                <div class="valoracion">
-                    <div class="usuario_valor">
-                        <h3>Usuario</h3>
-                    </div>
-                    <div class="comentario_valor">
-                        <p>
-                            Cuidoo muy bien de mi perro. RECOMENDADO
-                        </p>
-                    </div>
-                    <div class="estrellas_valor">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/stargrey.svg" alt="">
-                    </div>
-                </div>
-                <div class="valoracion">
-                    <div class="usuario_valor">
-                        <h3>Usuario</h3>
-                    </div>
-                    <div class="comentario_valor">
-                        <p>
-                            Cuidoo muy bien de mi perro. RECOMENDADO
-                        </p>
-                    </div>
-                    <div class="estrellas_valor">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/stargrey.svg" alt="">
-                        <img src="img/stargrey.svg" alt="">
+                <?php
+                    $valoraciones_array = getValoraciones($_SESSION["usuario"]->idUsuario,$url_const);
+                    if(isset($valoraciones_array["mensaje"])){
+                        echo "<h3>No existen valoraciones para este usuario</h3>";
+                    } else if(isset($valoraciones_array["valoraciones"])){
+                        foreach ($valoraciones_array as $key => $value) {
+                            foreach ($value as $key2 => $value2) {
+                                $usuarioEscritor = obtenerUsuario($value2->idUsuarioEscritor,$url_const);
+                                echo "<div class='valoracion'>";
+                                    echo "<div class='usuario_valor'>";
+                                        echo "<h3><form method='post' action='profile.php'>";
+                                        echo "<button type='submit' value='".$usuarioEscritor['usuario']->idUsuario."' name='btn_acceder_coment' class='btn_acceder_coment'>".$usuarioEscritor['usuario']->nombre."&nbsp;".$usuarioEscritor['usuario']->apellidos."</button></h3>";
+                                    echo "</div>";
+                                    echo "<div class='comentario_valor'>";
+                                        echo "<p>";
+                                            echo $value2->comentario;
+                                        echo "</p>";
+                                    echo "</div>";
+                                    echo "<div class='estrellas_valor'>";
+                                        for ($i=0; $i < $value2->valor ; $i++) { 
+                                            echo "<img src='img/star2.svg' alt='valoracion positiva'>";
+                                        }
+                                        for ($i=0; $i < (5-$value2->valor) ; $i++) { 
+                                            echo "<img src='img/stargrey.svg' alt='valoracion negativa'>";
+                                        }
+ 
+                                    echo "</div>";
+                                echo "</div>";
 
-                    </div>
-                </div>
-                <div class="valoracion">
-                    <div class="usuario_valor">
-                        <h3>Usuario</h3>
-                    </div>
-                    <div class="comentario_valor">
-                        <p>
-                            Cuidoo muy bien de mi perro. RECOMENDADO
-                        </p>
-                    </div>
-                    <div class="estrellas_valor">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/stargrey.svg" alt="">
-                        <img src="img/stargrey.svg" alt="">
-                        <img src="img/stargrey.svg" alt="">
+                            }
+                        }
 
-                    </div>
-                </div>
-                <div class="valoracion">
-                    <div class="usuario_valor">
-                        <h3>Usuario</h3>
-                    </div>
-                    <div class="comentario_valor">
-                        <p>
-                            Cuidoo muy bien de mi perro. RECOMENDADO
-                        </p>
-                    </div>
-                    <div class="estrellas_valor">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/stargrey.svg" alt="">
-                    </div>
-                </div>
-                <div class="valoracion">
-                    <div class="usuario_valor">
-                        <h3>Usuario</h3>
-                    </div>
-                    <div class="comentario_valor">
-                        <p>
-                            Cuidoo muy bien de mi perro. RECOMENDADO
-                        </p>
-                    </div>
-                    <div class="estrellas_valor">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/stargrey.svg" alt="">
-                    </div>
-                </div>
-                <div class="valoracion">
-                    <div class="usuario_valor">
-                        <h3>Usuario</h3>
-                    </div>
-                    <div class="comentario_valor">
-                        <p>
-                            Cuidoo muy bien de mi perro. RECOMENDADO
-                        </p>
-                    </div>
-                    <div class="estrellas_valor">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/star2.svg" alt="">
-                        <img src="img/stargrey.svg" alt="">
-                    </div>
-                </div>
+                    }
+                ?>
             </div>
         </article>
     </section>

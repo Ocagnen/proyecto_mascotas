@@ -24,6 +24,10 @@ $app->get('/obtenerUsuario/:idUsuario', function($idUsuario){
     echo json_encode(obtenerUsuario($idUsuario),JSON_FORCE_OBJECT);
 });
 
+$app->get('/obtenerValoraciones/:idUsuario', function($idUsuario){
+    echo json_encode(obtenerValoraciones($idUsuario),JSON_FORCE_OBJECT);
+});
+
 
 
 

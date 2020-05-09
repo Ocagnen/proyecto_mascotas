@@ -87,4 +87,29 @@
         $_SESSION["idAutor"] = $idAutor;
         header("Location: usuario.php");
     }
+
+    function getValoraciones($idLector, $url){
+        $obj = consumir_servicio_REST($url."obtenerValoraciones/$idLector","GET");
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        } else if(isset($obj->valoraciones)){
+            return array ("valoraciones"=>$obj->valoraciones);
+        } else {
+            return array ("mensaje"=>$obj->mensaje);
+        }
+    }
+
+    function obtenerValoracionMedia($idUsuario, $url){
+       $valoraciones = getValoraciones($idUsuario, $url);
+        $total = 0;
+        $numeroValoraciones = 0;
+       foreach ($valoraciones as $key => $value) {
+           foreach ($value as $key2 => $value2) {
+               $total += $value2->valor;
+               $numeroValoraciones++;
+
+           }
+       }
+       return round($total/$numeroValoraciones);
+    }
 ?>

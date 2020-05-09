@@ -5,6 +5,11 @@
     require "funciones_vistas.php";
 
     if(isset($_POST["btn_usuario_anuncio"])){
+
+        if($_POST["btn_usuario_anuncio"]==$_SESSION["usuario"]->idUsuario){
+            header("Location: profile.php");
+            exit;
+        }
         $_SESSION["idAutor"] = $_POST["btn_usuario_anuncio"];
         header("Location: usuario.php");
         exit;
@@ -43,7 +48,7 @@
                     <a href="contacto.php">Contacto</a>
                 </div>
                 <div>
-                    <a href="registro.php">Iniciar Sesión</a>
+                    <a href="registro.php">Iniciar sesión</a>
                 </div>
                 <div>
                     <a href="registro.php">Registrarse</a>
