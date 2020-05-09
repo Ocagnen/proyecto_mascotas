@@ -20,6 +20,11 @@ $app->get('/obtenerAnuncios', function(){
     echo json_encode(obtenerAnuncios(),JSON_FORCE_OBJECT);
 });
 
+$app->get('/obtenerUsuario/:idUsuario', function($idUsuario){
+    echo json_encode(obtenerUsuario($idUsuario),JSON_FORCE_OBJECT);
+});
+
+
 
 
 

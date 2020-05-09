@@ -137,7 +137,6 @@
                 } else if(isset($anuncios["anuncios"])){
                     foreach ($anuncios as $key => $value) {
                         foreach ($value as $key2 => $value2) {
-                            echo $value2->idAnuncio;
                             echo "<article>";
                                 echo "<div class='img_anuncio'>";
                                     echo "<img src='img/$value2->foto' alt='$value2->foto'>";
@@ -164,7 +163,7 @@
                                 echo "</div>";
                                 echo "<div class='botones_anuncio'>";
                                     echo "<div class='boton_usuario'>";
-                                        echo "<button>Javier Ocaña Infante</button>";
+                                        echo "<button>".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->nombre." ".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->apellidos."</button>";
                                     echo "</div>";
                                     echo "<div class='boton_solicitar'>";
                                         echo "<button>Solicitar</button>";

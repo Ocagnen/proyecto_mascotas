@@ -48,6 +48,19 @@
 
     }
 
+    function obtenerUsuario($clave,$url){
+        $obj = consumir_servicio_REST($url."obtenerUsuario/".$clave,"GET");
+
+            if(isset($obj->mensaje_error)){
+                die($obj->mensaje_error);
+            } else if(isset($obj->mensaje)){
+                return array ("mensaje"=>$obj->mensaje);
+            } else {
+                return array ("usuario"=>$obj->usuario);
+            }           
+
+    }
+
     function getAnuncios($url){
         $obj = consumir_servicio_REST($url."obtenerAnuncios","GET");
         if(isset($obj->mensaje_error)){
