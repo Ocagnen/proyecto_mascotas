@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="css/usuario.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <script src="jq/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <script src="js/script.js"></script>
     <title>Proyecto mascotas</title>
 </head>
@@ -104,13 +106,25 @@
             </div>
             <div id='menu_usu'>
                 <div class='btn_menu'>
-                    <button>Anuncios</button>
+                <a href='#modalAnuncios' rel='modal:open'><button>Anuncios</button></a>
+                    <div id='modalAnuncios' class='modal'>
+                        <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>
+                        <button type="submit" class="btn_solicitud_iniciar" >Iniciar sesión / Registrarme</button>
+                    </div>
                 </div>
                 <div class='btn_menu'>
-                    <button>Solicitudes</button>
+                <a href='#modalSolicitud' rel='modal:open'><button>Solicitudes</button></a>
+                    <div id='modalSolicitud' class='modal'>
+                        <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>
+                        <button type="submit" class="btn_solicitud_iniciar" >Iniciar sesión / Registrarme</button>
+                    </div>
                 </div>
                 <div class='btn_menu'>
-                    <button>Transacciones</button>
+                <a href='#modalTransacc' rel='modal:open'><button>Transacciones</button></a>
+                    <div id='modalTransacc' class='modal'>
+                        <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>
+                        <button type="submit" class="btn_solicitud_iniciar" >Iniciar sesión / Registrarme</button>
+                    </div>
                 </div>
             </div>
         </article>
