@@ -35,6 +35,10 @@ header div {
     margin: 1%;
 }
 
+#titular_web:hover {
+    cursor: pointer;
+}
+
 #nombre_empresa {
     flex: 30%;
 }

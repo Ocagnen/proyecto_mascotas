@@ -25,13 +25,41 @@ $(document).ready(function() {
         $(this).css('color', 'white');
     });
 
-    $('#tipos_mascota button').click(function() {
+    $('#div_btn_enviar_cont button, #btn_reg, #btn_inicio').mouseenter(function() {
+        $(this).css('background-color', '#b6ffcb');
+        $(this).css('color', 'black');
+    });
+
+    $('#div_btn_enviar_cont button, #btn_reg, #btn_inicio').mouseleave(function() {
+        $(this).css('background-color', 'green');
+        $(this).css('color', 'white');
+    });
+
+    $('#tipos_mascota button').mouseenter(function() {
         if ($(this).css('background-color') == 'rgb(0, 128, 0)') {
             $(this).css('background-color', 'transparent');
         } else {
-            $(this).css('background-color', 'green');
+            $(this).css('background-color', '#78ed99');
         }
     });
+
+    $('#tipos_mascota button').mouseleave(function() {
+        if ($(this).css('background-color') == 'rgb(0, 128, 0)') {
+            $(this).css('background-color', '#78ed99');
+        } else {
+            $(this).css('background-color', 'transparent');
+        }
+    });
+
+    $('#direcciones_footer a').mouseenter(function() {
+        $(this).css('text-decoration', 'underline');
+    });
+
+    $('#direcciones_footer a').mouseleave(function() {
+        $(this).css('text-decoration', 'none');
+    });
+
+
 
     if ($(window).width() > 1030) {
         $('#cabecera_lista div').mouseenter(function() {

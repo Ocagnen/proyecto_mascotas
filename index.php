@@ -89,7 +89,7 @@
     ?>
     <header>
         <div id='nombre_empresa'>
-            <h1 id='titular_web'>Au Pet</h1>    
+            <h1 id='titular_web' onclick="window.location.href = 'index.php'">Au Pet</h1>    
         </div>
         <div id='wrapper'>
             <img id='bars' src="img/bars_green.svg" alt="">
