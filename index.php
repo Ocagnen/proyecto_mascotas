@@ -272,19 +272,19 @@
                                             ?>
                                                 <p>"Establezca la cantidad por la que está dispuesto a ofrecer sus servicios al anunciante"</p>
                                                 <form action="index.php" method="post">
-                                                    <div>
+                                                    <div class="tarifa_modal">
                                                         <div>
                                                             <label for="cantidad">Tarifa:</label>
                                                         </div>
                                                         <div>
                                                             <input required type="number" name="tarifa" id="tarifa" placeholder="Tarifa mínima : <?php
                                                                 echo calcularTarifaMin($value2->tipo_mascota,$value2->fecha_entrega,$value2->fecha_devolucion,$value2->hora_entrega,$value2->hora_devolucion);
-                                                            ?>" min="<?php
+                                                            ?>€" min="<?php
                                                                 echo calcularTarifaMin($value2->tipo_mascota,$value2->fecha_entrega,$value2->fecha_devolucion,$value2->hora_entrega,$value2->hora_devolucion);
                                                             ?>">
                                                         </div>
                                                         <div>
-                                                            <button>Enviar</button>
+                                                            <button type="submit" class="btn_solicitud_enviar" name="btn_solicitud_enviar" value="<?php echo $value2->idAnuncio; ?>">Enviar</button>
                                                         </div>
                                                     </div>
                                                 </form>

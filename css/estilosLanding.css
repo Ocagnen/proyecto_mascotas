@@ -240,7 +240,14 @@ div>label {
     text-align: center;
 }
 
-.boton_solicitar button {
+.btn_solicitud_enviar {
+    width: 40% !important;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.boton_solicitar button,
+.btn_solicitud_enviar {
     width: 80%;
     padding: 2%;
     background: green;
@@ -260,6 +267,28 @@ div>label {
 
 .boton_usuario a {
     width: 100%;
+}
+
+.modal p {
+    margin: 0;
+}
+
+.modal input {
+    width: 80%;
+    border: 2px solid #78ed99;
+    color: rgb(2, 85, 2);
+    border-radius: 6px;
+    height: 5vh;
+    font-size: 2vh;
+    padding: 3%;
+}
+
+.tarifa_modal {
+    width: 100%;
+}
+
+.tarifa_modal div {
+    margin: 4%;
 }
 
 #mensaje_vacio {
