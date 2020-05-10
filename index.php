@@ -254,7 +254,7 @@
                                         echo "<div id='ex$value2->idAnuncio' class='modal'>";
                                             ?>
                                                 <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>
-                                                <button type="submit" onclick = "location.href = 'registro.php';" >Iniciar sesión / Registrarme</button>
+                                                <button type="submit" class="btn_solicitud_iniciar" onclick = "location.href = 'registro.php';" >Iniciar sesión / Registrarme</button>
                                             <?php
                                         echo "</div>";
                                         echo "</div>";
