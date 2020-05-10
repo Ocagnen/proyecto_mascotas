@@ -4,6 +4,11 @@ session_start();
 $url_const = "http://localhost/ProyectoMascotas/REST/";
 require "funciones_vistas.php";
 
+if(!isset($_SESSION["usuario"])){
+    header("Location:index.php");
+    exit;
+}
+
 
 if (isset($_SESSION["idAutor"])) {
     $usuarioVisitado = obtenerUsuario($_SESSION["idAutor"], $url_const);

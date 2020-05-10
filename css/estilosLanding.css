@@ -258,6 +258,10 @@ div>label {
     margin: 0 auto;
 }
 
+.boton_usuario a {
+    width: 100%;
+}
+
 #mensaje_vacio {
     text-align: center;
     color: green;

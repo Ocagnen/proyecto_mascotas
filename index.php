@@ -4,8 +4,7 @@
     $url_const = "http://localhost/ProyectoMascotas/REST/";
     require "funciones_vistas.php";
 
-    echo calcularTarifaMin("Perro", "2020-05-05","2020-05-05", "12:00:00", "15:00:00");
-
+    /*
     if(isset($_POST["btn_usuario_anuncio"])){
 
         if($_POST["btn_usuario_anuncio"]==$_SESSION["usuario"]->idUsuario){
@@ -16,6 +15,7 @@
         header("Location: usuario.php");
         exit;
     }
+    */
     $anunciosMostrar = "todos";
     if(isset($_POST["filtrar_perros"])){
         
@@ -35,6 +35,8 @@
             }    
         }       
         
+    } else if (isset($_SESSION["marcado"])){
+        $anunciosMostrar = $_SESSION["marcado"];
     }
 
 ?>
@@ -53,6 +55,24 @@
     <title>Proyecto mascotas</title>
 </head>
 <body>
+    <?php
+        if(isset($_POST["btn_usuario_anuncio"])){
+
+        if($_POST["btn_usuario_anuncio"]==$_SESSION["usuario"]->idUsuario){
+
+            echo "<script>";
+                echo "window.open('profile.php')";
+            echo "</script>";
+
+        } else {
+            $_SESSION["idAutor"] = $_POST["btn_usuario_anuncio"];
+            echo "<script>";
+                    echo "window.open('usuario.php')";
+            echo "</script>";
+        }
+
+        }
+    ?>
     <header>
         <div id='nombre_empresa'>
             <h1 id='titular_web'>Au Pet</h1>    
@@ -155,7 +175,7 @@
         </div>
         <div id='tipos_mascota'>
             <div>
-                <form action="index.php" method="post">
+                <form action="index.php#anuncios" method="post">
                     <button type="submit" value="Perro" name="filtrar_perros" <?php
                         if($anunciosMostrar=="Perro"){
                             echo "style='background-color: green;'";
@@ -164,7 +184,7 @@
                 </form>
             </div>
             <div>
-                <form action="index.php" method="post">
+                <form action="index.php#anuncios" method="post">
                     <button type="submit" value="Gato" name="filtrar_perros"  <?php
                         if($anunciosMostrar=="Gato"){
                             echo "style='background-color: green;'";
@@ -173,7 +193,7 @@
                 </form>
             </div>
             <div>
-                <form action="index.php" method="post">
+                <form action="index.php#anuncios" method="post">
                     <button type="submit" value="Otros" name="filtrar_perros"  <?php
                         if($anunciosMostrar=="Otros"){
                             echo "style='background-color: green;'";
@@ -194,7 +214,7 @@
                 } else if(isset($anuncios["anuncios"])){
                     foreach ($anuncios as $key => $value) {
                         foreach ($value as $key2 => $value2) {
-                            echo "<article>";
+                            echo "<article id='anuncio$value2->idAnuncio'>";
                                 echo "<div class='img_anuncio'>";
                                     echo "<img src='img/$value2->foto' alt='$value2->foto'>";
                                 echo "</div>";
@@ -222,9 +242,27 @@
                                     echo "</tr>";
                                 echo "</table>";
                                 echo "</div>";
-                                echo "<div class='botones_anuncio'>";
-                                    echo "<div class='boton_usuario'>";
+                                if(!isset($_SESSION["usuario"])){
+                                    echo "<div class='botones_anuncio'>";
+                                    echo "<div class='boton_usuario'>";                                        
                                         echo "<form action='index.php' method='post'>";
+                                            echo "<a href='#ex$value2->idAnuncio' rel='modal:open'><button class='btn_usuario_anuncio' name='btn_usuario_sesion'>".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->nombre." ".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->apellidos."</button></a>";
+                                        echo "</form>";
+                                        echo "</div>";
+                                    echo "<div class='boton_solicitar'>";
+                                        echo "<a href='#ex$value2->idAnuncio' rel='modal:open'><button>Solicitar</button></a>";
+                                        echo "<div id='ex$value2->idAnuncio' class='modal'>";
+                                            ?>
+                                                <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>
+                                                <button type="submit" onclick = "location.href = 'registro.php';" >Iniciar sesión / Registrarme</button>
+                                            <?php
+                                        echo "</div>";
+                                        echo "</div>";
+                                echo "</div>";
+                                } else {
+                                    echo "<div class='botones_anuncio'>";
+                                    echo "<div class='boton_usuario'>";                                        
+                                        echo "<form action='index.php#anuncio$value2->idAnuncio' method='post'>";
                                             echo "<button class='btn_usuario_anuncio' name='btn_usuario_anuncio' value='$value2->idUsuarioAutor'>".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->nombre." ".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->apellidos."</button>";
                                         echo "</form>";
                                         echo "</div>";
@@ -239,7 +277,11 @@
                                                             <label for="cantidad">Tarifa:</label>
                                                         </div>
                                                         <div>
-                                                            <input type="number" name="" id="">
+                                                            <input required type="number" name="tarifa" id="tarifa" placeholder="Tarifa mínima : <?php
+                                                                echo calcularTarifaMin($value2->tipo_mascota,$value2->fecha_entrega,$value2->fecha_devolucion,$value2->hora_entrega,$value2->hora_devolucion);
+                                                            ?>" min="<?php
+                                                                echo calcularTarifaMin($value2->tipo_mascota,$value2->fecha_entrega,$value2->fecha_devolucion,$value2->hora_entrega,$value2->hora_devolucion);
+                                                            ?>">
                                                         </div>
                                                         <div>
                                                             <button>Enviar</button>
@@ -250,6 +292,7 @@
                                         echo "</div>";
                                         echo "</div>";
                                 echo "</div>";
+                                }                                
                             echo "</article>";
                         }
                     }

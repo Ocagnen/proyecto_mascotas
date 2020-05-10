@@ -4,6 +4,12 @@
     require "funciones_vistas.php";
     $url_const = "http://localhost/ProyectoMascotas/REST/";
 
+    if(!isset($_SESSION["usuario"])){
+        header("Location:index.php");
+        exit;
+    }
+    
+
     if(isset($_POST["btn_cerrar_sesion"])){
         session_destroy();
         header("Location: registro.php");
