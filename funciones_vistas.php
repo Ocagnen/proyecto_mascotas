@@ -124,6 +124,16 @@
         }
     }
 
+    function crearSolicitud($idUsuario,$idAnuncio,$tarifa,$url){
+        $datosInsertar=Array("idUsuario"=>$idUsuario,"idAnuncio"=>$idAnuncio,"tarifa"=>$tarifa);
+        $obj = consumir_servicio_REST($url."crearSolicitud","POST",$datosInsertar);
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        } else if(isset($obj->mensaje)){
+            return array ("mensaje"=>$obj->mensaje);
+        } 
+    }
+
     function calcularTarifaMin($tipo_mascota, $fecha_entrega,$fecha_devolucion, $hora_entrega, $hora_devolucion){
         
         $date1 =  date_create($fecha_entrega);

@@ -32,7 +32,9 @@ $app->get('/obtenerAnunciosTipo/:tipo', function($tipo){
     echo json_encode(obtenerAnunciosTipo($tipo),JSON_FORCE_OBJECT);
 });
 
-
+$app->post('/crearSolicitud', function(){
+    echo json_encode(crearSolicitud($_POST["idUsuario"],$_POST["idAnuncio"],$_POST["tarifa"]),JSON_FORCE_OBJECT);
+});
 
 $app->run();
 

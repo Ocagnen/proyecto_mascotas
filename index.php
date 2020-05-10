@@ -16,6 +16,20 @@
         exit;
     }
     */
+    /*
+    if(isset($_POST["btn_solicitud_enviar"])){
+        $insertarSolicitud = crearSolicitud($_SESSION["usuario"]->idUsuario,$_POST["btn_solicitud_enviar"],$_POST["tarifa"],$url_const);
+        if(isset($insertarSolicitud["mensaje"])){
+            echo "<script>";
+                echo "alert('Solicitud enviada con éxito')";
+            echo "</script>";
+        } else {
+            echo "<script>";
+                echo "alert('Fallo al enviar la solicitud.')";
+            echo "</script>";
+        }
+    }
+    */
     $anunciosMostrar = "todos";
     if(isset($_POST["filtrar_perros"])){
         
@@ -269,6 +283,7 @@
                                     echo "<div class='boton_solicitar'>";
                                         echo "<a href='#ex$value2->idAnuncio' rel='modal:open'><button>Solicitar</button></a>";
                                         echo "<div id='ex$value2->idAnuncio' class='modal'>";
+                                            echo "<div id='modal$value2->idAnuncio'>";
                                             ?>
                                                 <p>"Establezca la cantidad por la que está dispuesto a ofrecer sus servicios al anunciante"</p>
                                                 <form action="index.php" method="post">
@@ -277,18 +292,20 @@
                                                             <label for="cantidad">Tarifa:</label>
                                                         </div>
                                                         <div>
-                                                            <input required type="number" name="tarifa" id="tarifa" placeholder="Tarifa mínima : <?php
+                                                            <input required type="number" name="tarifa" id="tarifa<?php echo $value2->idAnuncio; ?>" placeholder="Tarifa mínima : <?php
                                                                 echo calcularTarifaMin($value2->tipo_mascota,$value2->fecha_entrega,$value2->fecha_devolucion,$value2->hora_entrega,$value2->hora_devolucion);
                                                             ?>€" min="<?php
                                                                 echo calcularTarifaMin($value2->tipo_mascota,$value2->fecha_entrega,$value2->fecha_devolucion,$value2->hora_entrega,$value2->hora_devolucion);
                                                             ?>">
+                                                            <br><span style='color:red' id="mensaje<?php echo $value2->idAnuncio;?>"></span>
                                                         </div>
                                                         <div>
-                                                            <button type="submit" class="btn_solicitud_enviar" name="btn_solicitud_enviar" value="<?php echo $value2->idAnuncio; ?>">Enviar</button>
+                                                            <button type="button" id='btn_solicitud_enviar' class="btn_solicitud_enviar" name="btn_solicitud_enviar" onclick="crearSolicitud(<?php echo $value2->idAnuncio?>,<?php echo $_SESSION['usuario']->idUsuario?>);" value="<?php echo $value2->idAnuncio; ?>">Enviar</button>
                                                         </div>
                                                     </div>
                                                 </form>
                                             <?php
+                                            echo "</div>";
                                         echo "</div>";
                                         echo "</div>";
                                 echo "</div>";

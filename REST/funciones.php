@@ -133,3 +133,50 @@ function obtenerAnunciosTipo($tipo){
         }
     }
 }
+
+function comprobarExistencia($idUsuario,$idAnuncio){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        $consulta = "select * from solicitudes where idUsuario = $idUsuario and idAnuncio = $idAnuncio";
+        if($resultado=mysqli_query($con,$consulta)){
+            if(mysqli_num_rows($resultado)>0){
+                mysqli_free_result($resultado);
+                mysqli_close($con);
+                return true;
+            } else {
+                mysqli_free_result($resultado);
+                mysqli_close($con);
+                return false;
+            }
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+    }
+}
+
+function crearSolicitud($idUsuario,$idAnuncio,$tarifa){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        if(comprobarExistencia($idUsuario,$idAnuncio)){
+            $consulta = "update solicitudes set tarifa = $tarifa where idUsuario = $idUsuario and idAnuncio = $idAnuncio";
+        } else {
+            $consulta = "insert into solicitudes (idUsuario,idAnuncio,tarifa) values ($idUsuario,$idAnuncio,$tarifa)";
+        }
+        if($resultado=mysqli_query($con,$consulta)){
+            mysqli_close($con);
+            return array ("mensaje"=>"Solicitud enviada con éxito");            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+    }
+}

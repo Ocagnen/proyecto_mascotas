@@ -1,3 +1,5 @@
+var url_const = "http://localhost/ProyectoMascotas/REST/";
+
 $(document).ready(function() {
     var abierto = 0;
 
@@ -76,5 +78,42 @@ $(document).ready(function() {
         $(this).css('color', 'white');
     });
 
-
 });
+
+function crearSolicitud(idAnuncio, idUsuario) {
+    var idTarifa = '#tarifa' + idAnuncio;
+    var tarifa = $(idTarifa).val();
+    var valorMin = $(idTarifa).attr('min');
+    if (parseFloat(tarifa) < parseFloat(valorMin)) {
+        console.log('paso');
+        var idSpan = "#mensaje" + idAnuncio;
+        $(idSpan).html("La cantidad debe ser superior o igual a " + $(idTarifa).attr('min'));
+        return false;
+    } else if (tarifa == "") {
+        var idSpan = '#mensaje' + idAnuncio;
+        $(idSpan).html("*Campo vacio*");
+        return false;
+    }
+    var idModal = '#modal' + idAnuncio;
+    var parametros = { "idAnuncio": idAnuncio, "idUsuario": idUsuario, "tarifa": tarifa };
+
+    $.post(url_const + 'crearSolicitud', parametros, null, "json")
+        .done(function(data) {
+            if (data.mensaje) {
+                $(idModal).html("<p>Solicitud enviada con éxito</p>");
+            } else if (data.mensaje_error) {
+                $(idModal).html("<p>Error al enviar la solicitud</p>");
+            } else {
+                console.log("Error");
+            }
+
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            if (console && console.log) {
+                console.log("La solicitud a fallado: " + textStatus);
+            }
+        });
+
+    return false;
+
+}
