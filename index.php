@@ -287,8 +287,7 @@
                                             if(isset($_SESSION["usuario"]) && $value2->idUsuarioAutor == $_SESSION["usuario"]->idUsuario){
                                                 echo "<p>No puede realizar una solicitud para su propio anuncio</p>";
                                             } else {
-                                            ?>
-                                            
+                                            ?>                                            
                                                 <p>"Establezca la cantidad por la que está dispuesto a ofrecer sus servicios al anunciante"</p>
                                                 <form action="index.php" method="post">
                                                     <div class="tarifa_modal">

@@ -143,7 +143,7 @@
                                                 echo "Aceptada";
                                             }   
                                             if($value3->aceptada == 0){
-                                                echo "<button>Aceptar</button>";
+                                                echo "<button type='button' class='boton_sol_aceptar' >Aceptar</button>";
                                             }
                                             echo "</div>";
                                             echo "</div>";
@@ -189,11 +189,9 @@
                                         }
                                         for ($i=0; $i < (5-$value2->valor) ; $i++) { 
                                             echo "<img src='img/stargrey.svg' alt='valoracion negativa'>";
-                                        }
- 
+                                        } 
                                     echo "</div>";
                                 echo "</div>";
-
                             }
                         }
 
