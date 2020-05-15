@@ -40,6 +40,14 @@ $app->get('/obtenerSolicitudes/:idUsuario', function($idUsuario){
     echo json_encode(obtenerSolicitudes($idUsuario),JSON_FORCE_OBJECT);
 });
 
+$app->get('/aceptarSolicitud/:idUsuario/:idAnuncio', function ($idUsuario,$idAnuncio)  {
+	echo json_encode(aceptarSolicitud($idUsuario,$idAnuncio),JSON_FORCE_OBJECT);
+});
+
+$app->post('/crearTransaccion', function(){
+    echo json_encode(crearTransaccion($_POST["idUsuario"],$_POST["idAnuncio"],$_POST["tarifa"]),JSON_FORCE_OBJECT);
+});
+
 $app->run();
 
 ?>

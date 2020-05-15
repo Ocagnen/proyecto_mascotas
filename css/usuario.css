@@ -208,6 +208,19 @@ header div {
     text-decoration: underline;
 }
 
+.btn_user_sol {
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    color: green;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn_user_sol:hover {
+    text-decoration: underline;
+}
+
 #valoraciones_usu {
     height: 60vh;
     overflow: scroll;
@@ -222,6 +235,65 @@ header div {
 
 #btn_cerrar_sesion:hover {
     text-decoration: underline;
+}
+
+.solicitudes_container {
+    display: flex;
+    flex-direction: column;
+    margin: 2% 0;
+    padding: 2%;
+    border-radius: 6px;
+    box-shadow: rgba(2, 26, 3, 0.192) 0px 0.4pt 4pt, rgba(41, 49, 41, 0.274) 0px 2pt 8pt;
+}
+
+.title_sol {
+    text-align: center;
+    color: green;
+    font-weight: 600;
+    margin-bottom: 3%;
+}
+
+.cuerpo_sol {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3%;
+}
+
+.cuerpo_sol div {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.boton_sol_aceptar {
+    width: 60%;
+    margin: 0 auto;
+    padding: 1%;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    font-weight: 800;
+    background-color: green;
+    border-radius: 6px;
+    font-size: 1.2em;
+    color: white;
+}
+
+.est_sol {
+    background-color: rgb(250, 200, 107);
+    border-radius: 6px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.acep_sol {
+    background-color: #78ed99;
+    border-radius: 6px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#modalSolicitud p {
+    text-align: center;
 }
 
 footer {
@@ -301,6 +373,12 @@ footer {
     #valoraciones_usu {
         height: 60vh;
         overflow: scroll;
+    }
+    .est_sol {
+        width: 40%;
+    }
+    .acep_sol {
+        width: 40%;
     }
     footer {
         flex-direction: row;
@@ -409,6 +487,31 @@ footer {
     #valoraciones_usu {
         height: 100vh;
         overflow: scroll;
+    }
+    .title_sol {
+        text-align: center;
+        color: green;
+        font-weight: 600;
+    }
+    .cuerpo_sol {
+        display: flex;
+        flex-direction: row;
+    }
+    .nombre_sol {
+        width: 50% !important;
+    }
+    .cuerpo_sol div {
+        width: 25%;
+        text-align: center;
+    }
+    .est_sol {
+        width: 100%;
+    }
+    .acep_sol {
+        width: 100%;
+    }
+    .boton_sol_aceptar {
+        width: 30%;
     }
     footer {
         flex-direction: row;

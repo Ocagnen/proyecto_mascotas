@@ -129,23 +129,30 @@
                                 foreach ($solicitudes as $key => $value) {
                                     foreach ($value as $key2 => $value2) {
                                         foreach ($value2 as $key3 => $value3) {
-                                            echo "<div class='solicitudes_container'>";
-                                            echo "<div>".$value3->titulo."</div>";
-                                            echo "<div>".$value3->tarifa."€</div>";  
+                                            echo "<div class='solicitudes_container' id='solicitud".$value3->idAnuncio."".$value3->idUsuario."'>";
+                                            echo "<div class='title_sol'>".strtoupper($value3->titulo)."</div>";
+                                            echo "<div class='cuerpo_sol'>";
                                             $usuarioProv = obtenerUsuario($value3->idUsuario,$url_const);
-                                            echo "<div><form method='post' action='profile.php'>";
+                                            echo "<div class='nombre_sol'><form method='post' action='profile.php'>";
                                             echo "<button type='submit' name='btn_user_sol' class='btn_user_sol' value='$value3->idUsuario'>".$usuarioProv["usuario"]->nombre."&nbsp;".$usuarioProv["usuario"]->apellidos."</button>";
                                             echo "</form></div>";
-                                            echo "<div>";
+                                            echo "<div class='tarifa_sol'><strong>".$value3->tarifa."€</strong></div>"; 
+                                            
                                             if($value3->aceptada == 0){
-                                                echo "En espera";
+                                                echo "<div class='est_sol'>";
+                                                echo "<strong>En espera</strong>";
                                             } else {
-                                                echo "Aceptada";
+                                                echo "<div class='acep_sol'>";
+                                                echo "<strong>Aceptada</strong>";
                                             }   
-                                            if($value3->aceptada == 0){
-                                                echo "<button type='button' class='boton_sol_aceptar' >Aceptar</button>";
-                                            }
                                             echo "</div>";
+                                            echo "</div>";
+                                            if($value3->aceptada == 0){
+                                                ?>
+                                                    <button type='button' class='boton_sol_aceptar' onclick="aceptarSolicitud(<?php echo $value3->idAnuncio ?>,<?php echo $value3->idUsuario ?>);" >Aceptar</button>
+                                                <?php
+                                            }
+                                            
                                             echo "</div>";
                                         }                         
                                     }

@@ -208,3 +208,24 @@ function obtenerSolicitudes($idUsuario){
     }
 }
 
+function aceptarSolicitud($idUsuario,$idAnuncio){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        $consulta = "update solicitudes set aceptada = 1 where idUsuario = $idUsuario and idAnuncio = $idAnuncio";        
+        if($resultado=mysqli_query($con,$consulta)){
+            mysqli_close($con);
+            return array ("mensaje"=>"Solicitud aceptada");            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+
+    }
+}
+
+
+

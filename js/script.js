@@ -36,17 +36,13 @@ $(document).ready(function() {
     });
 
     $('#tipos_mascota button').mouseenter(function() {
-        if ($(this).css('background-color') == 'rgb(0, 128, 0)') {
-            $(this).css('background-color', 'transparent');
-        } else {
+        if ($(this).css('background-color') != 'rgb(0, 128, 0)') {
             $(this).css('background-color', '#78ed99');
         }
     });
 
     $('#tipos_mascota button').mouseleave(function() {
-        if ($(this).css('background-color') == 'rgb(0, 128, 0)') {
-            $(this).css('background-color', '#78ed99');
-        } else {
+        if ($(this).css('background-color') != 'rgb(0, 128, 0)') {
             $(this).css('background-color', 'transparent');
         }
     });
@@ -106,6 +102,17 @@ $(document).ready(function() {
         $(this).css('color', 'white');
     });
 
+    $('.btn_menu button').mouseenter(function() {
+        $(this).css('background-color', '#b6ffcb');
+        $(this).css('border', '1px solid green');
+        $(this).css('color', 'green');
+    });
+    $('.btn_menu button').mouseleave(function() {
+        $(this).css('background-color', 'green');
+        $(this).css('border', '1px solid white');
+        $(this).css('color', 'white');
+    });
+
 });
 
 function crearSolicitud(idAnuncio, idUsuario) {
@@ -131,6 +138,67 @@ function crearSolicitud(idAnuncio, idUsuario) {
                 $(idModal).html("<p>Solicitud enviada con éxito</p>");
             } else if (data.mensaje_error) {
                 $(idModal).html("<p>Error al enviar la solicitud</p>");
+            } else {
+                console.log("Error");
+            }
+
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            if (console && console.log) {
+                console.log("La solicitud a fallado: " + textStatus);
+            }
+        });
+
+    return false;
+
+}
+
+function crearSolicitud(idAnuncio, idUsuario) {
+    var idTarifa = '#tarifa' + idAnuncio;
+    var tarifa = $(idTarifa).val();
+    var valorMin = $(idTarifa).attr('min');
+    if (parseFloat(tarifa) < parseFloat(valorMin)) {
+        console.log('paso');
+        var idSpan = "#mensaje" + idAnuncio;
+        $(idSpan).html("La cantidad debe ser superior o igual a " + $(idTarifa).attr('min'));
+        return false;
+    } else if (tarifa == "") {
+        var idSpan = '#mensaje' + idAnuncio;
+        $(idSpan).html("*Campo vacio*");
+        return false;
+    }
+    var idModal = '#modal' + idAnuncio;
+    var parametros = { "idAnuncio": idAnuncio, "idUsuario": idUsuario, "tarifa": tarifa };
+
+    $.post(url_const + 'crearSolicitud', parametros, null, "json")
+        .done(function(data) {
+            if (data.mensaje) {
+                $(idModal).html("<p>Solicitud enviada con éxito</p>");
+            } else if (data.mensaje_error) {
+                $(idModal).html("<p>Error al enviar la solicitud</p>");
+            } else {
+                console.log("Error");
+            }
+
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            if (console && console.log) {
+                console.log("La solicitud a fallado: " + textStatus);
+            }
+        });
+
+    return false;
+
+}
+
+function aceptarSolicitud(idAnuncio, idUsuario) {
+    var divSol = '#solicitud' + idAnuncio + idUsuario;
+    $.getJSON(url_const + 'aceptarSolicitud/' + idUsuario + '/' + idAnuncio)
+        .done(function(data) {
+            if (data.mensaje) {
+                $(divSol).html("<p>Solicitud aceptada</p>");
+            } else if (data.mensaje_error) {
+                $(divSol).html("<p>Error al aceptar la solicitud</p>");
             } else {
                 console.log("Error");
             }
