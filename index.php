@@ -279,12 +279,16 @@
                                         echo "<form action='index.php#anuncio$value2->idAnuncio' method='post'>";
                                             echo "<button class='btn_usuario_anuncio' name='btn_usuario_anuncio' value='$value2->idUsuarioAutor'>".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->nombre." ".obtenerUsuario($value2->idUsuarioAutor,$url_const)["usuario"]->apellidos."</button>";
                                         echo "</form>";
-                                        echo "</div>";
+                                        echo "</div>";                                        
                                     echo "<div class='boton_solicitar'>";
                                         echo "<a href='#ex$value2->idAnuncio' rel='modal:open'><button>Solicitar</button></a>";
                                         echo "<div id='ex$value2->idAnuncio' class='modal'>";
                                             echo "<div id='modal$value2->idAnuncio'>";
+                                            if(isset($_SESSION["usuario"]) && $value2->idUsuarioAutor == $_SESSION["usuario"]->idUsuario){
+                                                echo "<p>No puede realizar una solicitud para su propio anuncio</p>";
+                                            } else {
                                             ?>
+                                            
                                                 <p>"Establezca la cantidad por la que está dispuesto a ofrecer sus servicios al anunciante"</p>
                                                 <form action="index.php" method="post">
                                                     <div class="tarifa_modal">
@@ -305,6 +309,7 @@
                                                     </div>
                                                 </form>
                                             <?php
+                                            }
                                             echo "</div>";
                                         echo "</div>";
                                         echo "</div>";

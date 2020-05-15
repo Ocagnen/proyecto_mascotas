@@ -22,6 +22,12 @@
         exit;
     }
 
+    if(isset($_POST["btn_user_sol"])){
+        $_SESSION["idAutor"] = $_POST["btn_user_sol"];
+        header("Location: usuario.php");
+        exit;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -125,8 +131,11 @@
                                         foreach ($value2 as $key3 => $value3) {
                                             echo "<div class='solicitudes_container'>";
                                             echo "<div>".$value3->titulo."</div>";
-                                            echo "<div>".$value3->tarifa."€</div>";   
-                                            echo "<div>".$value3->idUsuario."</div>";
+                                            echo "<div>".$value3->tarifa."€</div>";  
+                                            $usuarioProv = obtenerUsuario($value3->idUsuario,$url_const);
+                                            echo "<div><form method='post' action='profile.php'>";
+                                            echo "<button type='submit' name='btn_user_sol' class='btn_user_sol' value='$value3->idUsuario'>".$usuarioProv["usuario"]->nombre."&nbsp;".$usuarioProv["usuario"]->apellidos."</button>";
+                                            echo "</form></div>";
                                             echo "<div>";
                                             if($value3->aceptada == 0){
                                                 echo "En espera";
