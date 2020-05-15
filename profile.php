@@ -115,8 +115,34 @@
                 <div class='btn_menu'>
                 <a href='#modalSolicitud' rel='modal:open'><button>Solicitudes</button></a>
                     <div id='modalSolicitud' class='modal'>
-                        <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>
-                        <button type="submit" class="btn_solicitud_iniciar" >Iniciar sesión / Registrarme</button>
+                        <?php
+                            $solicitudes = obtenerSolicitudes($_SESSION["usuario"]->idUsuario,$url_const);                            
+                            if(isset($solicitudes->mensaje)){
+                                echo "<p>No tiene solicitudes en este momento</p>";
+                            } else {
+                                foreach ($solicitudes as $key => $value) {
+                                    foreach ($value as $key2 => $value2) {
+                                        foreach ($value2 as $key3 => $value3) {
+                                            echo "<div class='solicitudes_container'>";
+                                            echo "<div>".$value3->titulo."</div>";
+                                            echo "<div>".$value3->tarifa."€</div>";   
+                                            echo "<div>".$value3->idUsuario."</div>";
+                                            echo "<div>";
+                                            if($value3->aceptada == 0){
+                                                echo "En espera";
+                                            } else {
+                                                echo "Aceptada";
+                                            }   
+                                            if($value3->aceptada == 0){
+                                                echo "<button>Aceptar</button>";
+                                            }
+                                            echo "</div>";
+                                            echo "</div>";
+                                        }                         
+                                    }
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class='btn_menu'>

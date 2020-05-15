@@ -180,3 +180,31 @@ function crearSolicitud($idUsuario,$idAnuncio,$tarifa){
         }
     }
 }
+
+function obtenerSolicitudes($idUsuario){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        $consulta = "select * from solicitudes inner join anuncios on solicitudes.idAnuncio = anuncios.idAnuncio where anuncios.idUsuarioAutor = $idUsuario order by anuncios.idAnuncio";        
+        if($resultado=mysqli_query($con,$consulta)){
+            if(mysqli_num_rows($resultado)>0){
+                $solicitudes = Array();
+                while($fila = mysqli_fetch_assoc($resultado)){
+                    $solicitudes[] = $fila;
+                }
+                return array("solicitudes"=>$solicitudes);
+            } else {
+                mysqli_free_result($resultado);
+                mysqli_close($con);
+                return array("mensaje"=>"No hay solicitudes");
+            }
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+    }
+}
+

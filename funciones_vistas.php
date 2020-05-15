@@ -134,6 +134,17 @@
         } 
     }
 
+    function obtenerSolicitudes($idUsuario,$url){
+        $obj = consumir_servicio_REST($url."obtenerSolicitudes/$idUsuario","GET");
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        } else if(isset($obj->mensaje)){
+            return array ("mensaje"=>$obj->mensaje);
+        } else {
+            return array ("solicitudes"=>$obj);
+        }
+    }
+
     function calcularTarifaMin($tipo_mascota, $fecha_entrega,$fecha_devolucion, $hora_entrega, $hora_devolucion){
         
         $date1 =  date_create($fecha_entrega);

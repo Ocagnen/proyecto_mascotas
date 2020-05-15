@@ -36,6 +36,10 @@ $app->post('/crearSolicitud', function(){
     echo json_encode(crearSolicitud($_POST["idUsuario"],$_POST["idAnuncio"],$_POST["tarifa"]),JSON_FORCE_OBJECT);
 });
 
+$app->get('/obtenerSolicitudes/:idUsuario', function($idUsuario){
+    echo json_encode(obtenerSolicitudes($idUsuario),JSON_FORCE_OBJECT);
+});
+
 $app->run();
 
 ?>
