@@ -296,6 +296,25 @@ header div {
     text-align: center;
 }
 
+.nombre_trans {
+    width: 100% !important;
+}
+
+.btn_trans_edit {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding: 1%;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    font-weight: 800;
+    background-color: green;
+    border-radius: 6px;
+    font-size: 1.2em;
+    color: white;
+}
+
 footer {
     border-top: 1px solid black;
     background-color: #78ed99;

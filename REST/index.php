@@ -48,6 +48,11 @@ $app->post('/crearTransaccion', function(){
     echo json_encode(crearTransaccion($_POST["idUsuario"],$_POST["idAnuncio"],$_POST["tarifa"]),JSON_FORCE_OBJECT);
 });
 
+$app->get('/obtenerTransacciones/:idUsuario', function($idUsuario){
+    echo json_encode(obtenerTransacciones($idUsuario),JSON_FORCE_OBJECT);
+});
+
+
 $app->run();
 
 ?>

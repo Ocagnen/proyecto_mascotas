@@ -91,6 +91,15 @@ $(document).ready(function() {
         $(this).children('button').css('color', 'white');
     });
 
+    $('.boton_sol_aceptar, .btn_trans_edit').mouseenter(function() {
+        $(this).css('background-color', '#b6ffcb');
+        $(this).css('color', 'green');
+    });
+    $('.boton_sol_aceptar, .btn_trans_edit').mouseleave(function() {
+        $(this).css('background-color', 'green');
+        $(this).css('color', 'white');
+    });
+
     $('.boton_solicitar button').mouseenter(function() {
         $(this).css('background-color', '#b6ffcb');
         $(this).css('border', '1px solid green');

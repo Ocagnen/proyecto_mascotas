@@ -164,8 +164,30 @@
                 <div class='btn_menu'>
                 <a href='#modalTransacc' rel='modal:open'><button>Transacciones</button></a>
                     <div id='modalTransacc' class='modal'>
-                        <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>
-                        <button type="submit" class="btn_solicitud_iniciar" >Iniciar sesión / Registrarme</button>
+                    <?php
+                        $transacciones = getTransacciones($_SESSION["usuario"]->idUsuario,$url_const);                            
+                        if(isset($transacciones->mensaje)){
+                            echo "<p>No tiene transacciones en este momento</p>";
+                        } else {
+                            foreach ($transacciones as $key => $value) {
+                                foreach ($value as $key2 => $value2) {
+                                        echo "<div class='solicitudes_container'>";                                        
+                                        echo "<div class='cuerpo_sol'>";
+                                        $usuarioProv = obtenerUsuario($value2->idUsuario,$url_const);
+                                        echo "<div class='nombre_trans'><form method='post' action='profile.php'>";
+                                        echo "<p>Transacción con<button type='submit' name='btn_user_sol' class='btn_user_sol'>".$usuarioProv['usuario']->nombre." &nbsp;". $usuarioProv['usuario']->apellidos."</button>";
+                                        echo "</form></div>";
+                                        echo "</div><form method='post' action='profile.php'>";
+                                            ?>
+                                            <button type='submit' class='btn_trans_edit' value="<?php echo $value2->idUsuario; echo "."; echo $value2->idAnuncio;?>" >Gestionar</button>
+                                            <?php                                        
+                                            
+                                        echo "</form></div>";
+                                                          
+                                }
+                            }
+                        }
+                        ?>                         
                     </div>
                 </div>
             </div>

@@ -72,6 +72,17 @@
         }
     }
 
+    function getTransacciones($idUsuario,$url){
+        $obj = consumir_servicio_REST($url."obtenerTransacciones/$idUsuario","GET");
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        } else if(isset($obj->transacciones)){
+            return array ("transacciones"=>$obj->transacciones);
+        } else {
+            return array ("mensaje"=>$obj->mensaje);
+        }
+    }
+
     function obtenerTipo($valor){
         switch($valor){
             case "Perro":
