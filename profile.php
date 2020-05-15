@@ -20,8 +20,13 @@
         $_SESSION["idAutor"] = $_POST["btn_acceder_coment"];
         header("Location: usuario.php");
         exit;
-    }
+    }    
 
+    if(isset($_POST["btn_user_tran"])){
+        $_SESSION["idAutor"] = $_POST["btn_user_tran"];
+        header("Location: usuario.php");
+        exit;
+    }
     if(isset($_POST["btn_user_sol"])){
         $_SESSION["idAutor"] = $_POST["btn_user_sol"];
         header("Location: usuario.php");
@@ -175,7 +180,7 @@
                                         echo "<div class='cuerpo_sol'>";
                                         $usuarioProv = obtenerUsuario($value2->idUsuario,$url_const);
                                         echo "<div class='nombre_trans'><form method='post' action='profile.php'>";
-                                        echo "<p>Transacción con<button type='submit' name='btn_user_sol' class='btn_user_sol'>".$usuarioProv['usuario']->nombre." &nbsp;". $usuarioProv['usuario']->apellidos."</button>";
+                                        echo "<p>Transacción con<button type='submit' name='btn_user_tran' class='btn_user_sol' value='$value2->idUsuario'>".$usuarioProv['usuario']->nombre." &nbsp;". $usuarioProv['usuario']->apellidos."</button>para el anuncio ".obtenerAnuncio($value2->idAnuncio,$url_const)["anuncio"]->titulo."</p>";
                                         echo "</form></div>";
                                         echo "</div><form method='post' action='profile.php'>";
                                             ?>

@@ -61,6 +61,18 @@
 
     }
 
+    function obtenerAnuncio($idAnuncio,$url){
+        $obj = consumir_servicio_REST($url."obtenerAnuncio/".$idAnuncio,"GET");
+            if(isset($obj->mensaje_error)){
+                die($obj->mensaje_error);
+            } else if(isset($obj->mensaje)){
+                return array ("mensaje"=>$obj->mensaje);
+            } else {
+                return array ("anuncio"=>$obj->anuncio);
+            }           
+
+    }
+
     function getAnuncios($url){
         $obj = consumir_servicio_REST($url."obtenerAnuncios","GET");
         if(isset($obj->mensaje_error)){
