@@ -227,5 +227,30 @@ function aceptarSolicitud($idUsuario,$idAnuncio){
     }
 }
 
+function generarCodigo () {
+    return rand(1000,9999);
+}
+
+function crearTransaccion($idUsuario,$idAnuncio,$tarifa){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        $codigo_inicio = generarCodigo();
+        $codigo_fin = generarCodigo();
+        $consulta = "insert into transacciones (idUsuario,idAnuncio,codigo_anuncio_inicio,codigo_anuncio_fin,tarifa) values ($idUsuario,$idAnuncio,$codigo_inicio,$codigo_fin,$tarifa)";        
+        if($resultado=mysqli_query($con,$consulta)){
+            mysqli_close($con);
+            return array ("mensaje"=>"Transacción creada");            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+
+    }
+}
+
 
 

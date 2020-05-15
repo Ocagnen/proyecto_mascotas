@@ -149,7 +149,7 @@
                                             echo "</div>";
                                             if($value3->aceptada == 0){
                                                 ?>
-                                                    <button type='button' class='boton_sol_aceptar' onclick="aceptarSolicitud(<?php echo $value3->idAnuncio ?>,<?php echo $value3->idUsuario ?>);" >Aceptar</button>
+                                                    <button type='button' class='boton_sol_aceptar' onclick="aceptarSolicitud(<?php echo $value3->idAnuncio ?>,<?php echo $value3->idUsuario ?>,<?php echo $value3->tarifa?>);" >Aceptar</button>
                                                 <?php
                                             }
                                             

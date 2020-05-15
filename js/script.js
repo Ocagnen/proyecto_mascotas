@@ -102,12 +102,12 @@ $(document).ready(function() {
         $(this).css('color', 'white');
     });
 
-    $('.btn_menu button').mouseenter(function() {
+    $('.btn_menu a button').mouseenter(function() {
         $(this).css('background-color', '#b6ffcb');
         $(this).css('border', '1px solid green');
         $(this).css('color', 'green');
     });
-    $('.btn_menu button').mouseleave(function() {
+    $('.btn_menu a button').mouseleave(function() {
         $(this).css('background-color', 'green');
         $(this).css('border', '1px solid white');
         $(this).css('color', 'white');
@@ -191,11 +191,36 @@ function crearSolicitud(idAnuncio, idUsuario) {
 
 }
 
-function aceptarSolicitud(idAnuncio, idUsuario) {
+function crearTransaccion(idAnuncio, idUsuario, tarifa) {
+    var parametros = { "idAnuncio": idAnuncio, "idUsuario": idUsuario, "tarifa": tarifa };
+
+    $.post(url_const + 'crearTransaccion', parametros, null, "json")
+        .done(function(data) {
+            if (data.mensaje) {
+                return true;
+            } else if (data.mensaje_error) {
+                return false;
+            } else {
+                return false;
+            }
+
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            if (console && console.log) {
+                console.log("La solicitud a fallado: " + textStatus);
+            }
+        });
+
+    return false;
+
+}
+
+function aceptarSolicitud(idAnuncio, idUsuario, tarifa) {
     var divSol = '#solicitud' + idAnuncio + idUsuario;
     $.getJSON(url_const + 'aceptarSolicitud/' + idUsuario + '/' + idAnuncio)
         .done(function(data) {
             if (data.mensaje) {
+                crearTransaccion(idAnuncio, idUsuario, tarifa);
                 $(divSol).html("<p>Solicitud aceptada</p>");
             } else if (data.mensaje_error) {
                 $(divSol).html("<p>Error al aceptar la solicitud</p>");
