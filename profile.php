@@ -20,7 +20,13 @@
         $_SESSION["idAutor"] = $_POST["btn_acceder_coment"];
         header("Location: usuario.php");
         exit;
-    }    
+    }  
+    
+    if(isset($_POST["btn_trans_edit"])){
+        $_SESSION["idTrans"] = $_POST["btn_trans_edit"];
+        header("Location: transac.php");
+        exit;
+    }
 
     if(isset($_POST["btn_user_tran"])){
         $_SESSION["idAutor"] = $_POST["btn_user_tran"];
@@ -184,7 +190,7 @@
                                         echo "</form></div>";
                                         echo "</div><form method='post' action='profile.php'>";
                                             ?>
-                                            <button type='submit' class='btn_trans_edit' value="<?php echo $value2->idUsuario; echo "."; echo $value2->idAnuncio;?>" >Gestionar</button>
+                                            <button type='submit' name ='btn_trans_edit' class='btn_trans_edit' value="<?php echo $value2->idUsuario; echo "."; echo $value2->idAnuncio;?>" >Gestionar</button>
                                             <?php                                        
                                             
                                         echo "</form></div>";

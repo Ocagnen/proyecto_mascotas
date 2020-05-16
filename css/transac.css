@@ -1,0 +1,295 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'Cream Cake';
+    src: url('cream_cake/Cream Cake.ttf') format('truetype');
+}
+
+
+/*-------------------------VERSIÓN MÓVIL------------------------*/
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    color: rgb(41, 133, 36);
+}
+
+header div {
+    flex: 1;
+    margin: 1%;
+}
+
+#titular_web:hover {
+    cursor: pointer;
+}
+
+#nombre_empresa {
+    flex: 30%;
+}
+
+#logo_empresa {
+    width: 5vh;
+    padding: 1%;
+}
+
+#titular_web {
+    font-size: 7vh;
+    font-weight: 900;
+    font-family: 'Cream Cake';
+    margin: 0;
+}
+
+#bars {
+    margin-left: auto;
+    cursor: pointer;
+    width: 20pt;
+    height: 20pt;
+}
+
+#logo_usuario {
+    padding: 3%;
+    width: 9vh;
+    height: 9vh;
+    border-radius: 50%;
+}
+
+header div {
+    display: flex;
+}
+
+#cabecera_lista {
+    display: none;
+    order: 5;
+    flex: 100%;
+    background-color: green;
+}
+
+#menu_cabecera {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+#menu_cabecera div {
+    margin: 2%;
+    padding: 3%;
+    border-bottom: 1px solid white;
+}
+
+#menu_cabecera a {
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: larger;
+}
+
+#contenido {
+    display: flex;
+    flex-direction: column;
+    padding: 4%;
+    text-align: center;
+}
+
+.contenido_terminos {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.contenido_terminos h2 {
+    margin: 0;
+    color: green;
+}
+
+.contenido_terminos p {
+    text-align: left;
+}
+
+#texto_terminos {
+    padding: 1% 8%;
+}
+
+footer {
+    border-top: 1px solid black;
+    background-color: #78ed99;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 4%;
+}
+
+#nombre_footer {
+    font-family: 'Cream Cake';
+    font-size: 3rem;
+    margin: 0;
+}
+
+.enlace_footer {
+    margin: 5%;
+}
+
+.enlace_footer a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#redes_sociales_footer {
+    display: flex;
+}
+
+#redes_sociales_footer div {
+    display: flex;
+    margin: 0 auto;
+}
+
+
+/*-----------------------------------VERSIÓN TABLET----------------------------------------*/
+
+@media all and (min-width: 700px) and (max-width: 1030px) {
+    #contenedor_foto_perfil a {
+        margin: 0 auto;
+    }
+    #bars {
+        width: 30pt;
+        height: 30pt;
+    }
+    #menu_cabecera div {
+        margin: 0;
+    }
+    footer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1%;
+        padding-top: 2%;
+    }
+    #container_derechos {
+        width: 100%;
+    }
+    #logo_footer {
+        width: 20%;
+    }
+    #direcciones_footer {
+        width: 60%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .enlace_footer {
+        width: 50%;
+        margin: 3% 0%;
+    }
+    #redes_sociales_footer {
+        width: 20%;
+    }
+}
+
+
+/*-----------------------------------VERSIÓN ESCRITORIO----------------------------------------*/
+
+@media all and (min-width:1030px) {
+    #titular_web {
+        font-size: 4em;
+        margin: 0 auto;
+    }
+    #header {
+        flex-wrap: nowrap;
+    }
+    #wrapper {
+        display: none;
+    }
+    #cabecera_lista {
+        order: 0;
+        display: flex;
+        flex-direction: row;
+        flex: 60%;
+        background-color: transparent;
+        border-top: 1px solid green;
+        border-bottom: 1px solid green;
+    }
+    #menu_cabecera {
+        flex-direction: row;
+        margin: 0;
+        width: 100%;
+    }
+    #menu_cabecera div {
+        margin: 0%;
+        padding: 1%;
+    }
+    #menu_cabecera a {
+        align-self: center;
+        color: green;
+        font-size: 1em;
+        font-weight: 900;
+    }
+    #nombre_empresa {
+        flex: 20%;
+    }
+    #contenido {
+        flex-direction: column;
+        padding-top: 1%;
+    }
+    footer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1%;
+        padding-top: 2%;
+    }
+    #container_derechos {
+        width: 100%;
+    }
+    #logo_footer {
+        width: 20%;
+    }
+    #direcciones_footer {
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .enlace_footer {
+        width: 30%;
+        margin: 1% 0%;
+    }
+    #redes_sociales_footer {
+        width: 10%;
+    }
+}
+
+
+/*
+#menu_cabecera {
+    display: none;
+}
+header {
+    display: flex;
+    flex-direction: row;
+}
+
+#logo_empresa {
+    width: 10vh;
+}
+
+#nombre_empresa {
+    display: flex;
+    flex-direction: row;
+}
+*/
