@@ -73,7 +73,7 @@
     <section>
         <div class="cuerpo_tran">
             <div class="titular_trans">
-                <h1>Transacciones</h1>
+                <h1>Transacción</h1>
             </div>
             <div class="carac_trans">
                 <?php

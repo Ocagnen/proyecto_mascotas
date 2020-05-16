@@ -200,6 +200,9 @@ footer {
     #menu_cabecera div {
         margin: 0;
     }
+    section {
+        min-height: 64vh;
+    }
     footer {
         flex-direction: row;
         flex-wrap: wrap;
@@ -267,6 +270,12 @@ footer {
     }
     #nombre_empresa {
         flex: 20%;
+    }
+    section {
+        flex-direction: row;
+    }
+    .cuerpo_tran {
+        width: 35%;
     }
     footer {
         flex-direction: row;
