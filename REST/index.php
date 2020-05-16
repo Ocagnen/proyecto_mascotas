@@ -52,6 +52,10 @@ $app->get('/obtenerTransacciones/:idUsuario', function($idUsuario){
     echo json_encode(obtenerTransacciones($idUsuario),JSON_FORCE_OBJECT);
 });
 
+$app->get('/obtenerTransaccion/:idAnuncio/:idUsuario', function($idAnuncio,$idUsuario){
+    echo json_encode(obtenerTransaccion($idAnuncio,$idUsuario),JSON_FORCE_OBJECT);
+});
+
 $app->get('/obtenerAnuncio/:idAnuncio', function($idAnuncio){
     echo json_encode(obtenerAnuncio($idAnuncio),JSON_FORCE_OBJECT);
 });

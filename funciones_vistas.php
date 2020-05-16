@@ -73,6 +73,18 @@
 
     }
 
+    function obtenerTransaccion($idAnuncio,$idUsuario,$url){
+        $obj = consumir_servicio_REST($url."obtenerTransaccion/".$idAnuncio."/".$idUsuario,"GET");
+            if(isset($obj->mensaje_error)){
+                die($obj->mensaje_error);
+            } else if(isset($obj->mensaje)){
+                return array ("mensaje"=>$obj->mensaje);
+            } else {
+                return array ("transaccion"=>$obj->transaccion);
+            }           
+
+    }
+
     function getAnuncios($url){
         $obj = consumir_servicio_REST($url."obtenerAnuncios","GET");
         if(isset($obj->mensaje_error)){

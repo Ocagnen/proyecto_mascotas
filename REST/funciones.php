@@ -305,6 +305,34 @@ function obtenerAnuncio($idAnuncio){
     }
 }
 
+function obtenerTransaccion($idAnuncio,$idUsuario){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        $consulta = "select * from transacciones where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
+        if($resultado=mysqli_query($con,$consulta)){
+            if(mysqli_num_rows($resultado)>0){
+                $transaccion = mysqli_fetch_assoc($resultado);
+                mysqli_free_result($resultado);
+                mysqli_close($con);
+                return array("transaccion"=>$transaccion);
+            } else {
+                mysqli_free_result($resultado);
+                mysqli_close($con);
+                return array("mensaje"=>"La transacción no existe");
+            }
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+    }
+}
+
+
+
 
 
 
