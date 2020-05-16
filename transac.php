@@ -71,45 +71,47 @@
         </div>        
     </header>
     <section>
-        <div class="titular_trans">
-            <h1>Transacciones</h1>
-        </div>
-        <div class="carac_trans">
-            <?php
-                $transaccion = obtenerTransaccion($idAnunTrans,$idUserTrans,$url_const);
+        <div class="cuerpo_tran">
+            <div class="titular_trans">
+                <h1>Transacciones</h1>
+            </div>
+            <div class="carac_trans">
+                <?php
+                    $transaccion = obtenerTransaccion($idAnunTrans,$idUserTrans,$url_const);
 
-                if(isset($transaccion['transaccion'])){
-            ?>
-            <div id='anuncio_trans'>
-                <p><?php echo obtenerAnuncio($transaccion["transaccion"]->idAnuncio,$url_const)["anuncio"]->titulo; ?></p>
+                    if(isset($transaccion['transaccion'])){
+                ?>
+                <div id='anuncio_trans'>
+                    <p><strong>Anuncio</strong>: <?php echo obtenerAnuncio($transaccion["transaccion"]->idAnuncio,$url_const)["anuncio"]->titulo; ?></p>
+                </div>
+                <div id='usuario_trans'>
+                    <p><form method='post' action='transac.php'><strong>Solicitante</strong>:<button type='submit' name='btn_user_tran' class='btn_user_sol' value='<?php echo $idUserTrans; ?>'>
+                        <?php echo obtenerUsuario($transaccion["transaccion"]->idUsuario,$url_const)['usuario']->nombre; ?>&nbsp;<?php echo obtenerUsuario($transaccion["transaccion"]->idUsuario,$url_const)['usuario']->apellidos; ?>
+                    </button></form></p>
+                </div>
+                <div id='tarifa_trans'>
+                    <p><strong>Tarifa</strong>: <?php echo $transaccion["transaccion"]->tarifa; ?>€</p>
+                </div>
+                <div id='cancelar_trans'>
+                    <form action="transac.php" method="post">
+                        <button type="submit" class='btn_cancel_tran'>Cancelar transacción</button>
+                    </form>
+                </div>
+                <?php
+                    } else {
+                        echo "<p>No tiene transacciones en este momento</p>";
+                    }
+                ?>
             </div>
-            <div id='usuario_trans'>
-                <p><form method='post' action='transac.php'><button type='submit' name='btn_user_tran' class='btn_user_sol' value='<?php echo $idUserTrans; ?>'>
-                    <?php echo obtenerUsuario($transaccion["transaccion"]->idUsuario,$url_const)['usuario']->nombre; ?>&nbsp;<?php echo obtenerUsuario($transaccion["transaccion"]->idUsuario,$url_const)['usuario']->apellidos; ?>
-                </button></form></p>
-            </div>
-            <div id='tarifa_trans'>
-                <p><?php echo $transaccion["transaccion"]->tarifa; ?>€</p>
-            </div>
-            <div id='cancelar_trans'>
-                <form action="transac.php" method="post">
-                    <button type="submit">Cancelar transacción</button>
-                </form>
-            </div>
-            <?php
-                } else {
-                    echo "<p>No tiene transacciones en este momento</p>";
-                }
-            ?>
-        </div>
-        <div>
+        </div>        
+        <div class="cuerpo_tran">
             <div>
                 <h2>Gestión de códigos</h2>
             </div>
             <div>
                 <?php
                     if($_SESSION["usuario"]->idUsuario != $idUserTrans){
-                        echo "<div>";
+                        echo "<div class='opciones_codigo'>";
                             echo "<a href='#modalAnuncios' rel='modal:open'><button>Solicitar código de entrega</button></a>";
                             echo "<div id='modalAnuncios' class='modal'>";
                                 echo "<p>Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado</p>";
@@ -117,7 +119,7 @@
                             echo "</div>";
                         echo "</div>";
                     } else {
-                        echo "<div>";
+                        echo "<div  class='opciones_codigo'>";
                             echo "<a href='#modalAnuncios' rel='modal:open'><button>Solicitar código de recogida</button></a>";
                             echo "<div id='modalAnuncios' class='modal'>";
                                 echo "<p>Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado</p>";
@@ -127,14 +129,14 @@
                     }
                 ?>
             </div>
-            <div>
+            <div  class='opciones_codigo'>
             <a href='#modalAnuncios' rel='modal:open'><button>Enviar código de entrega</button></a>
                 <div id='modalAnuncios' class='modal'>
                     <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>
                     <button type="submit" class="btn_solicitud_iniciar" >Iniciar sesión / Registrarme</button>
                 </div>
             </div>
-            <div>
+            <div  class='opciones_codigo'>
             <a href='#modalAnuncios' rel='modal:open'><button>Enviar código de recogida</button></a>
             <div id='modalAnuncios' class='modal'>
                     <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>

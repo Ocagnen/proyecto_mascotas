@@ -134,7 +134,7 @@
                     <div id='modalSolicitud' class='modal'>
                         <?php
                             $solicitudes = obtenerSolicitudes($_SESSION["usuario"]->idUsuario,$url_const);                            
-                            if(isset($solicitudes->mensaje)){
+                            if(isset($solicitudes["mensaje"])){
                                 echo "<p>No tiene solicitudes en este momento</p>";
                             } else {
                                 foreach ($solicitudes as $key => $value) {
@@ -176,8 +176,8 @@
                 <a href='#modalTransacc' rel='modal:open'><button>Transacciones</button></a>
                     <div id='modalTransacc' class='modal'>
                     <?php
-                        $transacciones = getTransacciones($_SESSION["usuario"]->idUsuario,$url_const);                            
-                        if(isset($transacciones->mensaje)){
+                        $transacciones = getTransacciones($_SESSION["usuario"]->idUsuario,$url_const);                      
+                        if(isset($transacciones["mensaje"])){
                             echo "<p>No tiene transacciones en este momento</p>";
                         } else {
                             foreach ($transacciones as $key => $value) {

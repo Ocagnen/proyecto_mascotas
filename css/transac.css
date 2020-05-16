@@ -100,6 +100,58 @@ header div {
     font-size: larger;
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+    margin: 5% 1%;
+}
+
+.btn_user_sol {
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    color: green;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn_cancel_tran {
+    background-color: rgb(250, 200, 107);
+    border-radius: 6px;
+    padding: 2%;
+    font-weight: 600;
+    color: black;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.cuerpo_tran {
+    width: 90%;
+    margin: 2% auto;
+    text-align: center;
+    padding: 2%;
+    border-radius: 6px;
+    box-shadow: rgba(2, 26, 3, 0.192) 0px 0.4pt 4pt, rgba(41, 49, 41, 0.274) 0px 2pt 8pt;
+}
+
+.opciones_codigo {
+    margin: 2%;
+}
+
+.opciones_codigo button {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2%;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    font-weight: 800;
+    background-color: green;
+    border-radius: 6px;
+    font-size: 1em;
+    color: white;
+}
+
 footer {
     border-top: 1px solid black;
     background-color: #78ed99;
