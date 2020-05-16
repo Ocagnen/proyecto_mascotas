@@ -161,7 +161,7 @@ function crearSolicitud(idAnuncio, idUsuario) {
     return false;
 
 }
-
+/*
 function crearSolicitud(idAnuncio, idUsuario) {
     var idTarifa = '#tarifa' + idAnuncio;
     var tarifa = $(idTarifa).val();
@@ -199,6 +199,7 @@ function crearSolicitud(idAnuncio, idUsuario) {
     return false;
 
 }
+*/
 
 function crearTransaccion(idAnuncio, idUsuario, tarifa) {
     var parametros = { "idAnuncio": idAnuncio, "idUsuario": idUsuario, "tarifa": tarifa };
@@ -235,6 +236,41 @@ function aceptarSolicitud(idAnuncio, idUsuario, tarifa) {
                 $(divSol).html("<p>Error al aceptar la solicitud</p>");
             } else {
                 console.log("Error");
+            }
+
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            if (console && console.log) {
+                console.log("La solicitud a fallado: " + textStatus);
+            }
+        });
+
+    return false;
+
+}
+
+function cargarTransacciones(idUsuario) {
+    $("#modalTransacc > div").html("");
+    $.getJSON(url_const + 'obtenerTransacciones/' + idUsuario)
+        .done(function(data) {
+            if (data.mensaje) {
+                $("#modalTransacc > div").html("<p>No tiene transacciones</p>");
+            } else if (data.mensaje_error) {
+                $("#modalTransacc > div").html("<p>Error al aceptar la solicitud</p>");
+            } else {
+                var output = "";
+                $.each(data.transacciones, function(key, value) {
+                    output += "<div class='solicitudes_container'>";
+                    output += "<div class='cuerpo_sol'>";
+                    output += "<div class='nombre_trans'>";
+                    output += "<p>Transacción para el anuncio " + value["titulo"] + "</p>";
+                    output += "</div>";
+                    output += "</div><form method='post' action='profile.php'>";
+                    output += "<button type='submit' name ='btn_trans_edit' class='btn_trans_edit' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Gestionar</button>";
+                    output += "</form></div>";
+                });
+
+                $("#modalTransacc > div").html(output);
             }
 
         })

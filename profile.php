@@ -173,32 +173,11 @@
                     </div>
                 </div>
                 <div class='btn_menu'>
-                <a href='#modalTransacc' rel='modal:open'><button>Transacciones</button></a>
+                <a href='#modalTransacc' rel='modal:open'><button type='button' onclick='cargarTransacciones(<?php echo $_SESSION["usuario"]->idUsuario;?>);'>Transacciones</button></a>
                     <div id='modalTransacc' class='modal'>
-                    <?php
-                        $transacciones = getTransacciones($_SESSION["usuario"]->idUsuario,$url_const);                      
-                        if(isset($transacciones["mensaje"])){
-                            echo "<p>No tiene transacciones en este momento</p>";
-                        } else {
-                            foreach ($transacciones as $key => $value) {
-                                foreach ($value as $key2 => $value2) {
-                                        echo "<div class='solicitudes_container'>";                                        
-                                        echo "<div class='cuerpo_sol'>";
-                                        $usuarioProv = obtenerUsuario($value2->idUsuario,$url_const);
-                                        echo "<div class='nombre_trans'><form method='post' action='profile.php'>";
-                                        echo "<p>Transacción con<button type='submit' name='btn_user_tran' class='btn_user_sol' value='$value2->idUsuario'>".$usuarioProv['usuario']->nombre." &nbsp;". $usuarioProv['usuario']->apellidos."</button>para el anuncio ".obtenerAnuncio($value2->idAnuncio,$url_const)["anuncio"]->titulo."</p>";
-                                        echo "</form></div>";
-                                        echo "</div><form method='post' action='profile.php'>";
-                                            ?>
-                                            <button type='submit' name ='btn_trans_edit' class='btn_trans_edit' value="<?php echo $value2->idUsuario; echo "."; echo $value2->idAnuncio;?>" >Gestionar</button>
-                                            <?php                                        
-                                            
-                                        echo "</form></div>";
-                                                          
-                                }
-                            }
-                        }
-                        ?>                         
+                        <div>
+                            
+                        </div>          
                     </div>
                 </div>
             </div>

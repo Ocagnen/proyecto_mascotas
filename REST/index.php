@@ -60,6 +60,11 @@ $app->get('/obtenerAnuncio/:idAnuncio', function($idAnuncio){
     echo json_encode(obtenerAnuncio($idAnuncio),JSON_FORCE_OBJECT);
 });
 
+$app->get('/cancelarTransaccion/:idAnuncio/:idUsuario', function($idAnuncio,$idUsuario){
+    echo json_encode(cancelarTransaccion($idAnuncio,$idUsuario),JSON_FORCE_OBJECT);
+});
+
+
 $app->run();
 
 ?>
