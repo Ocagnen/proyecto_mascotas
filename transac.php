@@ -5,7 +5,7 @@
     session_name("mascotas");
     session_start();
 
-    if(!isset($_SESSION["idTrans"])){
+    if(!isset($_SESSION["idTrans"]) || (isset($_SESSION["idTrans"]) && $_SESSION["idTrans"]=="borrada")){
         header("Location:index.php");
         exit;
     } else {
@@ -18,6 +18,18 @@
         $_SESSION["idAutor"] = $_POST["btn_user_tran"];
         header("Location: usuario.php");
         exit;
+    }
+
+    if(isset($_POST["btn_cancel_tran"])){
+        $tran_cancelada = cancelarTransaccion($idAnunTrans,$idUserTrans,$url_const);
+        if(isset($tran_cancelada)){
+            $_SESSION["cancelada"] = "La transacción fue cancelada con éxito";
+            $_SESSION["idTrans"] = "borrada";
+            header("Location: profile.php");
+            exit;
+        }
+        
+
     }
 
 ?>
@@ -94,7 +106,7 @@
                 </div>
                 <div id='cancelar_trans'>
                     <form action="transac.php" method="post">
-                        <button type="submit" class='btn_cancel_tran'>Cancelar transacción</button>
+                        <button type="submit" name = "btn_cancel_tran" class='btn_cancel_tran'>Cancelar transacción</button>
                     </form>
                 </div>
                 <?php

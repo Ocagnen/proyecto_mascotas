@@ -340,15 +340,9 @@ function cancelarTransaccion($idAnuncio,$idUsuario){
     } else {
         mysqli_set_charset($con,"utf8");
         $consulta = "update transacciones set cancelada = 1 where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
-        if($resultado=mysqli_query($con,$consulta)){
-            if(mysqli_num_rows($resultado)>0){
-                mysqli_close($con);
-                return array("exito"=>"La transacción fue cancelada con éxito.");
-            } else {
-                mysqli_free_result($resultado);
-                mysqli_close($con);
-                return array("mensaje"=>"La transacción no existe.");
-            }
+        if($resultado=mysqli_query($con,$consulta)){ 
+            mysqli_close($con);
+            return array("exito"=>"La transacción fue cancelada con éxito.");            
         } else {
             $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
             mysqli_close($con);
