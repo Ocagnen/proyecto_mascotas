@@ -181,12 +181,14 @@ function crearSolicitud($idUsuario,$idAnuncio,$tarifa){
     }
 }
 
+
 function obtenerSolicitudes($idUsuario){
     $con = conectar();
     if(!$con){
         return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
     } else {
         mysqli_set_charset($con,"utf8");
+        
         $consulta = "select * from solicitudes inner join anuncios on solicitudes.idAnuncio = anuncios.idAnuncio where anuncios.idUsuarioAutor = $idUsuario order by anuncios.idAnuncio";        
         if($resultado=mysqli_query($con,$consulta)){
             if(mysqli_num_rows($resultado)>0){
@@ -333,6 +335,24 @@ function obtenerTransaccion($idAnuncio,$idUsuario){
     }
 }
 
+function borrarSolicitud($idUsuario,$idAnuncio){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        $consulta = "delete from solicitudes where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
+        if($resultado=mysqli_query($con,$consulta)){
+            mysqli_close($con);
+            return array("exito"=>"Solicitud borrada con éxito");            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+    }
+}
+
 function cancelarTransaccion($idAnuncio,$idUsuario){
     $con = conectar();
     if(!$con){
@@ -341,6 +361,7 @@ function cancelarTransaccion($idAnuncio,$idUsuario){
         mysqli_set_charset($con,"utf8");
         $consulta = "update transacciones set cancelada = 1 where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
         if($resultado=mysqli_query($con,$consulta)){ 
+            borrarSolicitud($idUsuario,$idAnuncio);
             mysqli_close($con);
             return array("exito"=>"La transacción fue cancelada con éxito.");            
         } else {
@@ -350,6 +371,7 @@ function cancelarTransaccion($idAnuncio,$idUsuario){
         }
     }
 }
+
 
 
 

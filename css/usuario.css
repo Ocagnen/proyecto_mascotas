@@ -315,6 +315,17 @@ header div {
     color: white;
 }
 
+.mensaje_cancel {
+    color: black;
+    text-align: center;
+    font-weight: 600;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #78ed99;
+    padding: 1%;
+    border-radius: 6px;
+}
+
 footer {
     border-top: 1px solid black;
     background-color: #78ed99;
@@ -530,6 +541,9 @@ footer {
         width: 100%;
     }
     .boton_sol_aceptar {
+        width: 30%;
+    }
+    .mensaje_cancel {
         width: 30%;
     }
     footer {

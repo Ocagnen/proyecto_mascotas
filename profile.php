@@ -92,6 +92,12 @@
             ?>
         </div>
     </header>
+        <?php
+            if(isset($_SESSION["cancelada"])){
+                echo "<p class='mensaje_cancel'>".$_SESSION['cancelada']."</p>";
+                unset($_SESSION["cancelada"]);
+            }
+        ?>
     <section id="container_usuario">
         <article id='datos_usuario'>
             <div id='nombre_usu'>
@@ -176,7 +182,7 @@
                 <a href='#modalTransacc' rel='modal:open'><button type='button' onclick='cargarTransacciones(<?php echo $_SESSION["usuario"]->idUsuario;?>);'>Transacciones</button></a>
                     <div id='modalTransacc' class='modal'>
                         <div>
-                            
+
                         </div>          
                     </div>
                 </div>

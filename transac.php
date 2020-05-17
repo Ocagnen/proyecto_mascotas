@@ -104,6 +104,10 @@
                 <div id='tarifa_trans'>
                     <p><strong>Tarifa</strong>: <?php echo $transaccion["transaccion"]->tarifa; ?>€</p>
                 </div>
+                <div id='telefonos_trans'>
+                    <p><strong>Teléfono anunciante: </strong><?php echo obtenerUsuario(obtenerAnuncio($transaccion["transaccion"]->idAnuncio,$url_const)["anuncio"]->idUsuarioAutor,$url_const)['usuario']->telefono; ?></p>
+                    <p><strong>Teléfono solicitante: </strong> <?php echo obtenerUsuario($transaccion["transaccion"]->idUsuario,$url_const)['usuario']->telefono; ?></p>
+                </div>
                 <div id='cancelar_trans'>
                     <form action="transac.php" method="post">
                         <button type="submit" name = "btn_cancel_tran" class='btn_cancel_tran'>Cancelar transacción</button>
