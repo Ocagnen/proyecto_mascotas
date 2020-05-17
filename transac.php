@@ -60,9 +60,11 @@
                     }
                 }
             } else {
-                echo "estabien";
                 if(isset($_SESSION["errorEntrega"])){
                     unset($_SESSION["errorEntrega"]);
+                }
+                if(!isset($_SESSION["codigo_correcto"])){
+                    $_SESSION["codigo_correcto"] = "Código correcto.";
                 }
             }
         }
@@ -102,6 +104,10 @@
                 if(isset($_SESSION["errorRecogida"])){
                     unset($_SESSION["errorRecogida"]);
                 }
+                if(!isset($_SESSION["codigo_correcto"])){
+                    $_SESSION["codigo_correcto"] = "Código correcto.";
+                }
+            
             }
         }
 
@@ -162,6 +168,11 @@
             echo "<p class='mensaje_cancel'>".$_SESSION['mensaje_error']."</p>";
             unset($_SESSION["mensaje_error"]);
         }
+        if(isset($_SESSION["codigo_correcto"])){
+            echo "<p class='mensaje_correcto'>".$_SESSION['codigo_correcto']."</p>";
+            unset($_SESSION["codigo_correcto"]);
+        }
+
     ?>
     <section>
         <div class="cuerpo_tran">

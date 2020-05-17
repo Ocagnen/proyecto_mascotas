@@ -91,13 +91,30 @@ $(document).ready(function() {
         $(this).children('button').css('color', 'white');
     });
 
-    $('.boton_sol_aceptar, .btn_trans_edit').mouseenter(function() {
+    $('.boton_sol_aceptar, .btn_trans_edit, .btn_trans_edit').mouseenter(function() {
         $(this).css('background-color', '#b6ffcb');
         $(this).css('color', 'green');
     });
-    $('.boton_sol_aceptar, .btn_trans_edit').mouseleave(function() {
+    $('.boton_sol_aceptar, .btn_trans_edit, .btn_trans_edit').mouseleave(function() {
         $(this).css('background-color', 'green');
         $(this).css('color', 'white');
+    });
+
+    $('.opciones_codigo button').mouseenter(function() {
+        $(this).css('background-color', '#b6ffcb');
+        $(this).css('color', 'green');
+    });
+    $('.opciones_codigo button').mouseleave(function() {
+        $(this).css('background-color', 'green');
+        $(this).css('color', 'white');
+    });
+
+    $('.btn_cancel_tran').mouseenter(function() {
+        $(this).css('background-color', 'orange');
+    });
+
+    $('.btn_cancel_tran').mouseleave(function() {
+        $(this).css('background-color', 'rgb(250, 200, 107)');
     });
 
     $('.boton_solicitar button').mouseenter(function() {

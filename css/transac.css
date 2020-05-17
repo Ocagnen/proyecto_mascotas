@@ -152,6 +152,57 @@ section {
     color: white;
 }
 
+.mensaje_correcto {
+    color: black;
+    text-align: center;
+    font-weight: 600;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #78ed99;
+    padding: 1%;
+    border-radius: 6px;
+}
+
+.mensaje_cancel {
+    color: black;
+    text-align: center;
+    font-weight: 600;
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgb(250, 200, 107);
+    padding: 1%;
+    border-radius: 6px;
+}
+
+.modal input {
+    width: 100%;
+    border: 2px solid #78ed99;
+    color: rgb(2, 85, 2);
+    border-radius: 6px;
+    height: 5vh;
+    font-size: 2vh;
+    padding: 3%;
+}
+
+.modal div {
+    margin: 2%;
+}
+
+#btn_enviar_recogida,
+#btn_enviar_entrega {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2%;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    font-weight: 800;
+    background-color: green;
+    border-radius: 6px;
+    font-size: 1em;
+    color: white;
+}
+
 footer {
     border-top: 1px solid black;
     background-color: #78ed99;
@@ -276,6 +327,17 @@ footer {
     }
     .cuerpo_tran {
         width: 35%;
+    }
+    .mensaje_cancel,
+    .mensaje_correcto {
+        width: 30%;
+    }
+    .modal input {
+        width: 80%;
+    }
+    #btn_enviar_recogida,
+    #btn_enviar_entrega {
+        width: 50%;
     }
     footer {
         flex-direction: row;
