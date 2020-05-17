@@ -28,7 +28,82 @@
             header("Location: profile.php");
             exit;
         }
-        
+    }
+
+    if(isset($_POST["btn_enviar_entrega"])){
+        $transaccion = obtenerTransaccion($idAnunTrans,$idUserTrans,$url_const);
+
+        if(isset($transaccion['transaccion'])){
+            if($transaccion['transaccion']->codigo_anuncio_inicio != $_POST["codigoEntrega"]){
+
+                if(!isset($_SESSION["mensaje_error"])){
+                    $_SESSION["mensaje_error"] = "Código incorrecto";
+                }
+
+                if(!isset($_SESSION["errorEntrega"])){
+                    $_SESSION["errorEntrega"] = 1;
+                } else {
+                    if((int)$_SESSION["errorEntrega"]<2){
+                        $_SESSION["errorEntrega"] = (int)$_SESSION["errorEntrega"] + 1;
+                    } else {
+                        unset($_SESSION["errorEntrega"]);
+                        /*
+                        $tran_cancelada = cancelarTransaccion($idAnunTrans,$idUserTrans,$url_const);
+                        if(isset($tran_cancelada)){
+                            $_SESSION["cancelada"] = "Códigos incorrectos, la transacción fue cancelada.";
+                            $_SESSION["idTrans"] = "borrada";
+                            header("Location: profile.php");
+                            exit;
+                            
+                        }
+                        */
+                    }
+                }
+            } else {
+                echo "estabien";
+                if(isset($_SESSION["errorEntrega"])){
+                    unset($_SESSION["errorEntrega"]);
+                }
+            }
+        }
+
+    }
+
+    if(isset($_POST["btn_enviar_recogida"])){
+        $transaccion = obtenerTransaccion($idAnunTrans,$idUserTrans,$url_const);
+
+        if(isset($transaccion['transaccion'])){
+            if($transaccion['transaccion']->codigo_anuncio_fin != $_POST["codigoRecogida"]){
+
+                if(!isset($_SESSION["mensaje_error"])){
+                    $_SESSION["mensaje_error"] = "Código incorrecto";
+                }
+
+                if(!isset($_SESSION["errorRecogida"])){
+                    $_SESSION["errorRecogida"] = 1;
+                } else {
+                    if((int)$_SESSION["errorRecogida"]<2){
+                        $_SESSION["errorRecogida"] = (int)$_SESSION["errorRecogida"] + 1;
+                    } else {
+                        unset($_SESSION["errorRecogida"]);
+                        /*
+                        $tran_cancelada = cancelarTransaccion($idAnunTrans,$idUserTrans,$url_const);
+                        if(isset($tran_cancelada)){
+                            $_SESSION["cancelada"] = "Códigos incorrectos, la transacción fue cancelada.";
+                            $_SESSION["idTrans"] = "borrada";
+                            header("Location: profile.php");
+                            exit;
+                            
+                        }
+                        */
+                    }
+                }
+            } else {
+                if(isset($_SESSION["errorRecogida"])){
+                    unset($_SESSION["errorRecogida"]);
+                }
+            }
+        }
 
     }
 
@@ -82,6 +157,12 @@
             ?>
         </div>        
     </header>
+    <?php
+        if(isset($_SESSION["mensaje_error"])){
+            echo "<p class='mensaje_cancel'>".$_SESSION['mensaje_error']."</p>";
+            unset($_SESSION["mensaje_error"]);
+        }
+    ?>
     <section>
         <div class="cuerpo_tran">
             <div class="titular_trans">
@@ -128,36 +209,65 @@
                 <?php
                     if($_SESSION["usuario"]->idUsuario != $idUserTrans){
                         echo "<div class='opciones_codigo'>";
-                            echo "<a href='#modalAnuncios' rel='modal:open'><button>Solicitar código de entrega</button></a>";
-                            echo "<div id='modalAnuncios' class='modal'>";
-                                echo "<p>Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado</p>";
-                                echo "<button type='submit' class='btn_solicitud_iniciar' >Iniciar sesión / Registrarme</button>";
+                            echo "<a href='#modalAnuncios1' rel='modal:open'><button>Solicitar código de entrega</button></a>";
+                            echo "<div id='modalAnuncios1' class='modal'>";
+                                echo "<p>El código de entrega es <strong>".$transaccion['transaccion']->codigo_anuncio_inicio."</strong>.</p>";
                             echo "</div>";
                         echo "</div>";
                     } else {
                         echo "<div  class='opciones_codigo'>";
-                            echo "<a href='#modalAnuncios' rel='modal:open'><button>Solicitar código de recogida</button></a>";
-                            echo "<div id='modalAnuncios' class='modal'>";
-                                echo "<p>Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado</p>";
-                                echo "<button type='submit' class='btn_solicitud_iniciar' >Iniciar sesión / Registrarme</button>";
+                            echo "<a href='#modalAnuncios1' rel='modal:open'><button>Solicitar código de recogida</button></a>";
+                            echo "<div id='modalAnuncios1' class='modal'>";
+                            echo "<p>El código de recogida es <strong>".$transaccion['transaccion']->codigo_anuncio_fin."</strong>.</p>";
                             echo "</div>";
                         echo "</div>";
                     }
                 ?>
             </div>
             <div  class='opciones_codigo'>
-            <a href='#modalAnuncios' rel='modal:open'><button>Enviar código de entrega</button></a>
-                <div id='modalAnuncios' class='modal'>
-                    <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>
-                    <button type="submit" class="btn_solicitud_iniciar" >Iniciar sesión / Registrarme</button>
+            <a href='#modalAnuncios2' rel='modal:open'><button>Enviar código de entrega</button></a>
+                <div id='modalAnuncios2' class='modal'>
+                    <form action="transac.php" method="post">
+                        <div>
+                            <label for="codigoEntrega">Introduzca el código de <strong>entrega</strong>:</label>
+                        </div>
+                        <div>
+                            <input required type="number" name="codigoEntrega" id="codigoEntrega"/>
+                            <br><span style='color:red'><?php
+                                if(isset($_POST["btn_enviar_entrega"])){
+                                    if(isset($_SESSION["errorEntrega"])){
+                                        echo "Código incorrecto. Tiene ". (3-(int)$_SESSION["errorEntrega"])." intentos más.";
+                                    }
+                                }
+                            ?></span>
+                        </div>
+                        <div>
+                            <button type="submit" name="btn_enviar_entrega" id="btn_enviar_entrega">Enviar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div  class='opciones_codigo'>
-            <a href='#modalAnuncios' rel='modal:open'><button>Enviar código de recogida</button></a>
-            <div id='modalAnuncios' class='modal'>
-                    <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>
-                    <button type="submit" class="btn_solicitud_iniciar" >Iniciar sesión / Registrarme</button>
-                </div>
+            <a href='#modalAnuncios3' rel='modal:open'><button>Enviar código de recogida</button></a>
+            <div id='modalAnuncios3' class='modal'>
+                <form action="transac.php" method="post">
+                    <div>
+                        <label for="codigoRecogida">Introduzca el código de <strong>recogida</strong>:</label>
+                    </div>
+                    <div>
+                        <input required type="number" name="codigoRecogida" id="codigoRecogida"/>
+                        <br><span style='color:red'><?php
+                            if(isset($_POST["btn_enviar_recogida"])){
+                                if(isset($_SESSION["errorRecogida"])){
+                                    echo "Código incorrecto. Tiene ". (3-(int)$_SESSION["errorRecogida"])." intentos más.";
+                                }
+                            }
+                        ?></span>
+                    </div>
+                    <div>
+                        <button type="submit" name="btn_enviar_recogida" id="btn_enviar_recogida">Enviar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
