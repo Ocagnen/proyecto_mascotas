@@ -64,6 +64,10 @@ $app->get('/cancelarTransaccion/:idAnuncio/:idUsuario', function($idAnuncio,$idU
     echo json_encode(cancelarTransaccion($idAnuncio,$idUsuario),JSON_FORCE_OBJECT);
 });
 
+$app->post('/actualizarTransaccion', function(){
+    echo json_encode(actualizarTransaccion($_POST["idAnuncio"],$_POST["idUsuario"],$_POST["tipoCod"],$_POST["tipoUsuario"]),JSON_FORCE_OBJECT);
+});
+
 
 
 $app->run();

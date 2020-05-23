@@ -189,6 +189,16 @@
         }       
     }
 
+    function actualizarTransaccion($idAnuncio,$idUsuario,$tipoCod,$tipoUsuario,$url){
+        $datosInsertar=Array("idUsuario"=>$idUsuario,"idAnuncio"=>$idAnuncio,"tipoCod"=>$tipoCod,"tipoUsuario"=>$tipoUsuario);
+        $obj = consumir_servicio_REST($url."actualizarTransaccion","POST",$datosInsertar);
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);        
+        } else {
+            return array ("mensaje"=>$obj->mensaje);
+        }       
+    }
+
     function calcularTarifaMin($tipo_mascota, $fecha_entrega,$fecha_devolucion, $hora_entrega, $hora_devolucion){
         
         $date1 =  date_create($fecha_entrega);

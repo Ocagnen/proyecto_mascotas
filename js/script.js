@@ -273,7 +273,7 @@ function cargarTransacciones(idUsuario) {
             if (data.mensaje) {
                 $("#modalTransacc > div").html("<p>No tiene transacciones</p>");
             } else if (data.mensaje_error) {
-                $("#modalTransacc > div").html("<p>Error al aceptar la solicitud</p>");
+                $("#modalTransacc > div").html("<p>Error en el servidor</p>");
             } else {
                 var output = "";
                 $.each(data.transacciones, function(key, value) {

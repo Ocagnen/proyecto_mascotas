@@ -66,6 +66,12 @@
                 if(!isset($_SESSION["codigo_correcto"])){
                     $_SESSION["codigo_correcto"] = "Código correcto.";
                 }
+                if($_SESSION["usuario"]->idUsuario == $idUserTrans){
+                    $tipoUsuario = "solicitante" ;
+                } else {
+                    $tipoUsuario = "anunciante";
+                }
+                    actualizarTransaccion($idAnunTrans,$idUserTrans,"entrega",$tipoUsuario,$url_const);
             }
         }
 
@@ -107,7 +113,12 @@
                 if(!isset($_SESSION["codigo_correcto"])){
                     $_SESSION["codigo_correcto"] = "Código correcto.";
                 }
-            
+                if($_SESSION["usuario"]->idUsuario == $idUserTrans){
+                    $tipoUsuario = "solicitante" ;
+                } else {
+                    $tipoUsuario = "anunciante";
+                }
+                actualizarTransaccion($idAnunTrans,$idUserTrans,"recogida",$tipoUsuario,$url_const);            
             }
         }
 
@@ -237,6 +248,23 @@
             </div>
             <div  class='opciones_codigo'>
             <a href='#modalAnuncios2' rel='modal:open'><button>Enviar código de entrega</button></a>
+            <?php
+                $transaccion = obtenerTransaccion($idAnunTrans,$idUserTrans,$url_const);
+                $escribirForm1 = true;
+                if(isset($transaccion['transaccion'])){
+                    if($_SESSION["usuario"]->idUsuario == $idUserTrans){
+                        if($transaccion['transaccion']->codigo_entrega_solicitante == 1){
+                            $escribirForm1 = false;
+                        }
+                    } else {
+                        if($transaccion['transaccion']->codigo_entrega_anunciante == 1){
+                            $escribirForm1 = false;
+                        }
+                    }
+                }
+                if($escribirForm1) {
+
+            ?>
                 <div id='modalAnuncios2' class='modal'>
                     <form action="transac.php" method="post">
                         <div>
@@ -257,9 +285,36 @@
                         </div>
                     </form>
                 </div>
+                <?php
+                } else {
+                    ?>
+                    <div id='modalAnuncios2' class='modal'>
+                        <p>Su código ya fue introducido.</p>
+                    </div>
+
+                    <?php
+                }
+                ?>
             </div>
             <div  class='opciones_codigo'>
             <a href='#modalAnuncios3' rel='modal:open'><button>Enviar código de recogida</button></a>
+            <?php
+                $transaccion = obtenerTransaccion($idAnunTrans,$idUserTrans,$url_const);
+                $escribirForm2 = true;
+                if(isset($transaccion['transaccion'])){
+                    if($_SESSION["usuario"]->idUsuario == $idUserTrans){
+                        if($transaccion['transaccion']->codigo_recogida_solicitante == 1){
+                            $escribirForm2 = false;
+                        }
+                    } else {
+                        if($transaccion['transaccion']->codigo_recogida_anunciante == 1){
+                            $escribirForm2 = false;
+                        }
+                    }
+                }
+                if($escribirForm2) {
+
+            ?>
             <div id='modalAnuncios3' class='modal'>
                 <form action="transac.php" method="post">
                     <div>
@@ -280,6 +335,16 @@
                     </div>
                 </form>
             </div>
+            <?php
+                } else {
+                    ?>
+                    <div id='modalAnuncios3' class='modal'>
+                        <p>Su código ya fue introducido.</p>
+                    </div>
+
+                    <?php
+                }
+                ?>
         </div>
     </section>
     <footer>

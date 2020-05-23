@@ -260,7 +260,7 @@ function obtenerTransacciones($idUsuario){
         return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
     } else {
         mysqli_set_charset($con,"utf8");
-        $consulta = "select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where idUsuarioAutor = $idUsuario and cancelada = 0 and transferida = 0";        
+        $consulta = "(select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where idUsuarioAutor = $idUsuario and cancelada = 0 and transferida = 0 ) union (select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where transacciones.idUsuario = $idUsuario and cancelada = 0 and transferida = 0 )";        
         if($resultado=mysqli_query($con,$consulta)){
             if(mysqli_num_rows($resultado)>0){
                 $transacciones = Array();
@@ -364,6 +364,36 @@ function cancelarTransaccion($idAnuncio,$idUsuario){
             borrarSolicitud($idUsuario,$idAnuncio);
             mysqli_close($con);
             return array("exito"=>"La transacción fue cancelada con éxito.");            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+    }
+}
+
+function actualizarTransaccion($idAnuncio,$idUsuario,$tipoCod,$tipoUsuario){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        if($tipoCod == "entrega"){
+            if($tipoUsuario == "solicitante"){
+                $consulta = "update transacciones set codigo_entrega_solicitante = 1 where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
+            } else {
+                $consulta = "update transacciones set codigo_entrega_anunciante = 1 where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
+            }
+        } else {
+            if($tipoUsuario == "solicitante"){
+                $consulta = "update transacciones set codigo_recogida_solicitante = 1 where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
+            } else {
+                $consulta = "update transacciones set codigo_recogida_anunciante = 1 where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
+            }
+        }
+        if($resultado=mysqli_query($con,$consulta)){ 
+            mysqli_close($con);
+            return array("mensaje"=>"La transacción fue actualizada con éxito.");            
         } else {
             $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
             mysqli_close($con);
