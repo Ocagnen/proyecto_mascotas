@@ -235,6 +235,10 @@
                                 echo "<div class='container_tabla'>";
                                 echo "<table>";
                                     echo "<tr>";
+                                        echo "<th>Título</th>";
+                                        echo "<td><strong>".strtoupper($value2->titulo)."</strong></td>";
+                                    echo "</tr>";
+                                    echo "<tr>";
                                         echo "<th>Fecha de entrega</th>";
                                         echo "<td>".date_format(date_create($value2->fecha_entrega),"d/m/Y")." a las ".date_format(date_create($value2->hora_entrega),'H:i')."</td>";
                                     echo "</tr>";
