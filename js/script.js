@@ -273,7 +273,7 @@ function actualizarComent(idUsuario, idAnuncio) {
             if (data.exito) {
 
                 $(divSol).html("Comentario rechazado");
-                $(divSol).siblings('div').html("");
+                $(divSol).siblings('.container_eleccion').html("");
 
             } else {
                 console.log("Error");
@@ -288,6 +288,26 @@ function actualizarComent(idUsuario, idAnuncio) {
 
     return false;
 
+}
+
+function cargarComentario(idUsuario, idAnuncio) {
+    $("#modalTransacc > div").html("");
+    output = "<div class='container_valorar'>";
+    output += "<form method='post' action='profile.php'>";
+    output += "<div class='cuerpo_com'><textarea required name='comentario_valor' placeholder='Escribe tu comentario aquí...'></textarea></div>";
+    output += "<div class='valoracion_com'>";
+    output += "<select name='valoracion_valor'>";
+    output += "<option value='1'>1</option>";
+    output += "<option value='2'>2</option>";
+    output += "<option value='3'>3</option>";
+    output += "<option value='4'>4</option>";
+    output += "<option value='5'>5</option>";
+    output += "</select>";
+    output += "<label for='valor'> Valoración <img width='15px' src='img/star2.svg' alt='valoracion positiva'></div>";
+    output += "<div class='btn_comentar'><button type='submit' name='btn_comentario_enviar' value='" + idUsuario + "." + idAnuncio + "'>Comentar</button></div>";
+    output += "</form></div>";
+    $("#modalTransacc > div").html(output);
+    console.log(output);
 }
 
 function cargarTransacciones(idUsuario) {
@@ -308,7 +328,7 @@ function cargarTransacciones(idUsuario) {
                         output += "<p>Transacción <strong>CANCELADA</strong> para el anuncio " + value["titulo"] + "</p>";
                         output += "</div>";
                         output += "</div><form method='post' action='profile.php'>";
-                        output += "<p class='parrafo_eleccion' id='parrafo" + value['idUsuario'] + value['idAnuncio'] + "'>¿Comentar perfil de usuario?<div class='container_eleccion'><button type='submit' name ='btn_comentar_si' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Sí</button>";
+                        output += "<p class='parrafo_eleccion' id='parrafo" + value['idUsuario'] + value['idAnuncio'] + "'>¿Comentar perfil de usuario?<div class='container_eleccion'><button type='button' name ='btn_comentar_si' class='btn_opcion_com' onclick='cargarComentario(" + value['idUsuario'] + "," + value['idAnuncio'] + ")'  >Sí</button>";
                         output += "<button type='button' name ='btn_comentar_no' class='btn_opcion_com' onclick='actualizarComent(" + value['idUsuario'] + "," + value['idAnuncio'] + ")' >No</div></button></p>";
                         output += "</form></div>";
                     } else {
@@ -318,13 +338,13 @@ function cargarTransacciones(idUsuario) {
                         output += "<p>Transacción para el anuncio " + value["titulo"] + "</p>";
                         output += "</div>";
                         output += "</div><form method='post' action='profile.php'>";
-                        output += "<button type='submit' name ='btn_trans_edit' class='btn_trans_edit' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Gestionar</button>";
+                        output += "<button type='submit' name ='btn_trans_edit' class='btn_trans_edit' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Gestionar</button></form>";
 
                         if (value["comentada"] == "0") {
-                            output += "<p class='parrafo_eleccion' id='parrafo" + value['idUsuario'] + value['idAnuncio'] + "'>¿Comentar perfil de usuario?<div class='container_eleccion'><button type='submit' name ='btn_comentar_si' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Sí</button>";
+                            output += "<p class='parrafo_eleccion' id='parrafo" + value['idUsuario'] + value['idAnuncio'] + "'>¿Comentar perfil de usuario?<div class='container_eleccion'><button type='button' name ='btn_comentar_si' class='btn_opcion_com' onclick='cargarComentario(" + value['idUsuario'] + "," + value['idAnuncio'] + ")' >Sí</button>";
                             output += "<button type='button' name ='btn_comentar_no' class='btn_opcion_com' onclick='actualizarComent(" + value['idUsuario'] + "," + value['idAnuncio'] + ")' >No</button></div></p>";
                         }
-                        output += "</form></div>";
+                        output += "</div>";
                     }
 
                 });

@@ -351,6 +351,40 @@ header div {
     color: white;
 }
 
+.cuerpo_com textarea {
+    width: 100%;
+    height: 15vh;
+    border: 2px solid #78ed99;
+    color: rgb(2, 85, 2);
+    border-radius: 6px;
+    padding: 1%;
+}
+
+.cuerpo_com {
+    margin: 5% 0;
+}
+
+.btn_comentar {
+    width: 100%;
+    margin: 6% 0;
+}
+
+.btn_comentar button {
+    display: block;
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+    padding: 1%;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    font-weight: 800;
+    background-color: green;
+    border-radius: 6px;
+    font-size: 1em;
+    color: white;
+}
+
 footer {
     border-top: 1px solid black;
     background-color: #78ed99;
@@ -576,6 +610,9 @@ footer {
     }
     .btn_opcion_com {
         width: 20%;
+    }
+    .btn_comentar button {
+        width: 45%;
     }
     footer {
         flex-direction: row;
