@@ -180,6 +180,15 @@
         }
     }
 
+    function actualizarTransaccionComentario($idAnuncio,$idUsuario,$url){
+        $obj = consumir_servicio_REST($url."actualizarTransaccionComentario/".$idAnuncio."/".$idUsuario,"GET");
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);        
+        } else {
+            return array ("exito"=>$obj->exito);
+        }       
+    }
+
     function cancelarTransaccion($idAnuncio,$idUsuario,$url){
         $obj = consumir_servicio_REST($url."cancelarTransaccion/".$idAnuncio."/".$idUsuario,"GET");
         if(isset($obj->mensaje_error)){
@@ -188,6 +197,7 @@
             return array ("exito"=>$obj->exito);
         }       
     }
+
 
     function actualizarTransaccion($idAnuncio,$idUsuario,$tipoCod,$tipoUsuario,$url){
         $datosInsertar=Array("idUsuario"=>$idUsuario,"idAnuncio"=>$idAnuncio,"tipoCod"=>$tipoCod,"tipoUsuario"=>$tipoUsuario);
@@ -198,6 +208,7 @@
             return array ("mensaje"=>$obj->mensaje);
         }       
     }
+
 
     function calcularTarifaMin($tipo_mascota, $fecha_entrega,$fecha_devolucion, $hora_entrega, $hora_devolucion){
         

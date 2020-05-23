@@ -68,7 +68,9 @@ $app->post('/actualizarTransaccion', function(){
     echo json_encode(actualizarTransaccion($_POST["idAnuncio"],$_POST["idUsuario"],$_POST["tipoCod"],$_POST["tipoUsuario"]),JSON_FORCE_OBJECT);
 });
 
-
+$app->get('/actualizarTransaccionComentario/:idAnuncio/:idUsuario', function($idAnuncio,$idUsuario){
+    echo json_encode(actualizarTransaccionComentario($idAnuncio,$idUsuario),JSON_FORCE_OBJECT);
+});
 
 $app->run();
 

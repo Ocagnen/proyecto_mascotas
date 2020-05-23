@@ -39,6 +39,13 @@
         exit;
     }
 
+    if(isset($_POST["btn_comentar_no"])){
+        $arrayTrans = explode(".",$_POST["btn_comentar_no"]);
+        $idAnunTrans = $arrayTrans[1];
+        $idUserTrans = $arrayTrans[0];
+        actualizarTransaccionComentario($idAnunTrans,$idUserTrans,$url_const);
+    }
+
 ?>
 
 <!DOCTYPE html>

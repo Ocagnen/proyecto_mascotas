@@ -266,6 +266,30 @@ function aceptarSolicitud(idAnuncio, idUsuario, tarifa) {
 
 }
 
+function actualizarComent(idUsuario, idAnuncio) {
+    var divSol = '#parrafo' + idUsuario + idAnuncio;
+    $.getJSON(url_const + 'actualizarTransaccionComentario/' + idAnuncio + '/' + idUsuario)
+        .done(function(data) {
+            if (data.exito) {
+
+                $(divSol).html("Comentario rechazado");
+                $(divSol).siblings('div').html("");
+
+            } else {
+                console.log("Error");
+            }
+
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            if (console && console.log) {
+                console.log("La solicitud a fallado: " + textStatus);
+            }
+        });
+
+    return false;
+
+}
+
 function cargarTransacciones(idUsuario) {
     $("#modalTransacc > div").html("");
     $.getJSON(url_const + 'obtenerTransacciones/' + idUsuario)
@@ -284,8 +308,8 @@ function cargarTransacciones(idUsuario) {
                         output += "<p>Transacción <strong>CANCELADA</strong> para el anuncio " + value["titulo"] + "</p>";
                         output += "</div>";
                         output += "</div><form method='post' action='profile.php'>";
-                        output += "<p class='parrafo_eleccion'>¿Comentar pefil de usuario?<div class='container_eleccion'><button type='submit' name ='btn_comentar_si' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Sí</button>";
-                        output += "<button type='submit' name ='btn_comentar_no' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >No</div></button></p>";
+                        output += "<p class='parrafo_eleccion' id='parrafo" + value['idUsuario'] + value['idAnuncio'] + "'>¿Comentar perfil de usuario?<div class='container_eleccion'><button type='submit' name ='btn_comentar_si' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Sí</button>";
+                        output += "<button type='button' name ='btn_comentar_no' class='btn_opcion_com' onclick='actualizarComent(" + value['idUsuario'] + "," + value['idAnuncio'] + ")' >No</div></button></p>";
                         output += "</form></div>";
                     } else {
                         output += "<div class='solicitudes_container'>";
@@ -294,10 +318,11 @@ function cargarTransacciones(idUsuario) {
                         output += "<p>Transacción para el anuncio " + value["titulo"] + "</p>";
                         output += "</div>";
                         output += "</div><form method='post' action='profile.php'>";
+                        output += "<button type='submit' name ='btn_trans_edit' class='btn_trans_edit' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Gestionar</button>";
+
                         if (value["comentada"] == "0") {
-                            output += "<button type='submit' name ='btn_trans_edit' class='btn_trans_edit' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Gestionar</button>";
-                            output += "<p class='parrafo_eleccion'>¿Comentar pefil de usuario?<div class='container_eleccion'><button type='submit' name ='btn_comentar_si' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Sí</button>";
-                            output += "<button type='submit' name ='btn_comentar_no' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >No</button></div></p>";
+                            output += "<p class='parrafo_eleccion' id='parrafo" + value['idUsuario'] + value['idAnuncio'] + "'>¿Comentar perfil de usuario?<div class='container_eleccion'><button type='submit' name ='btn_comentar_si' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Sí</button>";
+                            output += "<button type='button' name ='btn_comentar_no' class='btn_opcion_com' onclick='actualizarComent(" + value['idUsuario'] + "," + value['idAnuncio'] + ")' >No</button></div></p>";
                         }
                         output += "</form></div>";
                     }

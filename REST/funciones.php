@@ -372,6 +372,25 @@ function cancelarTransaccion($idAnuncio,$idUsuario){
     }
 }
 
+function actualizarTransaccionComentario($idAnuncio,$idUsuario){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        $consulta = "update transacciones set comentada = 1 where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
+        if($resultado=mysqli_query($con,$consulta)){ 
+            borrarSolicitud($idUsuario,$idAnuncio);
+            mysqli_close($con);
+            return array("exito"=>"La transacción fue actualizada con éxito.");            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+    }
+}
+
 function actualizarTransaccion($idAnuncio,$idUsuario,$tipoCod,$tipoUsuario){
     $con = conectar();
     if(!$con){
