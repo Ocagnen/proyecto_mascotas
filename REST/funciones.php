@@ -260,7 +260,7 @@ function obtenerTransacciones($idUsuario){
         return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
     } else {
         mysqli_set_charset($con,"utf8");
-        $consulta = "(select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where idUsuarioAutor = $idUsuario and cancelada = 0 and transferida = 0 ) union (select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where transacciones.idUsuario = $idUsuario and cancelada = 0 and transferida = 0 )";        
+        $consulta = "(select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where idUsuarioAutor = $idUsuario and cancelada = 0 and transferida = 0 ) union (select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where transacciones.idUsuario = $idUsuario and cancelada = 0 and transferida = 0 ) union (select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where transacciones.idUsuario = $idUsuario and cancelada = 1 and comentada = 0 ) union (select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where idUsuarioAutor = $idUsuario and cancelada = 1 and comentada = 0 )";        
         if($resultado=mysqli_query($con,$consulta)){
             if(mysqli_num_rows($resultado)>0){
                 $transacciones = Array();

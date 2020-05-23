@@ -277,14 +277,31 @@ function cargarTransacciones(idUsuario) {
             } else {
                 var output = "";
                 $.each(data.transacciones, function(key, value) {
-                    output += "<div class='solicitudes_container'>";
-                    output += "<div class='cuerpo_sol'>";
-                    output += "<div class='nombre_trans'>";
-                    output += "<p>Transacción para el anuncio " + value["titulo"] + "</p>";
-                    output += "</div>";
-                    output += "</div><form method='post' action='profile.php'>";
-                    output += "<button type='submit' name ='btn_trans_edit' class='btn_trans_edit' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Gestionar</button>";
-                    output += "</form></div>";
+                    if (value["cancelada"] == "1") {
+                        output += "<div class='solicitudes_container'>";
+                        output += "<div class='cuerpo_sol'>";
+                        output += "<div class='nombre_trans'>";
+                        output += "<p>Transacción <strong>CANCELADA</strong> para el anuncio " + value["titulo"] + "</p>";
+                        output += "</div>";
+                        output += "</div><form method='post' action='profile.php'>";
+                        output += "<p class='parrafo_eleccion'>¿Comentar pefil de usuario?<div class='container_eleccion'><button type='submit' name ='btn_comentar_si' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Sí</button>";
+                        output += "<button type='submit' name ='btn_comentar_no' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >No</div></button></p>";
+                        output += "</form></div>";
+                    } else {
+                        output += "<div class='solicitudes_container'>";
+                        output += "<div class='cuerpo_sol'>";
+                        output += "<div class='nombre_trans'>";
+                        output += "<p>Transacción para el anuncio " + value["titulo"] + "</p>";
+                        output += "</div>";
+                        output += "</div><form method='post' action='profile.php'>";
+                        if (value["comentada"] == "0") {
+                            output += "<button type='submit' name ='btn_trans_edit' class='btn_trans_edit' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Gestionar</button>";
+                            output += "<p class='parrafo_eleccion'>¿Comentar pefil de usuario?<div class='container_eleccion'><button type='submit' name ='btn_comentar_si' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Sí</button>";
+                            output += "<button type='submit' name ='btn_comentar_no' class='btn_opcion_com' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >No</button></div></p>";
+                        }
+                        output += "</form></div>";
+                    }
+
                 });
 
                 $("#modalTransacc > div").html(output);

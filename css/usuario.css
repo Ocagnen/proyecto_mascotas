@@ -326,6 +326,31 @@ header div {
     border-radius: 6px;
 }
 
+.container_eleccion {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.parrafo_eleccion {
+    text-align: center !important;
+}
+
+.btn_opcion_com {
+    width: 40%;
+    margin: 0 3%;
+    padding: 1%;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    font-weight: 800;
+    background-color: green;
+    border-radius: 6px;
+    font-size: 1em;
+    color: white;
+}
+
 footer {
     border-top: 1px solid black;
     background-color: #78ed99;
@@ -409,6 +434,9 @@ footer {
     }
     .acep_sol {
         width: 40%;
+    }
+    .btn_opcion_com {
+        width: 30%;
     }
     footer {
         flex-direction: row;
@@ -545,6 +573,9 @@ footer {
     }
     .mensaje_cancel {
         width: 30%;
+    }
+    .btn_opcion_com {
+        width: 20%;
     }
     footer {
         flex-direction: row;
