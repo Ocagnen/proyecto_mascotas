@@ -43,7 +43,11 @@
         $arrayTrans = explode(".",$_POST["btn_comentar_no"]);
         $idAnunTrans = $arrayTrans[1];
         $idUserTrans = $arrayTrans[0];
-        actualizarTransaccionComentario($idAnunTrans,$idUserTrans,$url_const);
+        if($idUserTrans == $_SESSION["usuario"]->idUsuario){
+            actualizarTransaccionComentario2($idAnunTrans,$idUserTrans,$url_const);
+        } else {
+            actualizarTransaccionComentario1($idAnunTrans,$idUserTrans,$url_const);
+        }
     }
 
     if(isset($_POST["btn_comentario_enviar"])){
@@ -65,7 +69,11 @@
         }
 
         $valoracion = crearValoracion($_POST["valoracion_valor"],$_POST["comentario_valor"],$_SESSION["usuario"]->idUsuario,$usuarioLector,$url_const);
-        actualizarTransaccionComentario($idAnunValor,$idUserValor,$url_const);
+        if($idUserTrans == $_SESSION["usuario"]->idUsuario){
+            actualizarTransaccionComentario2($idAnunTrans,$idUserTrans,$url_const);
+        } else {
+            actualizarTransaccionComentario1($idAnunTrans,$idUserTrans,$url_const);
+        }
         $_SESSION['cancelada'] = "Valoración enviada con éxito";
     }
 
@@ -209,7 +217,7 @@
                     </div>
                 </div>
                 <div class='btn_menu'>
-                <a href='#modalTransacc' rel='modal:open'><button type='button' onclick='cargarTransacciones(<?php echo $_SESSION["usuario"]->idUsuario;?>);'>Transacciones</button></a>
+                <a href='#modalTransacc' rel='modal:open'><button type='button' onclick='cargarTransacciones1(<?php echo $_SESSION["usuario"]->idUsuario;?>);'>Transacciones</button></a>
                     <div id='modalTransacc' class='modal'>
                         <div>
 

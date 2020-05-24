@@ -260,7 +260,7 @@ function obtenerTransacciones($idUsuario){
         return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
     } else {
         mysqli_set_charset($con,"utf8");
-        $consulta = "(select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where idUsuarioAutor = $idUsuario and cancelada = 0 and transferida = 0 ) union (select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where transacciones.idUsuario = $idUsuario and cancelada = 0 and transferida = 0 ) union (select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where transacciones.idUsuario = $idUsuario and cancelada = 1 and comentada = 0 ) union (select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where idUsuarioAutor = $idUsuario and cancelada = 1 and comentada = 0 )";        
+        $consulta = "(select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where idUsuarioAutor = $idUsuario and cancelada = 0 and transferida = 0 ) union (select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where transacciones.idUsuario = $idUsuario and cancelada = 0 and transferida = 0 ) union (select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where transacciones.idUsuario = $idUsuario and cancelada = 1 and (comentadaAnunciante = 0 or comentadaSolicitante=0)) union (select * from transacciones inner join anuncios on transacciones.idAnuncio = anuncios.idAnuncio where idUsuarioAutor = $idUsuario and cancelada = 1 and (comentadaAnunciante = 0 or comentadaSolicitante=0) )";        
         if($resultado=mysqli_query($con,$consulta)){
             if(mysqli_num_rows($resultado)>0){
                 $transacciones = Array();
@@ -371,13 +371,32 @@ function cancelarTransaccion($idAnuncio,$idUsuario){
     }
 }
 
-function actualizarTransaccionComentario($idAnuncio,$idUsuario){
+function actualizarTransaccionComentario1($idAnuncio,$idUsuario){
     $con = conectar();
     if(!$con){
         return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
     } else {
         mysqli_set_charset($con,"utf8");
-        $consulta = "update transacciones set comentada = 1 where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
+        $consulta = "update transacciones set comentadaAnunciante = 1 where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
+        if($resultado=mysqli_query($con,$consulta)){ 
+            borrarSolicitud($idUsuario,$idAnuncio);
+            mysqli_close($con);
+            return array("exito"=>"La transacción fue actualizada con éxito.");            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+    }
+}
+
+function actualizarTransaccionComentario2($idAnuncio,$idUsuario){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        $consulta = "update transacciones set comentadaSolicitante = 1 where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
         if($resultado=mysqli_query($con,$consulta)){ 
             borrarSolicitud($idUsuario,$idAnuncio);
             mysqli_close($con);

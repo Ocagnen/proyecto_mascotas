@@ -266,9 +266,33 @@ function aceptarSolicitud(idAnuncio, idUsuario, tarifa) {
 
 }
 
-function actualizarComent(idUsuario, idAnuncio) {
+function actualizarComent1(idUsuario, idAnuncio) {
     var divSol = '#parrafo' + idUsuario + idAnuncio;
-    $.getJSON(url_const + 'actualizarTransaccionComentario/' + idAnuncio + '/' + idUsuario)
+    $.getJSON(url_const + 'actualizarTransaccionComentario1/' + idAnuncio + '/' + idUsuario)
+        .done(function(data) {
+            if (data.exito) {
+
+                $(divSol).html("Comentario rechazado");
+                $(divSol).siblings('.container_eleccion').html("");
+
+            } else {
+                console.log("Error");
+            }
+
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            if (console && console.log) {
+                console.log("La solicitud a fallado: " + textStatus);
+            }
+        });
+
+    return false;
+
+}
+
+function actualizarComent2(idUsuario, idAnuncio) {
+    var divSol = '#parrafo' + idUsuario + idAnuncio;
+    $.getJSON(url_const + 'actualizarTransaccionComentario2/' + idAnuncio + '/' + idUsuario)
         .done(function(data) {
             if (data.exito) {
 
@@ -310,7 +334,7 @@ function cargarComentario(idUsuario, idAnuncio) {
     console.log(output);
 }
 
-function cargarTransacciones(idUsuario) {
+function cargarTransacciones1(idUsuario) {
     $("#modalTransacc > div").html("");
     $.getJSON(url_const + 'obtenerTransacciones/' + idUsuario)
         .done(function(data) {
@@ -321,16 +345,27 @@ function cargarTransacciones(idUsuario) {
             } else {
                 var output = "";
                 $.each(data.transacciones, function(key, value) {
+                    if (idUsuario != value['idUsuario']) {
+                        var sentencia = "comentadaAnunciante";
+                        var tipoclic = "actualizarComent1";
+                    } else {
+                        var sentencia = "comentadaSolicitante";
+                        var tipoclic = "actualizarComent2";
+
+                    }
                     if (value["cancelada"] == "1") {
-                        output += "<div class='solicitudes_container'>";
-                        output += "<div class='cuerpo_sol'>";
-                        output += "<div class='nombre_trans'>";
-                        output += "<p>Transacción <strong>CANCELADA</strong> para el anuncio " + value["titulo"] + "</p>";
-                        output += "</div>";
-                        output += "</div><form method='post' action='profile.php'>";
-                        output += "<p class='parrafo_eleccion' id='parrafo" + value['idUsuario'] + value['idAnuncio'] + "'>¿Comentar perfil de usuario?<div class='container_eleccion'><button type='button' name ='btn_comentar_si' class='btn_opcion_com' onclick='cargarComentario(" + value['idUsuario'] + "," + value['idAnuncio'] + ")'  >Sí</button>";
-                        output += "<button type='button' name ='btn_comentar_no' class='btn_opcion_com' onclick='actualizarComent(" + value['idUsuario'] + "," + value['idAnuncio'] + ")' >No</div></button></p>";
-                        output += "</form></div>";
+                        if (value[sentencia] == "0") {
+                            output += "<div class='solicitudes_container'>";
+                            output += "<div class='cuerpo_sol'>";
+                            output += "<div class='nombre_trans'>";
+                            output += "<p>Transacción <strong>CANCELADA</strong> para el anuncio " + value["titulo"] + "</p>";
+                            output += "</div>";
+                            output += "</div><form method='post' action='profile.php'>";
+                            output += "<p class='parrafo_eleccion' id='parrafo" + value['idUsuario'] + value['idAnuncio'] + "'>¿Comentar perfil de usuario?<div class='container_eleccion'><button type='button' name ='btn_comentar_si' class='btn_opcion_com' onclick='cargarComentario(" + value['idUsuario'] + "," + value['idAnuncio'] + ")'  >Sí</button>";
+                            output += "<button type='button' name ='btn_comentar_no' class='btn_opcion_com' onclick='" + tipoclic + "(" + value['idUsuario'] + "," + value['idAnuncio'] + ")' >No</div></button></p>";
+                            output += "</form></div>";
+                        }
+
                     } else {
                         output += "<div class='solicitudes_container'>";
                         output += "<div class='cuerpo_sol'>";
@@ -340,9 +375,9 @@ function cargarTransacciones(idUsuario) {
                         output += "</div><form method='post' action='profile.php'>";
                         output += "<button type='submit' name ='btn_trans_edit' class='btn_trans_edit' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Gestionar</button></form>";
 
-                        if (value["comentada"] == "0") {
+                        if (value[sentencia] == "0") {
                             output += "<p class='parrafo_eleccion' id='parrafo" + value['idUsuario'] + value['idAnuncio'] + "'>¿Comentar perfil de usuario?<div class='container_eleccion'><button type='button' name ='btn_comentar_si' class='btn_opcion_com' onclick='cargarComentario(" + value['idUsuario'] + "," + value['idAnuncio'] + ")' >Sí</button>";
-                            output += "<button type='button' name ='btn_comentar_no' class='btn_opcion_com' onclick='actualizarComent(" + value['idUsuario'] + "," + value['idAnuncio'] + ")' >No</button></div></p>";
+                            output += "<button type='button' name ='btn_comentar_no' class='btn_opcion_com' onclick='" + tipoclic + "(" + value['idUsuario'] + "," + value['idAnuncio'] + ")' >No</button></div></p>";
                         }
                         output += "</div>";
                     }

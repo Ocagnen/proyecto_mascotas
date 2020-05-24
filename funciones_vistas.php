@@ -180,8 +180,17 @@
         }
     }
 
-    function actualizarTransaccionComentario($idAnuncio,$idUsuario,$url){
-        $obj = consumir_servicio_REST($url."actualizarTransaccionComentario/".$idAnuncio."/".$idUsuario,"GET");
+    function actualizarTransaccionComentario1($idAnuncio,$idUsuario,$url){
+        $obj = consumir_servicio_REST($url."actualizarTransaccionComentario1/".$idAnuncio."/".$idUsuario,"GET");
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);        
+        } else {
+            return array ("exito"=>$obj->exito);
+        }       
+    }
+
+    function actualizarTransaccionComentario2($idAnuncio,$idUsuario,$url){
+        $obj = consumir_servicio_REST($url."actualizarTransaccionComentario2/".$idAnuncio."/".$idUsuario,"GET");
         if(isset($obj->mensaje_error)){
             die($obj->mensaje_error);        
         } else {
