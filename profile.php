@@ -46,6 +46,29 @@
         actualizarTransaccionComentario($idAnunTrans,$idUserTrans,$url_const);
     }
 
+    if(isset($_POST["btn_comentario_enviar"])){
+        $arrayValoracion = explode(".",$_POST["btn_comentario_enviar"]);
+        $idUserValor = $arrayValoracion[0];
+        $idAnunValor = $arrayValoracion[1];
+
+        $usuarioLector = "";
+
+        if($idUserValor == $_SESSION["usuario"]->idUsuario){
+            $anun_aux = obtenerAnuncio($idAnunValor,$url_const);
+
+            if(isset($anun_aux['anuncio'])){
+                $usuarioLector = $anun_aux["anuncio"]->idUsuarioAutor;
+
+            }
+        } else {
+            $usuarioLector = $idUserValor;
+        }
+
+        $valoracion = crearValoracion($_POST["valoracion_valor"],$_POST["comentario_valor"],$_SESSION["usuario"]->idUsuario,$usuarioLector,$url_const);
+        actualizarTransaccionComentario($idAnunValor,$idUserValor,$url_const);
+        $_SESSION['cancelada'] = "Valoración enviada con éxito";
+    }
+
 ?>
 
 <!DOCTYPE html>

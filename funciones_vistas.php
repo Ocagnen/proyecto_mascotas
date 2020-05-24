@@ -209,6 +209,16 @@
         }       
     }
 
+    function crearValoracion($valor,$comentario,$idUsuarioEscritor,$idUsuarioLector,$url){
+        $datosInsertar=Array("valor"=>$valor,"comentario"=>$comentario,"idUsuarioEscritor"=>$idUsuarioEscritor,"idUsuarioLector"=>$idUsuarioLector);     
+        $obj = consumir_servicio_REST($url."crearComentario","POST",$datosInsertar);
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);        
+        } else {
+            return array ("mensaje"=>$obj->mensaje);
+        }       
+    }
+
 
     function calcularTarifaMin($tipo_mascota, $fecha_entrega,$fecha_devolucion, $hora_entrega, $hora_devolucion){
         

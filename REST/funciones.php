@@ -361,7 +361,6 @@ function cancelarTransaccion($idAnuncio,$idUsuario){
         mysqli_set_charset($con,"utf8");
         $consulta = "update transacciones set cancelada = 1 where idAnuncio=$idAnuncio and idUsuario=$idUsuario";
         if($resultado=mysqli_query($con,$consulta)){ 
-            borrarSolicitud($idUsuario,$idAnuncio);
             mysqli_close($con);
             return array("exito"=>"La transacción fue cancelada con éxito.");            
         } else {
@@ -418,6 +417,25 @@ function actualizarTransaccion($idAnuncio,$idUsuario,$tipoCod,$tipoUsuario){
             mysqli_close($con);
             return array("mensaje_error"=>$mensaje);
         }
+    }
+}
+
+function crearComentario($valor,$comentario,$idUsuarioEscritor,$idUsuarioLector){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");    
+        $consulta = "insert into valoraciones (valor,comentario,idUsuarioEscritor,idUsuarioLector) values ('".$valor."','".$comentario."','".$idUsuarioEscritor."','".$idUsuarioLector."')";      
+        if($resultado=mysqli_query($con,$consulta)){
+            mysqli_close($con);
+            return array ("mensaje"=>"Valoración creada");            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+
     }
 }
 
