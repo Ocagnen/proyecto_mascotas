@@ -179,8 +179,8 @@ section {
     border: 2px solid #78ed99;
     color: rgb(2, 85, 2);
     border-radius: 6px;
-    height: 5vh;
-    font-size: 2vh;
+    height: 9vw;
+    font-size: 4vw;
     padding: 3%;
 }
 
@@ -253,6 +253,10 @@ footer {
     }
     section {
         min-height: 64vh;
+    }
+    .modal input {
+        height: 4.5vw;
+        font-size: 2vw;
     }
     footer {
         flex-direction: row;
@@ -334,6 +338,8 @@ footer {
     }
     .modal input {
         width: 80%;
+        font-size: 1.2vw;
+        height: 2.4vw;
     }
     #btn_enviar_recogida,
     #btn_enviar_entrega {

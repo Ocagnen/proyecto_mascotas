@@ -120,8 +120,8 @@ select {
     border: 2px solid #78ed99;
     color: rgb(2, 85, 2);
     border-radius: 6px;
-    height: 5vh;
-    font-size: 2vh;
+    height: 9vw;
+    font-size: 4vw;
 }
 
 div>label {
@@ -300,8 +300,8 @@ div>label {
     border: 2px solid #78ed99;
     color: rgb(2, 85, 2);
     border-radius: 6px;
-    height: 5vh;
-    font-size: 2vh;
+    height: 9vw;
+    font-size: 4vw;
     padding: 3%;
 }
 
@@ -400,7 +400,8 @@ footer {
     }
     .campos_busqueda input,
     select {
-        font-size: 1.7vh;
+        height: 4.5vw;
+        font-size: 2vw;
     }
     #anuncios h2 {
         font-size: 3vh;
@@ -438,6 +439,10 @@ footer {
     }
     .botones_anuncio button {
         margin-right: 100%;
+    }
+    .modal input {
+        height: 4.5vw;
+        font-size: 2vw;
     }
     footer {
         flex-direction: row;
@@ -583,6 +588,15 @@ footer {
     }
     .contenido_landing p {
         margin-top: 0%;
+    }
+    .campos_busqueda input,
+    select {
+        font-size: 1.2vw;
+        height: 2.4vw;
+    }
+    .modal input {
+        font-size: 1.2vw;
+        height: 2.4vw;
     }
     footer {
         flex-direction: row;

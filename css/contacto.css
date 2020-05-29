@@ -120,8 +120,8 @@ label {
     border: 2px solid #78ed99;
     color: rgb(2, 85, 2);
     border-radius: 6px;
-    height: 5vh;
-    font-size: 2.2vh;
+    height: 9vw;
+    font-size: 4vw;
     padding: 1%;
 }
 
@@ -131,7 +131,7 @@ textarea {
     border: 2px solid #78ed99;
     color: rgb(2, 85, 2);
     border-radius: 6px;
-    font-size: 1.5vh;
+    font-size: 4vw;
     padding: 1%;
 }
 
@@ -281,6 +281,13 @@ footer {
     .campos_busqueda div {
         margin: 2%;
     }
+    .campos_busqueda input {
+        height: 4.5vw;
+        font-size: 2vw;
+    }
+    textarea {
+        font-size: 2vw;
+    }
     #contenido_redes_sociales {
         display: flex;
         flex-direction: row;
@@ -385,6 +392,13 @@ footer {
     form {
         padding: 4% 1%;
         padding-bottom: 0;
+    }
+    .campos_busqueda input {
+        font-size: 2.2vh;
+        height: 2.4vw;
+    }
+    textarea {
+        font-size: 2.2vh;
     }
     #redes_sociales_contacto {
         margin: 0;
