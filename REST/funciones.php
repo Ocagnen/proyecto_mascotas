@@ -506,7 +506,7 @@ function actualizarImagen($idAnuncio,$nombreFoto){
 
     }
 }
-    
+
 function crearAnuncio($descripcion,$fecha_entrega,$fecha_devolucion,$hora_entrega,$hora_devolucion,$ciudad,$tipo_mascota,$foto,$idUsuarioAutor,$titulo){
     $con = conectar();
     if(!$con){
@@ -521,6 +521,25 @@ function crearAnuncio($descripcion,$fecha_entrega,$fecha_devolucion,$hora_entreg
             actualizarImagen($idUltimoAnuncio,$nombreFoto);
             mysqli_close($con);
             return array ("mensaje"=>$nombreFoto);            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+
+    }
+}
+
+function editarAnuncio($idAnuncio,$descripcion,$fecha_entrega,$fecha_devolucion,$hora_entrega,$hora_devolucion,$ciudad,$tipo_mascota,$titulo){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");    
+        $consulta = "update anuncios set descripcion = '".$descripcion."', fecha_entrega = '".$fecha_entrega."', fecha_devolucion = '".$fecha_devolucion."', hora_entrega = '".$hora_entrega."', hora_devolucion ='".$hora_devolucion."', ciudad = '".$ciudad."', tipo_mascota ='".$tipo_mascota."', titulo = '".$titulo."' where idAnuncio = '".$idAnuncio."'";      
+        if($resultado=mysqli_query($con,$consulta)){
+            mysqli_close($con);
+            return array ("mensaje"=>"Anuncio actualizado con éxito");            
         } else {
             $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
             mysqli_close($con);

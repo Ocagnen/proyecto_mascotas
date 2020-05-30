@@ -84,6 +84,11 @@ $app->post('/crearAnuncio', function(){
     echo json_encode(crearAnuncio($_POST["descripcion"],$_POST["fecha_entrega"],$_POST["fecha_devolucion"],$_POST["hora_entrega"],$_POST["hora_devolucion"],$_POST["ciudad"],$_POST["tipo_mascota"],$_POST["foto"],$_POST["idUsuarioAutor"],$_POST["titulo"]),JSON_FORCE_OBJECT);
 });
 
+$app->put('/editarAnuncio/:idAnuncio', function($idAnuncio) use ($app){
+    $datos=$app->request->put();
+    echo json_encode(editarAnuncio($idAnuncio,$datos["descripcion"],$datos["fecha_entrega"],$datos["fecha_devolucion"],$datos["hora_entrega"],$datos["hora_devolucion"],$datos["ciudad"],$datos["tipo_mascota"],$datos["titulo"]),JSON_FORCE_OBJECT);
+});
+
 $app->get('/obtenerAnunciosUser/:idUsuario', function($idUsuario){
     echo json_encode(obtenerAnunciosUser($idUsuario),JSON_FORCE_OBJECT);
 });

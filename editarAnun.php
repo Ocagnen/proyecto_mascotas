@@ -18,10 +18,13 @@
         if($_POST["fecha_inicio"]>$_POST["fecha_devolucion"]){
             $error_fecha = true;
         } 
-        $error_imagen = ( $_FILES['foto_anuncio']['name']!="" && (!getimagesize($_FILES['foto_anuncio']['tmp_name']) || $_FILES['foto_anuncio']['size']>500000));	
+
+        if(isset($_FILES["foto_anuncio"])){
+            $error_imagen = ( $_FILES['foto_anuncio']['name']!="" && (!getimagesize($_FILES['foto_anuncio']['tmp_name']) || $_FILES['foto_anuncio']['size']>500000));	
+        }
         
         if(!$error_fecha && !$error_imagen){
-            $insertarAnuncio = crearAnuncio($_POST["descripcion"],$_POST["fecha_inicio"],$_POST["fecha_devolucion"],$_POST["hora_entrega"],$_POST["hora_devolucion"],$_POST["ciudad"],$_POST["tipo_mascota"],$_FILES['foto_anuncio']['name'],$_SESSION["usuario"]->idUsuario,$_POST["titulo"],$url_const);
+            $editarAnuncio = editarAnuncio($_SESSION["anuncio"],$_POST["descripcion"],$_POST["fecha_inicio"],$_POST["fecha_devolucion"],$_POST["hora_entrega"],$_POST["hora_devolucion"],$_POST["ciudad"],$_POST["tipo_mascota"],$anuncioEditado["anuncio"]->foto,$_POST["titulo"],$url_const);
         }
         
     }
@@ -80,7 +83,7 @@
                 <h2>EDITAR ANUNCIO</h2>
             </div>
             <div class='cuerpo_form'>  
-            <form action="crearAnun.php" method="post" enctype="multipart/form-data">
+            <form action="editarAnun.php" method="post" enctype="multipart/form-data">
             <div class='campos_busqueda'>
                     <div>
                         <img src="img/<?php echo $anuncioEditado['anuncio']->foto;?>" width = "500px" alt="">
