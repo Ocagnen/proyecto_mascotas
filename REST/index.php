@@ -89,6 +89,11 @@ $app->put('/editarAnuncio/:idAnuncio', function($idAnuncio) use ($app){
     echo json_encode(editarAnuncio($idAnuncio,$datos["descripcion"],$datos["fecha_entrega"],$datos["fecha_devolucion"],$datos["hora_entrega"],$datos["hora_devolucion"],$datos["ciudad"],$datos["tipo_mascota"],$datos["titulo"]),JSON_FORCE_OBJECT);
 });
 
+$app->delete('/borrarAnuncio/:idAnuncio', function($idAnuncio){
+    echo json_encode(borrarAnuncio($idAnuncio),JSON_FORCE_OBJECT);
+});
+
+
 $app->get('/obtenerAnunciosUser/:idUsuario', function($idUsuario){
     echo json_encode(obtenerAnunciosUser($idUsuario),JSON_FORCE_OBJECT);
 });

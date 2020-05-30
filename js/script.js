@@ -421,7 +421,7 @@ function cargarAnuncios(idUsuario) {
                     output += "</div>";
                     output += "</div>";
                     output += "<form method='post' action='profile.php'><button type='submit' name ='btn_anun_edit' class='btn_anun_edit' value=" + value['idAnuncio'] + " >Editar</button>";
-                    output += "<button type='button' name ='btn_trans_borr' class='btn_trans_edit' value=" + value['idAnuncio'] + " >Borrar</button></form>";
+                    output += "<button type='submit' name ='btn_anun_borr' class='btn_anun_borr' onclick = 'return confirm(\" ¿Estás seguro que deseas borrar el anuncio " + value['titulo'] + " ?\");' value=" + value['idAnuncio'] + " >Borrar</button></form>";
                     output += "</div>";
 
 

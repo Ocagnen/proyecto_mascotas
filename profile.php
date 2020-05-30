@@ -50,6 +50,10 @@
         exit;
     }
 
+    if(isset($_POST["btn_anun_borr"])){
+        borrarAnuncio($_POST["btn_anun_borr"],$url_const);
+    }
+
 
     if(isset($_POST["btn_comentar_no"])){
         $arrayTrans = explode(".",$_POST["btn_comentar_no"]);

@@ -207,6 +207,17 @@
         }       
     }
 
+    function borrarAnuncio($idAnuncio,$url){
+        $obj = consumir_servicio_REST($url."borrarAnuncio/".$idAnuncio,"DELETE");
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error); 
+        } else if (isset($obj->mensaje)){ 
+            return array ("mensaje"=>$obj->mensaje);
+        } else {
+            return array ("exito"=>$obj->exito);
+        }       
+    }
+
 
     function actualizarTransaccion($idAnuncio,$idUsuario,$tipoCod,$tipoUsuario,$url){
         $datosInsertar=Array("idUsuario"=>$idUsuario,"idAnuncio"=>$idAnuncio,"tipoCod"=>$tipoCod,"tipoUsuario"=>$tipoUsuario);
@@ -253,6 +264,8 @@
             return array ("mensaje"=>"Anuncio editado");
         }       
     }
+
+
 
 
 

@@ -549,6 +549,77 @@ function editarAnuncio($idAnuncio,$descripcion,$fecha_entrega,$fecha_devolucion,
     }
 }
 
+function comprobarTransacciones($idAnuncio) {
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        $consulta = "select * from transacciones where idAnuncio=$idAnuncio";
+        if($resultado=mysqli_query($con,$consulta)){
+            if(mysqli_num_rows($resultado)>0){
+                mysqli_free_result($resultado);
+                mysqli_close($con);
+                return array("true"=>"No se puede borrar el anuncio");
+            } else {
+                mysqli_free_result($resultado);
+                mysqli_close($con);
+                return array("mensaje"=>"La transacción no existe");
+            }
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+    }
+}
+
+function borrarSolicitudes($idAnuncio) {
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        $consulta = "delete from solicitudes where idAnuncio=$idAnuncio";
+        if($resultado=mysqli_query($con,$consulta)){
+            mysqli_close($con);
+            return array("exito"=>"Solicitudes borradas con éxito");            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+    }
+}
+
+
+
+function borrarAnuncio($idAnuncio){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");
+        $checkTrans = comprobarTransacciones($idAnuncio);
+
+        if(isset($checkTrans["true"])){
+            return array("mensaje"=>"No se puede borrar el anuncio, ya que tiene una transacción asociada.");
+        }
+        borrarSolicitudes($idAnuncio);
+        $consulta = "delete from anuncios where idAnuncio=$idAnuncio";
+        if($resultado=mysqli_query($con,$consulta)){
+            mysqli_close($con);
+            return array("exito"=>"Anuncio borrado con éxito");            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+    }
+}
+
+
+
 
 
 
