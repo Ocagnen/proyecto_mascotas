@@ -228,6 +228,16 @@
         }       
     }
 
+    function crearAnuncio($descripcion,$fecha_entrega,$fecha_devolucion,$hora_entrega,$hora_devolucion,$ciudad,$tipo_mascota,$foto,$idUsuarioAutor,$titulo,$url){
+        $datosInsertar=Array("descripcion"=>$descripcion,"fecha_entrega"=>$fecha_entrega,"fecha_devolucion"=>$fecha_devolucion,"hora_entrega"=>$hora_entrega,"hora_devolucion"=>$hora_devolucion, "ciudad"=>$ciudad, "tipo_mascota"=>$tipo_mascota, "foto"=>$foto, "idUsuarioAutor"=> $idUsuarioAutor, "titulo"=>$titulo);     
+        $obj = consumir_servicio_REST($url."crearAnuncio","POST",$datosInsertar);
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);        
+        } else {
+            return array ("mensaje"=>$obj->mensaje);
+        }       
+    }
+
 
     function calcularTarifaMin($tipo_mascota, $fecha_entrega,$fecha_devolucion, $hora_entrega, $hora_devolucion){
         

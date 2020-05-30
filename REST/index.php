@@ -80,6 +80,10 @@ $app->post('/crearComentario', function(){
     echo json_encode(crearComentario($_POST["valor"],$_POST["comentario"],$_POST["idUsuarioEscritor"],$_POST["idUsuarioLector"]),JSON_FORCE_OBJECT);
 });
 
+$app->post('/crearAnuncio', function(){
+    echo json_encode(crearAnuncio($_POST["descripcion"],$_POST["fecha_entrega"],$_POST["fecha_devolucion"],$_POST["hora_entrega"],$_POST["hora_devolucion"],$_POST["ciudad"],$_POST["tipo_mascota"],$_POST["foto"],$_POST["idUsuarioAutor"],$_POST["titulo"]),JSON_FORCE_OBJECT);
+});
+
 $app->get('/obtenerAnunciosUser/:idUsuario', function($idUsuario){
     echo json_encode(obtenerAnunciosUser($idUsuario),JSON_FORCE_OBJECT);
 });

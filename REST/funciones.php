@@ -489,6 +489,24 @@ function obtenerAnunciosUser($idUsuario){
 }
 
 
+function crearAnuncio($descripcion,$fecha_entrega,$fecha_devolucion,$hora_entrega,$hora_devolucion,$ciudad,$tipo_mascota,$foto,$idUsuarioAutor,$titulo){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");    
+        $consulta = "insert into anuncios (descripcion,fecha_entrega,fecha_devolucion,hora_entrega,hora_devolucion,ciudad,tipo_mascota,foto,idUsuarioAutor,titulo) values ('".$descripcion."','".$fecha_entrega."','".$fecha_devolucion."','".$hora_entrega."','".$hora_devolucion."','".$ciudad."','".$tipo_mascota."','".$foto."','".$idUsuarioAutor."','".$titulo."')";      
+        if($resultado=mysqli_query($con,$consulta)){
+            mysqli_close($con);
+            return array ("mensaje"=>"Anuncio creado");            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+
+    }
+}
 
 
 

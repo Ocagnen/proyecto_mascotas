@@ -12,6 +12,9 @@
         } 
         $error_imagen = ( $_FILES['foto_anuncio']['name']!="" && (!getimagesize($_FILES['foto_anuncio']['tmp_name']) || $_FILES['foto_anuncio']['size']>500000));	
         
+        if(!$error_fecha && !$error_imagen){
+            $insertarAnuncio = crearAnuncio($_POST["descripcion"],$_POST["fecha_inicio"],$_POST["fecha_devolucion"],$_POST["hora_entrega"],$_POST["hora_devolucion"],$_POST["ciudad"],$_POST["tipo_mascota"],$_FILES['foto_anuncio']['name'],$_SESSION["usuario"]->idUsuario,$_POST["titulo"],$url_const);
+        }
         
     }
 ?>
