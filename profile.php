@@ -44,6 +44,12 @@
         exit;
     }
 
+    if(isset($_POST["btn_anun_edit"])){
+        $_SESSION["anuncio"] = $_POST["btn_anun_edit"];
+        header("Location: editarAnun.php");
+        exit;
+    }
+
 
     if(isset($_POST["btn_comentar_no"])){
         $arrayTrans = explode(".",$_POST["btn_comentar_no"]);

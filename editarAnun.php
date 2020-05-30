@@ -4,10 +4,13 @@
     session_name("mascotas");
     session_start();
 
-    if(!isset($_SESSION["usuario"])){
+    if(!isset($_SESSION["anuncio"])){
         header("Location: index.php");
         exit;
+    } else {
+        $anuncioEditado = obtenerAnuncio($_SESSION["anuncio"],$url_const);
     }
+    
 
     $error_fecha = false;
     $error_imagen = false;
@@ -74,111 +77,14 @@
     <section id='formularios'>
         <article id='reg'>
             <div class='titulo_form'>
-                <h2>CREAR ANUNCIO</h2>
+                <h2>EDITAR ANUNCIO</h2>
             </div>
             <div class='cuerpo_form'>  
             <form action="crearAnun.php" method="post" enctype="multipart/form-data">
-                <div class='campos_busqueda'>
+            <div class='campos_busqueda'>
                     <div>
-                        <label for="titulo">Título*:</label>
+                        <img src="img/<?php echo $anuncioEditado['anuncio']->foto;?>" width = "500px" alt="">
                     </div>
-                    <div class='input_form'>
-                        <input required type="text" name="titulo" id="titulo" value='<?php
-                            if(isset($_POST["titulo"])){
-                                echo $_POST["titulo"];
-                            }
-                        ?>'>
-                    </div>
-                </div>
-                <div class='campos_busqueda'>
-                    <div>
-                        <label for="ciudad">Ciudad*:</label>
-                    </div>
-                    <div class='input_form'>
-                        <input required type="text" name="ciudad" id="ciudad" value='<?php
-                            if(isset($_POST["ciudad"])){
-                                echo $_POST["ciudad"];
-                            }
-                        ?>'>
-                    </div>
-                </div>
-                <div class='campos_busqueda'>
-                    <div>
-                        <label for="fecha_inicio">Fecha de entrega*:</label> 
-                    </div>
-                    <div class='input_form'>
-                        <input required type="date" name="fecha_inicio" id="fecha_inicio" value='<?php
-                            if(isset($_POST["fecha_inicio"])){
-                                echo $_POST["fecha_inicio"];
-                            }
-                        ?>'>
-                    </div>
-                </div>
-                <div class='campos_busqueda'>
-                    <div>
-                        <label for="fecha_devolucion">Fecha de devolución*:</label> 
-                    </div>
-                    <div class='input_form'>
-                        <input required type="date" name="fecha_devolucion" id="fecha_devolucion" value='<?php
-                            if(isset($_POST["fecha_devolucion"])){
-                                echo $_POST["fecha_devolucion"];
-                            }
-                        ?>'>
-                    </div>
-                </div>
-                <div class='campos_busqueda'>
-                    <div>
-                        <label for="hora_entrega">Hora de entrega*:</label>
-                    </div>
-                    <div class='input_form'>
-                        <input required type="time"  name="hora_entrega" id="hora_entrega" value='<?php
-                            if(isset($_POST["hora_entrega"])){
-                                echo $_POST["hora_entrega"];
-                            } else {
-                                echo "00:00";
-                            }
-                        ?>'>
-                    </div>
-                </div> 
-                <div class='campos_busqueda'>
-                    <div>
-                        <label for="hora_devolucion">Hora de devolución*:</label>
-                    </div>
-                    <div class='input_form'>
-                        <input required type="time" name="hora_devolucion" id="hora_devolucion" value='<?php
-                            if(isset($_POST["hora_devolucion"])){
-                                echo $_POST["hora_devolucion"];
-                            } else {
-                                echo "00:00";
-                            }
-                        ?>'>
-                    </div>
-                </div> 
-                <div class='campos_busqueda'>
-                    <div>
-                        <label for="tipo_mascota">Tipo de Mascota*:</label>
-                    </div>
-                    <div class='input_form'>
-                        <select name="tipo_mascota" id="tipo_mascota">
-                            <option value="Perro" <?php if(isset($_POST["tipo_mascota"]) && $_POST["tipo_mascota"]=="Perro") echo "selected" ?>>Perro</option>
-                            <option value="Gato" <?php if(isset($_POST["tipo_mascota"]) && $_POST["tipo_mascota"]=="Gato") echo "selected" ?>>Gato</option>
-                            <option value="Otros" <?php if(isset($_POST["tipo_mascota"]) && $_POST["tipo_mascota"]=="Otros") echo "selected" ?>>Otros</option>
-                        </select>  
-                    </div>                    
-                </div>
-                <div class='campos_busqueda'>
-                    <div>
-                        <label for="descripcion">Descripción*:</label>
-                    </div>
-                    <div class='input_form'>
-                        <textarea required name="descripcion" id="descripcion"><?php
-                            if(isset($_POST["descripcion"])){
-                                echo $_POST["descripcion"];
-                            }
-                        ?></textarea>
-                    </div>                    
-                </div>
-                <div class='campos_busqueda'>
                     <div>
                         <label for="foto_anuncio">Foto del anuncio*:</label>
                         <?php
@@ -194,11 +100,145 @@
                         ?>
                     </div>
                     <div class='input_form'>
-                        <input required type="file" name="foto_anuncio"  accept='image/*' id="foto_anuncio">
+                        <input type="file" name="foto_anuncio"  accept='image/*' id="foto_anuncio">
                     </div>                    
                 </div>
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="titulo">Título*:</label>
+                    </div>
+                    <div class='input_form'>
+                        <input required type="text" name="titulo" id="titulo" value='<?php
+                            if(isset($_POST["titulo"])){
+                                echo $_POST["titulo"];
+                            } else {
+                                echo $anuncioEditado["anuncio"]->titulo;
+                            }
+                        ?>'>
+                    </div>
+                </div>
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="ciudad">Ciudad*:</label>
+                    </div>
+                    <div class='input_form'>
+                        <input required type="text" name="ciudad" id="ciudad" value='<?php
+                            if(isset($_POST["ciudad"])){
+                                echo $_POST["ciudad"];
+                            } else {
+                                echo $anuncioEditado["anuncio"]->ciudad;
+                            }
+                        ?>'>
+                    </div>
+                </div>
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="fecha_inicio">Fecha de entrega*:</label> 
+                    </div>
+                    <div class='input_form'>
+                        <input required type="date" name="fecha_inicio" id="fecha_inicio" value='<?php
+                            if(isset($_POST["fecha_inicio"])){
+                                echo $_POST["fecha_inicio"];
+                            } else {
+                                echo $anuncioEditado["anuncio"]->fecha_entrega;
+                            }
+                        ?>'>
+                    </div>
+                </div>
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="fecha_devolucion">Fecha de devolución*:</label> 
+                    </div>
+                    <div class='input_form'>
+                        <input required type="date" name="fecha_devolucion" id="fecha_devolucion" value='<?php
+                            if(isset($_POST["fecha_devolucion"])){
+                                echo $_POST["fecha_devolucion"];
+                            } else {
+                                echo $anuncioEditado["anuncio"]->fecha_devolucion;
+                            }
+                        ?>'>
+                    </div>
+                </div>
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="hora_entrega">Hora de entrega*:</label>
+                    </div>
+                    <div class='input_form'>
+                        <input required type="time"  name="hora_entrega" id="hora_entrega" value='<?php
+                            if(isset($_POST["hora_entrega"])){
+                                echo $_POST["hora_entrega"];
+                            } else {
+                                echo $anuncioEditado["anuncio"]->hora_entrega;
+                            }
+                        ?>'>
+                    </div>
+                </div> 
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="hora_devolucion">Hora de devolución*:</label>
+                    </div>
+                    <div class='input_form'>
+                        <input required type="time" name="hora_devolucion" id="hora_devolucion" value='<?php
+                            if(isset($_POST["hora_devolucion"])){
+                                echo $_POST["hora_devolucion"];
+                            } else {
+                                echo $anuncioEditado["anuncio"]->hora_devolucion;
+                            }
+                        ?>'>
+                    </div>
+                </div> 
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="tipo_mascota">Tipo de Mascota*:</label>
+                    </div>
+                    <div class='input_form'>
+                        <select name="tipo_mascota" id="tipo_mascota">
+                            <option value="Perro" <?php 
+                            if(isset($_POST["tipo_mascota"]) && $_POST["tipo_mascota"]=="Perro"){
+                                echo "selected";
+                            } else if($anuncioEditado["anuncio"]->tipo_mascota =="Perro"){
+                                echo "selected";
+                            }
+                            
+                            ?>>Perro</option>
+                            <option value="Gato" <?php 
+                            
+                            if(isset($_POST["tipo_mascota"]) && $_POST["tipo_mascota"]=="Gato"){
+                                echo "selected";
+                            } else if($anuncioEditado["anuncio"]->tipo_mascota =="Gato"){
+                                echo "selected";
+                            } 
+                            
+                            ?>>Gato</option>
+                            <option value="Otros" <?php 
+                            
+                            if(isset($_POST["tipo_mascota"]) && $_POST["tipo_mascota"]=="Otros"){
+                                echo "selected";
+                            } else if($anuncioEditado["anuncio"]->tipo_mascota =="Otros"){
+                                echo "selected";
+                            } 
+                            
+                            ?>>Otros</option>
+                        </select>  
+                    </div>                    
+                </div>
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="descripcion">Descripción*:</label>
+                    </div>
+                    <div class='input_form'>
+                        <textarea required name="descripcion" id="descripcion"><?php
+                            if(isset($_POST["descripcion"])){
+                                echo $_POST["descripcion"];
+                            } else {
+                                echo $anuncioEditado["anuncio"]->descripcion;
+                            }
+                        ?></textarea>
+                    </div>                    
+                </div>
+                
                 <div id='btn_pub_anuncio'>
-                    <button id='btn_pub_anuncio' name='btn_publicar_anuncio' type="submit">PUBLICAR ANUNCIO</button>
+                    <button id='btn_pub_anuncio' name='btn_publicar_anuncio' type="submit">EDITAR ANUNCIO</button>
                 </div>
             </form>
             </div>
