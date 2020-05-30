@@ -80,6 +80,10 @@ $app->post('/crearComentario', function(){
     echo json_encode(crearComentario($_POST["valor"],$_POST["comentario"],$_POST["idUsuarioEscritor"],$_POST["idUsuarioLector"]),JSON_FORCE_OBJECT);
 });
 
+$app->get('/obtenerAnunciosUser/:idUsuario', function($idUsuario){
+    echo json_encode(obtenerAnunciosUser($idUsuario),JSON_FORCE_OBJECT);
+});
+
 $app->run();
 
 ?>

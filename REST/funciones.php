@@ -460,6 +460,36 @@ function crearComentario($valor,$comentario,$idUsuarioEscritor,$idUsuarioLector)
 
 
 
+function obtenerAnunciosUser($idUsuario){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");    
+        $consulta = "select * from anuncios where idUsuarioAutor = '".$idUsuario."' and fecha_devolucion >= curdate()";
+        if($resultado=mysqli_query($con,$consulta)){
+            if(mysqli_num_rows($resultado)>0){
+                $anuncios = Array();
+                while($fila = mysqli_fetch_assoc($resultado)){
+                    $anuncios[] = $fila;
+                }
+                return array("anuncios"=>$anuncios);
+            } else {
+                mysqli_free_result($resultado);
+                mysqli_close($con);
+                return array("mensaje"=>"No hay anuncios disponibles");
+            }         
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+
+    }
+}
+
+
+
 
 
 

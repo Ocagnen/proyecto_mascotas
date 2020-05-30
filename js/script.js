@@ -397,3 +397,41 @@ function cargarTransacciones1(idUsuario) {
     return false;
 
 }
+
+function cargarAnuncios(idUsuario) {
+    $("#modalAnuncios > div").html("");
+    $.getJSON(url_const + 'obtenerAnunciosUser/' + idUsuario)
+        .done(function(data) {
+            if (data.mensaje) {
+                $("#modalAnuncios > div").html("<p>No tiene anuncios</p>");
+            } else if (data.mensaje_error) {
+                $("#modalAnuncios > div").html("<p>Error en el servidor</p>");
+            } else {
+                var output = "";
+                $.each(data.anuncios, function(key, value) {
+                    output += "<div class='solicitudes_container'>";
+                    output += "<div class='cuerpo_sol'>";
+                    output += "<div class='nombre_trans'>";
+                    output += "<p>" + value['titulo'] + "</p>";
+                    output += "</div>";
+                    output += "</div>";
+                    output += "<button type='button' name ='btn_trans_edit' class='btn_trans_edit' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Editar</button>";
+                    output += "<button type='button' name ='btn_trans_edit' class='btn_trans_edit' value=" + value['idUsuario'] + "." + value['idAnuncio'] + " >Borrar</button>";
+                    output += "</div>";
+
+
+                });
+
+                $("#modalAnuncios > div").html(output);
+            }
+
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            if (console && console.log) {
+                console.log("La solicitud a fallado: " + textStatus);
+            }
+        });
+
+    return false;
+
+}

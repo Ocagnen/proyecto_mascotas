@@ -167,10 +167,11 @@
             </div>
             <div id='menu_usu'>
                 <div class='btn_menu'>
-                <a href='#modalAnuncios' rel='modal:open'><button>Anuncios</button></a>
+                <a href='#modalAnuncios' rel='modal:open'><button type='button' onclick='cargarAnuncios(<?php echo $_SESSION["usuario"]->idUsuario;?>);'>Anuncios</button></a>
                     <div id='modalAnuncios' class='modal'>
-                        <p>"Para enviar una solicitud o visitar un perfil de otro usuario es necesario estar registrado"</p>
-                        <button type="submit" class="btn_solicitud_iniciar" >Iniciar sesión / Registrarme</button>
+                        <div>
+                        
+                        </div>
                     </div>
                 </div>
                 <div class='btn_menu'>
