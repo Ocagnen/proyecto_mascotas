@@ -234,7 +234,9 @@
         if(isset($obj->mensaje_error)){
             die($obj->mensaje_error);        
         } else {
-            return array ("mensaje"=>$obj->mensaje);
+            move_uploaded_file($_FILES['foto_anuncio']['tmp_name'],"img/".$obj->mensaje."");
+
+            return array ("mensaje"=>"Anuncio creado");
         }       
     }
 
