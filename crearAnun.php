@@ -3,6 +3,17 @@
     $url_const = "http://localhost/ProyectoMascotas/REST/";
     session_name("mascotas");
     session_start();
+
+    $error_fecha = false;
+    $error_imagen = false;
+    if(isset($_POST["btn_publicar_anuncio"])){
+        if($_POST["fecha_inicio"]>$_POST["fecha_devolucion"]){
+            $error_fecha = true;
+        } 
+        $error_imagen = ( $_FILES['foto_anuncio']['name']!="" && (!getimagesize($_FILES['foto_anuncio']['tmp_name']) || $_FILES['foto_anuncio']['size']>500000));	
+        
+        
+    }
 ?>
 
 <!DOCTYPE html>
@@ -58,13 +69,17 @@
                 <h2>CREAR ANUNCIO</h2>
             </div>
             <div class='cuerpo_form'>  
-            <form action="" method="post">
+            <form action="crearAnun.php" method="post" enctype="multipart/form-data">
                 <div class='campos_busqueda'>
                     <div>
                         <label for="titulo">Título*:</label>
                     </div>
                     <div class='input_form'>
-                        <input required type="text" name="titulo" id="titulo">
+                        <input required type="text" name="titulo" id="titulo" value='<?php
+                            if(isset($_POST["titulo"])){
+                                echo $_POST["titulo"];
+                            }
+                        ?>'>
                     </div>
                 </div>
                 <div class='campos_busqueda'>
@@ -72,7 +87,11 @@
                         <label for="ciudad">Ciudad*:</label>
                     </div>
                     <div class='input_form'>
-                        <input required type="text" name="ciudad" id="ciudad">
+                        <input required type="text" name="ciudad" id="ciudad" value='<?php
+                            if(isset($_POST["ciudad"])){
+                                echo $_POST["ciudad"];
+                            }
+                        ?>'>
                     </div>
                 </div>
                 <div class='campos_busqueda'>
@@ -80,7 +99,11 @@
                         <label for="fecha_inicio">Fecha de entrega*:</label> 
                     </div>
                     <div class='input_form'>
-                        <input required type="date" name="fecha_inicio" id="fecha_inicio">
+                        <input required type="date" name="fecha_inicio" id="fecha_inicio" value='<?php
+                            if(isset($_POST["fecha_inicio"])){
+                                echo $_POST["fecha_inicio"];
+                            }
+                        ?>'>
                     </div>
                 </div>
                 <div class='campos_busqueda'>
@@ -88,7 +111,11 @@
                         <label for="fecha_devolucion">Fecha de devolución*:</label> 
                     </div>
                     <div class='input_form'>
-                        <input required type="date" name="fecha_devolucion" id="fecha_devolucion">
+                        <input required type="date" name="fecha_devolucion" id="fecha_devolucion" value='<?php
+                            if(isset($_POST["fecha_devolucion"])){
+                                echo $_POST["fecha_devolucion"];
+                            }
+                        ?>'>
                     </div>
                 </div>
                 <div class='campos_busqueda'>
@@ -96,7 +123,13 @@
                         <label for="hora_entrega">Hora de entrega*:</label>
                     </div>
                     <div class='input_form'>
-                        <input required type="time" value= "00:00" name="hora_entrega" id="hora_entrega">
+                        <input required type="time"  name="hora_entrega" id="hora_entrega" value='<?php
+                            if(isset($_POST["hora_entrega"])){
+                                echo $_POST["hora_entrega"];
+                            } else {
+                                echo "00:00";
+                            }
+                        ?>'>
                     </div>
                 </div> 
                 <div class='campos_busqueda'>
@@ -104,7 +137,13 @@
                         <label for="hora_devolucion">Hora de devolución*:</label>
                     </div>
                     <div class='input_form'>
-                        <input required type="time" value= "00:00" name="hora_devolucion" id="hora_devolucion">
+                        <input required type="time" name="hora_devolucion" id="hora_devolucion" value='<?php
+                            if(isset($_POST["hora_devolucion"])){
+                                echo $_POST["hora_devolucion"];
+                            } else {
+                                echo "00:00";
+                            }
+                        ?>'>
                     </div>
                 </div> 
                 <div class='campos_busqueda'>
@@ -113,9 +152,9 @@
                     </div>
                     <div class='input_form'>
                         <select name="tipo_mascota" id="tipo_mascota">
-                            <option value="Perro">Perro</option>
-                            <option value="Gato">Gato</option>
-                            <option value="Otros">Otros</option>
+                            <option value="Perro" <?php if(isset($_POST["tipo_mascota"]) && $_POST["tipo_mascota"]=="Perro") echo "selected" ?>>Perro</option>
+                            <option value="Gato" <?php if(isset($_POST["tipo_mascota"]) && $_POST["tipo_mascota"]=="Gato") echo "selected" ?>>Gato</option>
+                            <option value="Otros" <?php if(isset($_POST["tipo_mascota"]) && $_POST["tipo_mascota"]=="Otros") echo "selected" ?>>Otros</option>
                         </select>  
                     </div>                    
                 </div>
@@ -124,15 +163,30 @@
                         <label for="descripcion">Descripción*:</label>
                     </div>
                     <div class='input_form'>
-                        <textarea required name="descripcion" id="descripcion"></textarea>
+                        <textarea required name="descripcion" id="descripcion"><?php
+                            if(isset($_POST["descripcion"])){
+                                echo $_POST["descripcion"];
+                            }
+                        ?></textarea>
                     </div>                    
                 </div>
                 <div class='campos_busqueda'>
                     <div>
                         <label for="foto_anuncio">Foto del anuncio*:</label>
+                        <?php
+                            if($error_imagen){
+                                if(!getimagesize($_FILES['foto_anuncio']['tmp_name'])){
+                                    echo "Error: El archivo debe de ser una imagen.";
+                                } else if ($_FILES['foto_anuncio']['size']>500000) {
+                                    echo "Error: El archivo es demasiado grande.";
+                                }else {
+                                    echo "Error en el servidor";
+                                }
+                            }
+                        ?>
                     </div>
                     <div class='input_form'>
-                        <input required type="file" name="foto_anuncio" id="foto_anuncio">
+                        <input required type="file" name="foto_anuncio"  accept='image/*' id="foto_anuncio">
                     </div>                    
                 </div>
                 <div id='btn_pub_anuncio'>
