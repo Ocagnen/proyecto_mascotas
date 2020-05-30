@@ -408,6 +408,11 @@ function cargarAnuncios(idUsuario) {
                 $("#modalAnuncios > div").html("<p>Error en el servidor</p>");
             } else {
                 var output = "";
+
+                output += "<div class='solicitudes_container'>";
+                output += "<form method='post' action='profile.php'><button type='submit' name='btn_crear_anun' class='btn_trans_edit' onclick='cargarCrearAnuncio();' >Crear Anuncio</button></form>";
+                output += "</div>";
+
                 $.each(data.anuncios, function(key, value) {
                     output += "<div class='solicitudes_container'>";
                     output += "<div class='cuerpo_sol'>";

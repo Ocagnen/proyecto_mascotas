@@ -39,6 +39,12 @@
         exit;
     }
 
+    if(isset($_POST["btn_crear_anun"])){
+        header("Location: crearAnun.php");
+        exit;
+    }
+
+
     if(isset($_POST["btn_comentar_no"])){
         $arrayTrans = explode(".",$_POST["btn_comentar_no"]);
         $idAnunTrans = $arrayTrans[1];
