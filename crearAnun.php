@@ -179,7 +179,7 @@
                         <label for="hora_devolucion">Hora de devolución*:</label>
                         <?php
                             if($error_hora){
-                                echo "<p class='error_foto'>La hora de recogida no puede ser anterior a la de recogida si la fecha de entrega y devolución son la misma</p>";
+                                echo "<p class='error_foto'>La hora de devolución no puede ser anterior a la de recogida si la fecha de entrega y devolución son la misma</p>";
                             }
                         ?>
                     </div>

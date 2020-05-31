@@ -225,6 +225,29 @@ textarea {
     border-radius: 6px;
 }
 
+.mensaje_editar {
+    color: black;
+    text-align: center;
+    font-weight: 600;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #78ed99;
+    padding: 1%;
+    border-radius: 6px;
+}
+
+.foto_anuncio {
+    width: 80%;
+    margin: 0 auto !important;
+}
+
+.foto_anuncio img {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
 footer {
     border-top: 1px solid black;
     background-color: #78ed99;
@@ -425,6 +448,9 @@ footer {
         width: 30%;
     }
     .mensaje_cancel {
+        width: 30%;
+    }
+    .mensaje_editar {
         width: 30%;
     }
     footer {

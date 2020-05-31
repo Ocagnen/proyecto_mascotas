@@ -14,17 +14,27 @@
 
     $error_fecha = false;
     $error_imagen = false;
+    $error_hora = false;
+
     if(isset($_POST["btn_publicar_anuncio"])){
         if($_POST["fecha_inicio"]>$_POST["fecha_devolucion"]){
             $error_fecha = true;
-        } 
+        } else if ($_POST["fecha_inicio"]==$_POST["fecha_devolucion"]){
+            if($_POST["hora_entrega"]>$_POST["hora_devolucion"]){
+                $error_hora = true;
+            }
+        }
 
         if(isset($_FILES["foto_anuncio"])){
             $error_imagen = ( $_FILES['foto_anuncio']['name']!="" && (!getimagesize($_FILES['foto_anuncio']['tmp_name']) || $_FILES['foto_anuncio']['size']>500000));	
         }
         
-        if(!$error_fecha && !$error_imagen){
+        if(!$error_fecha && !$error_imagen && !$error_hora){
             $editarAnuncio = editarAnuncio($_SESSION["anuncio"],$_POST["descripcion"],$_POST["fecha_inicio"],$_POST["fecha_devolucion"],$_POST["hora_entrega"],$_POST["hora_devolucion"],$_POST["ciudad"],$_POST["tipo_mascota"],$anuncioEditado["anuncio"]->foto,$_POST["titulo"],$url_const);
+            $_SESSION["mensaje_editar"] = "Su anuncio se ha editado con éxito.";
+        } else {
+            $_SESSION["mensaje_error"] = "Error en el formulario. Por favor, revíselo.";
+
         }
         
     }
@@ -35,7 +45,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/registro.css">
+    <link rel="stylesheet" href="css/crearAnuncio.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> 
     <script src="jq/jquery-3.1.1.min.js" type="text/javascript"></script>	
     <script src="js/script.js"></script>
@@ -77,6 +87,18 @@
             ?>
         </div>        
     </header>
+    <?php
+        if(isset($_SESSION["mensaje_error"])){
+            echo "<p class='mensaje_cancel'>".$_SESSION['mensaje_error']."</p>";
+            unset($_SESSION["mensaje_error"]);
+        }
+
+        if(isset($_SESSION["mensaje_editar"])){
+            echo "<p class='mensaje_editar'>".$_SESSION['mensaje_editar']."</p>";
+            unset($_SESSION["mensaje_editar"]);
+        }
+
+    ?>
     <section id='formularios'>
         <article id='reg'>
             <div class='titulo_form'>
@@ -85,19 +107,19 @@
             <div class='cuerpo_form'>  
             <form action="editarAnun.php" method="post" enctype="multipart/form-data">
             <div class='campos_busqueda'>
-                    <div>
-                        <img src="img/<?php echo $anuncioEditado['anuncio']->foto;?>" width = "500px" alt="">
+                    <div class='foto_anuncio'>
+                        <img src="img/<?php echo $anuncioEditado['anuncio']->foto;?>" alt="">
                     </div>
                     <div>
                         <label for="foto_anuncio">Foto del anuncio*:</label>
                         <?php
                             if($error_imagen){
                                 if(!getimagesize($_FILES['foto_anuncio']['tmp_name'])){
-                                    echo "Error: El archivo debe de ser una imagen.";
+                                    echo "<p class='error_foto'>Error: El archivo debe de ser una imagen.</p>";
                                 } else if ($_FILES['foto_anuncio']['size']>500000) {
-                                    echo "Error: El archivo es demasiado grande.";
+                                    echo "<p class='error_foto'>Error: El archivo es demasiado grande.</p>";
                                 }else {
-                                    echo "Error en el servidor";
+                                    echo "<p class='error_foto'>Error en el servidor</p>";
                                 }
                             }
                         ?>
@@ -137,6 +159,11 @@
                 <div class='campos_busqueda'>
                     <div>
                         <label for="fecha_inicio">Fecha de entrega*:</label> 
+                        <?php
+                            if($error_fecha){
+                                echo "<p class='error_foto'>La fecha de entrega no puede ser posterior a la fecha de devolución</p>";
+                            }
+                        ?>
                     </div>
                     <div class='input_form'>
                         <input required type="date" name="fecha_inicio" id="fecha_inicio" value='<?php
@@ -151,6 +178,11 @@
                 <div class='campos_busqueda'>
                     <div>
                         <label for="fecha_devolucion">Fecha de devolución*:</label> 
+                        <?php
+                            if($error_fecha){
+                                echo "<p class='error_foto'>La fecha de devolución no puede ser anterior a la fecha de entrega</p>";
+                            }
+                        ?>
                     </div>
                     <div class='input_form'>
                         <input required type="date" name="fecha_devolucion" id="fecha_devolucion" value='<?php
@@ -165,6 +197,11 @@
                 <div class='campos_busqueda'>
                     <div>
                         <label for="hora_entrega">Hora de entrega*:</label>
+                        <?php
+                            if($error_hora){
+                                echo "<p class='error_foto'>La hora de entrega no puede ser posterior a la de entrega si la fecha de entrega y devolución son la misma</p>";
+                            }
+                        ?>
                     </div>
                     <div class='input_form'>
                         <input required type="time"  name="hora_entrega" id="hora_entrega" value='<?php
@@ -179,6 +216,11 @@
                 <div class='campos_busqueda'>
                     <div>
                         <label for="hora_devolucion">Hora de devolución*:</label>
+                        <?php
+                            if($error_hora){
+                                echo "<p class='error_foto'>La hora de devolución no puede ser anterior a la de recogida si la fecha de entrega y devolución son la misma</p>";
+                            }
+                        ?>
                     </div>
                     <div class='input_form'>
                         <input required type="time" name="hora_devolucion" id="hora_devolucion" value='<?php
@@ -240,7 +282,7 @@
                     </div>                    
                 </div>
                 
-                <div id='btn_pub_anuncio'>
+                <div id='container_pub_anuncio'>
                     <button id='btn_pub_anuncio' name='btn_publicar_anuncio' type="submit">EDITAR ANUNCIO</button>
                 </div>
             </form>
