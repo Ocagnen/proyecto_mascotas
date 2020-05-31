@@ -326,6 +326,17 @@ header div {
     border-radius: 6px;
 }
 
+.mensaje_exito {
+    color: black;
+    text-align: center;
+    font-weight: 600;
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgb(250, 200, 107);
+    padding: 1%;
+    border-radius: 6px;
+}
+
 .container_eleccion {
     width: 100%;
     display: flex;
@@ -647,7 +658,8 @@ footer {
     .boton_sol_aceptar {
         width: 30%;
     }
-    .mensaje_cancel {
+    .mensaje_cancel,
+    .mensaje_exito {
         width: 30%;
     }
     .btn_opcion_com {

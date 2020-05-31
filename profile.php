@@ -51,7 +51,13 @@
     }
 
     if(isset($_POST["btn_anun_borr"])){
-        borrarAnuncio($_POST["btn_anun_borr"],$url_const);
+       $borrado = borrarAnuncio($_POST["btn_anun_borr"],$url_const);
+       if(isset($borrado["mensaje"])){
+           $_SESSION["cancelada2"] = $borrado["mensaje"];
+       } else if(isset($borrado["exito"])){
+        $_SESSION["cancelada"] = $borrado["exito"];
+
+       }
     }
 
 
@@ -150,6 +156,11 @@
             if(isset($_SESSION["cancelada"])){
                 echo "<p class='mensaje_cancel'>".$_SESSION['cancelada']."</p>";
                 unset($_SESSION["cancelada"]);
+            }
+
+            if(isset($_SESSION["cancelada2"])){
+                echo "<p class='mensaje_exito'>".$_SESSION['cancelada2']."</p>";
+                unset($_SESSION["cancelada2"]);
             }
         ?>
     <section id="container_usuario">
