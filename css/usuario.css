@@ -385,6 +385,48 @@ header div {
     color: white;
 }
 
+.btn_crear_anuncio {
+    background: none;
+    background-color: #78ed99;
+    color: black;
+    border: none;
+    padding: 2%;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 900;
+}
+
+.form_anuncios form {
+    text-align: center;
+}
+
+.form_anuncios {
+    margin: 4%;
+}
+
+.form_anuncios button {
+    padding: 1%;
+    width: 40%;
+    margin: 0 2%;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    font-weight: 800;
+    background-color: green;
+    border-radius: 6px;
+    font-size: 1em;
+    color: white;
+}
+
+.nombre_anuncio p {
+    margin: 0;
+}
+
+.anuncios_container {
+    text-align: center !important;
+}
+
 footer {
     border-top: 1px solid black;
     background-color: #78ed99;
@@ -613,6 +655,13 @@ footer {
     }
     .btn_comentar button {
         width: 45%;
+    }
+    .nombre_anuncio {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    .form_anuncios button {
+        width: 30%;
     }
     footer {
         flex-direction: row;

@@ -409,20 +409,18 @@ function cargarAnuncios(idUsuario) {
             } else {
                 var output = "";
 
-                output += "<div class='solicitudes_container'>";
-                output += "<form method='post' action='profile.php'><button type='submit' name='btn_crear_anun' class='btn_trans_edit' onclick='cargarCrearAnuncio();' >Crear Anuncio</button></form>";
-                output += "</div>";
+                output += "<form method='post' action='profile.php'><button type='submit' name='btn_crear_anun' class='btn_crear_anuncio' onclick='cargarCrearAnuncio();' >Crear anuncio</button></form>";
 
                 $.each(data.anuncios, function(key, value) {
                     output += "<div class='solicitudes_container'>";
                     output += "<div class='cuerpo_sol'>";
-                    output += "<div class='nombre_trans'>";
-                    output += "<p>" + value['titulo'] + "</p>";
+                    output += "<div class='nombre_anuncio'>";
+                    output += "<p><strong>" + value['titulo'] + "</strong></p>";
                     output += "</div>";
                     output += "</div>";
-                    output += "<form method='post' action='profile.php'><button type='submit' name ='btn_anun_edit' class='btn_anun_edit' value=" + value['idAnuncio'] + " >Editar</button>";
+                    output += "<div class='form_anuncios'><form method='post' action='profile.php'><button type='submit' name ='btn_anun_edit' class='btn_anun_edit' value=" + value['idAnuncio'] + " >Editar</button>";
                     output += "<button type='submit' name ='btn_anun_borr' class='btn_anun_borr' onclick = 'return confirm(\" ¿Estás seguro que deseas borrar el anuncio " + value['titulo'] + " ?\");' value=" + value['idAnuncio'] + " >Borrar</button></form>";
-                    output += "</div>";
+                    output += "</div></div>";
 
 
                 });
