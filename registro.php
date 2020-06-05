@@ -101,7 +101,7 @@
                 <h2>REGISTRARSE</h2>
             </div>
             <div class='cuerpo_form'>  
-            <form action="" method="post">
+            <form action="registro.php" method="post" enctype="multipart/form-data">
                 <div class='campos_busqueda'>
                     <div>
                         <label for="nombre">Nombre*:</label>
@@ -156,7 +156,7 @@
                         <label for="telefono">Teléfono móvil*:</label>
                     </div>
                     <div class='input_form'>
-                        <input placeholder="Ejemplo: 675568934" oninvalid="this.setCustomValidity('Debe introducir un teléfono válido')" required type="tel" pattern="^[9|8|7|6]\d{8}$" name="telefono" value='<?php
+                        <input placeholder="Ejemplo: 675568934" oninvalid="this.setCustomValidity('Debe introducir un teléfono válido')" required type="text" pattern="^[9|8|7|6][0-9]{8}$" name="telefono" value='<?php
                             if(isset($_POST["telefono"])){
                                 echo $_POST["telefono"];
                             }
