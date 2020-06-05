@@ -30,11 +30,22 @@
              $error_edad = true;
          } 
 
-         if(isset($_POST["correo_reg"])){}
+         if(isset($_POST["correo_reg"])){
+             $correo_comprobar = comprobarCorreo($_POST["correo_reg"],$url_const);
+
+             if(isset($correo_comprobar["true"])){
+                 echo "este ya está pillao";
+                 $error_correo = true;
+             } else if(isset($correo_comprobar["mensaje"])){
+                 echo "vía libre crack";
+             } else {
+                 echo "error aqui";
+             }
+         }
 
          if(!$error_edad && !$error_imagen && !$error_correo){
-            header("Location:index.php");
-            exit;
+            //header("Location:index.php");
+            //exit;
         } else {
             $_SESSION["mensaje_error"] = "Error en el formulario. Por favor, revíselo.";
         }

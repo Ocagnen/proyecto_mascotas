@@ -93,9 +93,12 @@ $app->delete('/borrarAnuncio/:idAnuncio', function($idAnuncio){
     echo json_encode(borrarAnuncio($idAnuncio),JSON_FORCE_OBJECT);
 });
 
-
 $app->get('/obtenerAnunciosUser/:idUsuario', function($idUsuario){
     echo json_encode(obtenerAnunciosUser($idUsuario),JSON_FORCE_OBJECT);
+});
+
+$app->get('/comprobarCorreo/:correo', function($correo){
+    echo json_encode(comprobarCorreo($correo),JSON_FORCE_OBJECT);
 });
 
 $app->run();

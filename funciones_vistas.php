@@ -264,9 +264,16 @@
         }       
     }
 
-
-
-
+    function comprobarCorreo($correo, $url){
+        $obj = consumir_servicio_REST($url."comprobarCorreo/$correo","GET");
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        } else if(isset($obj->true)){
+            return array ("true"=>$obj->true);
+        } else {
+            return array ("mensaje"=>$obj->mensaje);
+        }
+    }
 
     function calcularTarifaMin($tipo_mascota, $fecha_entrega,$fecha_devolucion, $hora_entrega, $hora_devolucion){
         
