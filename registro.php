@@ -16,6 +16,31 @@
             $error_login = true;
         }
     }
+
+    $error_edad = false;
+    $error_imagen = false;
+    $error_correo = false;
+    if(isset($_POST["btn_reg"])){
+         $fecha_introducida = new DateTime($_POST["fecha_nac"]);
+         $fecha_limite = new DateTime('-18 years');
+
+         $error_imagen = ( $_FILES['foto_perfil']['name']!="" && (!getimagesize($_FILES['foto_perfil']['tmp_name']) || $_FILES['foto_perfil']['size']>500000));	
+
+         if($fecha_introducida > $fecha_limite){
+             $error_edad = true;
+         } 
+
+         if(isset($_POST["correo_reg"])){}
+
+         if(!$error_edad && !$error_imagen && !$error_correo){
+            header("Location:index.php");
+            exit;
+        } else {
+            $_SESSION["mensaje_error"] = "Error en el formulario. Por favor, revíselo.";
+        }
+
+
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -64,6 +89,12 @@
             ?>
         </div>        
     </header>
+    <?php
+        if(isset($_SESSION["mensaje_error"])){
+            echo "<p class='mensaje_cancel'>".$_SESSION['mensaje_error']."</p>";
+            unset($_SESSION["mensaje_error"]);
+        }
+    ?>
     <section id='formularios'>
         <article id='reg'>
             <div class='titulo_form'>
@@ -73,94 +104,133 @@
             <form action="" method="post">
                 <div class='campos_busqueda'>
                     <div>
-                        <label for="">Nombre*:</label>
+                        <label for="nombre">Nombre*:</label>
                     </div>
                     <div class='input_form'>
-                        <input type="text" name="" id="">
+                        <input required type="text" name="nombre"  value='<?php
+                            if(isset($_POST["nombre"])){
+                                echo $_POST["nombre"];
+                            }
+                        ?>'>
                     </div>
                 </div>
                 <div class='campos_busqueda'>
                     <div>
-                        <label for="">Apellidos*:</label>
+                        <label for="apellidos">Apellidos*:</label>
                     </div>
                     <div class='input_form'>
-                        <input type="text" name="" id="">
+                        <input required type="text" name="apellidos" value='<?php
+                            if(isset($_POST["apellidos"])){
+                                echo $_POST["apellidos"];
+                            }
+                        ?>'>
                     </div>
                 </div>
                 <div class='campos_busqueda'>
                     <div>
-                        <label for="">Contraseña*:</label>
+                        <label for="contrasenia">Contraseña*:</label>
                     </div>
                     <div class='input_form'>
-                        <input type="password" name="" id="">
+                        <input required type="password" name="contrasenia">
+                    </div>
+                </div>               
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="fecha_nac">Fecha de nacimiento*:</label> 
+                        <?php
+                            if($error_edad){
+                                echo "<p class='error_foto'>Debe ser mayor de edad para poder registrarse</p>";
+                            }
+                        ?>
+                    </div>
+                    <div class='input_form'>
+                        <input required type="date" name="fecha_nac" value='<?php
+                            if(isset($_POST["fecha_nac"])){
+                                echo $_POST["fecha_nac"];
+                            }
+                        ?>' >
                     </div>
                 </div>
                 <div class='campos_busqueda'>
                     <div>
-                        <label for="">Repita la contraseña*:</label>
+                        <label for="telefono">Teléfono móvil*:</label>
                     </div>
                     <div class='input_form'>
-                        <input type="password" name="" id="">
-                    </div>
-                </div>                
-                <div class='campos_busqueda'>
-                    <div>
-                        <label for="">Fecha de nacimiento*:</label> 
-                    </div>
-                    <div class='input_form'>
-                        <input type="date" name="" id="">
-                    </div>
-                </div>
-                <div class='campos_busqueda'>
-                    <div>
-                        <label for="">Teléfono*:</label>
-                    </div>
-                    <div class='input_form'>
-                        <input type="tel" name="" id="">
+                        <input placeholder="Ejemplo: 675568934" oninvalid="this.setCustomValidity('Debe introducir un teléfono válido')" required type="tel" pattern="^[9|8|7|6]\d{8}$" name="telefono" value='<?php
+                            if(isset($_POST["telefono"])){
+                                echo $_POST["telefono"];
+                            }
+                        ?>'>
                     </div>
                 </div> 
                 <div class='campos_busqueda'>
                     <div>
-                        <label for="">Localidad*:</label>
+                        <label for="localidad">Localidad*:</label>
                     </div>
                     <div class='input_form'>
-                        <select name="" id="">
-                            <option value="">Almería</option>
-                        </select>  
+                        <input required type="text" name="localidad" value='<?php
+                            if(isset($_POST["localidad"])){
+                                echo $_POST["localidad"];
+                            }
+                        ?>'>
+                    </div>                
+                </div>
+                <div class='campos_busqueda'>
+                    <div>
+                        <label for="descripcion">Descripción:</label>
+                    </div>
+                    <div class='input_form'>
+                        <textarea name="descripcion"><?php
+                            if(isset($_POST["descripcion"])){
+                                echo $_POST["descripcion"];
+                            }
+                        ?></textarea>
                     </div>                    
                 </div>
                 <div class='campos_busqueda'>
                     <div>
-                        <label for="">Descripción:</label>
+                        <label for="foto_perfil">Foto de perfil*:</label>
+                        <?php
+                            if($error_imagen){
+                                if(!getimagesize($_FILES['foto_perfil']['tmp_name'])){
+                                    echo "<p class='error_foto'>Error: El archivo debe de ser una imagen.</p>";
+                                } else if ($_FILES['foto_perfil']['size']>500000) {
+                                    echo "<p class='error_foto'>Error: El archivo es demasiado grande.</p>";
+                                }else {
+                                    echo "<p class='error_foto'>Error en el servidor</p>";
+                                }
+                            }
+                        ?>
                     </div>
                     <div class='input_form'>
-                        <textarea name="" id=""></textarea>
+                        <input required type="file" accept='image/*' name="foto_perfil">
                     </div>                    
                 </div>
                 <div class='campos_busqueda'>
                     <div>
-                        <label for="">Foto de perfil*:</label>
+                        <label for="correo_reg">Email*:</label>
+                        <?php
+                            if($error_correo){
+                                echo "<p class='error_foto'>Este correo no está disponible. Introduzca otro por favor.</p>";
+                            }
+                        ?>
                     </div>
                     <div class='input_form'>
-                        <input type="file" name="" id="">
-                    </div>                    
-                </div>
-                <div class='campos_busqueda'>
-                    <div>
-                        <label for="">Email*:</label>
-                    </div>
-                    <div class='input_form'>
-                        <input type="email" name="" id="">
+                        <input required type="email" name="correo_reg" value='<?php
+                            if(isset($_POST["correo_reg"])){
+                                echo $_POST["correo_reg"];
+                            }
+                        ?>'>
                     </div>                    
                 </div>
                 <div class='campos_terminos'>
                     <div>
-                        <input type="checkbox" name="" id="">
-                        Acepto los términos y condiciones
+                        <input type="checkbox" name="terms" >
+                        <a  target ="_blank" href='terminos.php'>Acepto los términos y condiciones</a>
                     </div>                
                 </div>
                 <div id='div_btn_reg'>
-                    <button id='btn_reg' type="submit">REGISTRARSE</button>
+                    <button id='btn_reg' name='btn_reg' type="submit">REGISTRARSE</button>
                 </div>
             </form>
             </div>
