@@ -193,6 +193,21 @@ textarea {
     margin: 8% 0;
 }
 
+.error_foto {
+    color: red !important;
+}
+
+.mensaje_cancel {
+    color: black;
+    text-align: center;
+    font-weight: 600;
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgb(250, 200, 107);
+    padding: 1%;
+    border-radius: 6px;
+}
+
 footer {
     border-top: 1px solid black;
     background-color: #78ed99;
@@ -373,6 +388,9 @@ footer {
     }
     #formularios {
         flex-direction: row;
+    }
+    .mensaje_cancel {
+        width: 30%;
     }
     footer {
         flex-direction: row;
