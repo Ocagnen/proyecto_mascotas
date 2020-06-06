@@ -42,7 +42,15 @@ function obtenerAnuncios(){
                         $anuncios[] = $fila;
                     }
                 }
-                return array("anuncios"=>$anuncios);
+                if(count($anuncios)==0){
+                    mysqli_free_result($resultado);
+                    mysqli_close($con);
+                    return array("mensaje"=>"No hay anuncios");
+                } else {
+                    mysqli_free_result($resultado);
+                    mysqli_close($con);
+                    return array("anuncios"=>$anuncios);
+                }
             } else {
                 mysqli_free_result($resultado);
                 mysqli_close($con);
@@ -120,9 +128,19 @@ function obtenerAnunciosTipo($tipo){
             if(mysqli_num_rows($resultado)>0){
                 $anuncios = Array();
                 while($fila = mysqli_fetch_assoc($resultado)){
-                    $anuncios[] = $fila;
+                    if($fila["fecha_devolucion"]>=date("Y-m-d")){
+                        $anuncios[] = $fila;
+                    }
                 }
-                return array("anuncios"=>$anuncios);
+                if(count($anuncios)==0){
+                    mysqli_free_result($resultado);
+                    mysqli_close($con);
+                    return array("mensaje"=>"No hay anuncios");
+                } else {
+                    mysqli_free_result($resultado);
+                    mysqli_close($con);
+                    return array("anuncios"=>$anuncios);
+                }
             } else {
                 mysqli_free_result($resultado);
                 mysqli_close($con);
