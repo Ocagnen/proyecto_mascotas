@@ -275,6 +275,18 @@
         }
     }
 
+    function crearUsuario($nombre,$apellidos,$fecha_nacimiento,$ciudad,$foto,$password,$email,$telefono,$descripcion,$terminos_condiciones,$admin,$url){
+        $datosInsertar=Array("nombre"=>$nombre,"apellidos"=>$apellidos,"fecha_nacimiento"=>$fecha_nacimiento,"ciudad"=>$ciudad,"foto"=>$foto, "password"=>$password, "email"=>$email, "telefono"=>$telefono, "descripcion"=> $descripcion, "terminos_condiciones"=>$terminos_condiciones,"admin"=>$admin);     
+        $obj = consumir_servicio_REST($url."crearUsuario","POST",$datosInsertar);
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);        
+        } else {
+            move_uploaded_file($_FILES['foto_perfil']['tmp_name'],"img/usuario".$obj->mensaje."");
+
+            return array ("mensaje"=>"Usuario creado");
+        }       
+    }
+
     function calcularTarifaMin($tipo_mascota, $fecha_entrega,$fecha_devolucion, $hora_entrega, $hora_devolucion){
         
         $date1 =  date_create($fecha_entrega);

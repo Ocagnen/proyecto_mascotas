@@ -34,13 +34,8 @@
              $correo_comprobar = comprobarCorreo($_POST["correo_reg"],$url_const);
 
              if(isset($correo_comprobar["true"])){
-                 echo "este ya está pillao";
                  $error_correo = true;
-             } else if(isset($correo_comprobar["mensaje"])){
-                 echo "vía libre crack";
-             } else {
-                 echo "error aqui";
-             }
+             } 
          }
 
          if(!$error_edad && !$error_imagen && !$error_correo){
@@ -167,7 +162,7 @@
                         <label for="telefono">Teléfono móvil*:</label>
                     </div>
                     <div class='input_form'>
-                        <input placeholder="Ejemplo: 675568934" oninvalid="this.setCustomValidity('Debe introducir un teléfono válido')" required type="text" pattern="^[9|8|7|6][0-9]{8}$" name="telefono" value='<?php
+                        <input placeholder="Ejemplo: 675568934" oninvalid="this.setCustomValidity('Debe introducir un teléfono válido')" required type="text" pattern="[0-9]{9}" name="telefono" value='<?php
                             if(isset($_POST["telefono"])){
                                 echo $_POST["telefono"];
                             }

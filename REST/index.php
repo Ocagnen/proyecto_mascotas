@@ -101,6 +101,10 @@ $app->get('/comprobarCorreo/:correo', function($correo){
     echo json_encode(comprobarCorreo($correo),JSON_FORCE_OBJECT);
 });
 
+$app->post('/crearUsuario', function(){
+    echo json_encode(crearUsuario($_POST["nombre"],$_POST["apellidos"],$_POST["fecha_nacimiento"],$_POST["ciudad"],$_POST["foto"],$_POST["password"],$_POST["email"],$_POST["telefono"],$_POST["descripcion"],$_POST["terminos_condiciones"],$_POST["admin"]),JSON_FORCE_OBJECT);
+});
+
 $app->run();
 
 ?>

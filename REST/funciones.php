@@ -507,6 +507,25 @@ function actualizarImagen($idAnuncio,$nombreFoto){
     }
 }
 
+function actualizarImagenUsuarios($idUsuario,$nombreFoto){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");    
+        $consulta = "update usuarios set foto = '".$nombreFoto."' where idUsuario = $idUsuario";
+        if($resultado=mysqli_query($con,$consulta)){
+            mysqli_close($con);
+            return array("mensaje"=>"La imagen se cambió con éxito.");    
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+
+    }
+}
+
 function crearAnuncio($descripcion,$fecha_entrega,$fecha_devolucion,$hora_entrega,$hora_devolucion,$ciudad,$tipo_mascota,$foto,$idUsuarioAutor,$titulo){
     $con = conectar();
     if(!$con){
@@ -642,6 +661,30 @@ function borrarAnuncio($idAnuncio){
         }
     }
 }
+
+function crearUsuario($nombre,$apellidos,$fecha_nacimiento,$ciudad,$foto,$password,$email,$telefono,$descripcion,$terminos_condiciones,$admin){
+    $con = conectar();
+    if(!$con){
+        return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
+    } else {
+        mysqli_set_charset($con,"utf8");    
+        $consulta = "insert into usuarios (nombre,apellidos,fecha_nacimiento,ciudad,foto,password,email,telefono,descripcion,terminos_condiciones,admin) values ('".$nombre."','".$apellidos."','".$fecha_nacimiento."','".$ciudad."','".$foto."','".$password."','".$email."','".$telefono."','".$descripcion."','".$terminos_condiciones."','".$admin."')";      
+        if($resultado=mysqli_query($con,$consulta)){
+            $idUltimoUsuario = mysqli_insert_id($con);
+            $fotoArray = explode(".",$foto);
+            $nombreFoto = $idUltimoUsuario.".".$fotoArray[1];
+            actualizarImagenUsuarios($idUltimoUsuario,$nombreFoto);
+            mysqli_close($con);
+            return array ("mensaje"=>$nombreFoto);            
+        } else {
+            $mensaje = "Error en la base de datos. Error ".mysqli_errno($con).":".mysqli_error($con);
+            mysqli_close($con);
+            return array("mensaje_error"=>$mensaje);
+        }
+
+    }
+}
+
 
 
 
