@@ -177,19 +177,29 @@
                 <div id="promedio" class="estrellas_valor">
                 <?php
                     $valoracion = obtenerValoracionMedia($_SESSION["usuario"]->idUsuario,$url_const);
-                    for ($i=0; $i < $valoracion ; $i++) { 
-                        echo "<img src='img/star2.svg' alt='valoracion positiva'>"; 
+                    if($valoracion!=-1){                   
+                  
+                        for ($i=0; $i < $valoracion ; $i++) { 
+                            echo "<img src='img/star2.svg' alt='valoracion positiva'>"; 
+                        }
+    
+                        for ($i=0; $i < (5 -$valoracion) ; $i++) { 
+                            echo "<img src='img/stargrey.svg' alt='valoracion negativa'>";
+                        }
                     }
-
-                    for ($i=0; $i < (5 -$valoracion) ; $i++) { 
-                        echo "<img src='img/stargrey.svg' alt='valoracion negativa'>";
-                    }
+                    
                 ?>
             </div>
             </div>
             <div id='desc_usu'>
                 <p>
-                    <i>"<?php echo $_SESSION["usuario"]->descripcion;?>"</i>
+                    <i>"<?php 
+                    if($_SESSION["usuario"]->descripcion == ""){
+                        echo "Sin descripción";
+                    } else {
+                        echo $_SESSION["usuario"]->descripcion;
+                    }
+                    ?>"</i>
                 </p>
             </div>
             <div id='menu_usu'>

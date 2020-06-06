@@ -88,19 +88,28 @@ if(isset($_POST["btn_acceder_coment"])){
                 <div id="promedio" class="estrellas_valor">
                     <?php
                     $valoracion = obtenerValoracionMedia($usuarioVisitado["usuario"]->idUsuario, $url_const);
-                    for ($i = 0; $i < $valoracion; $i++) {
-                        echo "<img src='img/star2.svg' alt='valoracion positiva'>";
-                    }
-
-                    for ($i = 0; $i < (5 - $valoracion); $i++) {
-                        echo "<img src='img/stargrey.svg' alt='valoracion negativa'>";
+                    if($valoracion!=-1){                   
+                  
+                        for ($i=0; $i < $valoracion ; $i++) { 
+                            echo "<img src='img/star2.svg' alt='valoracion positiva'>"; 
+                        }
+    
+                        for ($i=0; $i < (5 -$valoracion) ; $i++) { 
+                            echo "<img src='img/stargrey.svg' alt='valoracion negativa'>";
+                        }
                     }
                     ?>
                 </div>
             </div>
             <div id='desc_usu'>
                 <p>
-                    <i>"<?php echo $usuarioVisitado["usuario"]->descripcion; ?>"</i>
+                    <i>"<?php 
+                    if($usuarioVisitado["usuario"]->descripcion == ""){
+                        echo "Sin descripción";
+                    } else {
+                        echo $usuarioVisitado["usuario"]->descripcion;
+                    }
+                    ?>"</i>
                 </p>
             </div>
         </article>

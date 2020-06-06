@@ -136,16 +136,21 @@
 
     function obtenerValoracionMedia($idUsuario, $url){
        $valoraciones = getValoraciones($idUsuario, $url);
+       if(isset($valoraciones["mensaje"])){
+        return -1;
+       } else if(isset($valoraciones["valoraciones"])) {
         $total = 0;
         $numeroValoraciones = 0;
-       foreach ($valoraciones as $key => $value) {
-           foreach ($value as $key2 => $value2) {
-               $total += $value2->valor;
-               $numeroValoraciones++;
+        foreach ($valoraciones as $key => $value) {
+            foreach ($value as $key2 => $value2) {
+                $total += $value2->valor;
+                $numeroValoraciones++;
 
-           }
+            }
+        }
+        return round($total/$numeroValoraciones);
        }
-       return round($total/$numeroValoraciones);
+        
     }
 
     function getAnunciosTipo($tipo,$url){
