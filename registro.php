@@ -39,8 +39,27 @@
          }
 
          if(!$error_edad && !$error_imagen && !$error_correo){
-            //header("Location:index.php");
-            //exit;
+             $terminos = false;
+             if(isset($_POST["terms"])){
+                $terminos = true;
+             }
+             if(!isset($_POST["descripcion"])){
+                $descripcion = "";
+             } else {
+                 $descripcion = $_POST["descripcion"];
+             }
+            $usuarioCreado = crearUsuario($_POST["nombre"],$_POST["apellidos"],$_POST["fecha_nac"],$_POST["localidad"],$_FILES['foto_perfil']['name'],$_POST["contrasenia"],$_POST["correo_reg"],$_POST["telefono"],$descripcion,$terminos,0,$url_const);
+             if(isset($usuarioCreado["mensaje"])){
+                $valores = comprobarLogin($_POST["correo_reg"],$_POST["contrasenia"],$url_const);
+                if(isset($valores["usuario"])){
+                    session_destroy();
+                    session_name("mascotas");
+                    session_start();
+                    $_SESSION["usuario"] = $valores["usuario"];
+                    header("Location:index.php");
+                    exit;
+                }
+             }
         } else {
             $_SESSION["mensaje_error"] = "Error en el formulario. Por favor, revíselo.";
         }

@@ -513,7 +513,7 @@ function actualizarImagenUsuarios($idUsuario,$nombreFoto){
         return array("mensaje_error"=>"Error en la conexión. Error ".mysqli_connect_errno().":".mysqli_connect_error());
     } else {
         mysqli_set_charset($con,"utf8");    
-        $consulta = "update usuarios set foto = '".$nombreFoto."' where idUsuario = $idUsuario";
+        $consulta = "update usuarios set foto = 'usuario".$nombreFoto."' where idUsuario = $idUsuario";
         if($resultado=mysqli_query($con,$consulta)){
             mysqli_close($con);
             return array("mensaje"=>"La imagen se cambió con éxito.");    

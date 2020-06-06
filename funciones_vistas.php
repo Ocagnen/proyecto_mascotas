@@ -281,7 +281,7 @@
         if(isset($obj->mensaje_error)){
             die($obj->mensaje_error);        
         } else {
-            move_uploaded_file($_FILES['foto_perfil']['tmp_name'],"img/usuario".$obj->mensaje."");
+            move_uploaded_file($_FILES['foto_perfil']['tmp_name'],"img/usuarios/usuario".$obj->mensaje."");
 
             return array ("mensaje"=>"Usuario creado");
         }       
