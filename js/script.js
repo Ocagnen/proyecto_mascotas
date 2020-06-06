@@ -403,7 +403,7 @@ function cargarAnuncios(idUsuario) {
     $.getJSON(url_const + 'obtenerAnunciosUser/' + idUsuario)
         .done(function(data) {
             if (data.mensaje) {
-                $("#modalAnuncios > div").html("<p>No tiene anuncios</p>");
+                $("#modalAnuncios > div").html("<form method='post' action='profile.php'><button type='submit' name='btn_crear_anun' class='btn_crear_anuncio' onclick='cargarCrearAnuncio();' >Crear anuncio</button></form>");
             } else if (data.mensaje_error) {
                 $("#modalAnuncios > div").html("<p>Error en el servidor</p>");
             } else {
