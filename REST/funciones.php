@@ -38,7 +38,9 @@ function obtenerAnuncios(){
             if(mysqli_num_rows($resultado)>0){
                 $anuncios = Array();
                 while($fila = mysqli_fetch_assoc($resultado)){
-                    $anuncios[] = $fila;
+                    if($fila["fecha_devolucion"]>=date("Y-m-d")){
+                        $anuncios[] = $fila;
+                    }
                 }
                 return array("anuncios"=>$anuncios);
             } else {
