@@ -67,14 +67,14 @@ if(isset($_POST["btn_acceder_coment"])){
                 </div>
             </nav>
         </div>
-        <div id='contenedor_foto_perfil'>
+        
             <?php
             if (isset($_SESSION["usuario"])) {
                 $imagen = $_SESSION["usuario"]->foto;
-                echo "<a href='profile.php'><img src='img/usuarios/$imagen' alt='Usuario' id='logo_usuario'></a>";
+                echo "<div id='contenedor_foto_perfil'><a href='profile.php'><img src='img/usuarios/$imagen' alt='Usuario' id='logo_usuario'></a></div>";
             }
             ?>
-        </div>
+        
     </header>
     <section id="container_usuario">
         <article id='datos_usuario'>
