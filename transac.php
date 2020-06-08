@@ -47,7 +47,7 @@
                         $_SESSION["errorEntrega"] = (int)$_SESSION["errorEntrega"] + 1;
                     } else {
                         unset($_SESSION["errorEntrega"]);
-                        /*
+                        
                         $tran_cancelada = cancelarTransaccion($idAnunTrans,$idUserTrans,$url_const);
                         if(isset($tran_cancelada)){
                             $_SESSION["cancelada"] = "Códigos incorrectos, la transacción fue cancelada.";
@@ -56,7 +56,7 @@
                             exit;
                             
                         }
-                        */
+                        
                     }
                 }
             } else {
@@ -94,7 +94,7 @@
                         $_SESSION["errorRecogida"] = (int)$_SESSION["errorRecogida"] + 1;
                     } else {
                         unset($_SESSION["errorRecogida"]);
-                        /*
+                        
                         $tran_cancelada = cancelarTransaccion($idAnunTrans,$idUserTrans,$url_const);
                         if(isset($tran_cancelada)){
                             $_SESSION["cancelada"] = "Códigos incorrectos, la transacción fue cancelada.";
@@ -103,7 +103,7 @@
                             exit;
                             
                         }
-                        */
+                        
                     }
                 }
             } else {
