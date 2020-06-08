@@ -91,10 +91,10 @@
         }
 
         $valoracion = crearValoracion($_POST["valoracion_valor"],$_POST["comentario_valor"],$_SESSION["usuario"]->idUsuario,$usuarioLector,$url_const);
-        if($idUserTrans == $_SESSION["usuario"]->idUsuario){
-            actualizarTransaccionComentario2($idAnunTrans,$idUserTrans,$url_const);
+        if($idUserValor == $_SESSION["usuario"]->idUsuario){
+            actualizarTransaccionComentario2($idAnunValor,$idUserValor,$url_const);
         } else {
-            actualizarTransaccionComentario1($idAnunTrans,$idUserTrans,$url_const);
+            actualizarTransaccionComentario1($idAnunValor,$idUserValor,$url_const);
         }
         $_SESSION['cancelada'] = "Valoración enviada con éxito";
     }
