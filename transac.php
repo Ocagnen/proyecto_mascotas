@@ -52,6 +52,7 @@
                         if(isset($tran_cancelada)){
                             $_SESSION["cancelada"] = "Códigos incorrectos, la transacción fue cancelada.";
                             $_SESSION["idTrans"] = "borrada";
+                            unset($_SESSION["mensaje_error"]);
                             header("Location: profile.php");
                             exit;
                             
@@ -99,6 +100,7 @@
                         if(isset($tran_cancelada)){
                             $_SESSION["cancelada"] = "Códigos incorrectos, la transacción fue cancelada.";
                             $_SESSION["idTrans"] = "borrada";
+                            unset($_SESSION["mensaje_error"]);
                             header("Location: profile.php");
                             exit;
                             
