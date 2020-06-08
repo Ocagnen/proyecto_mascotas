@@ -25,6 +25,9 @@
         if(isset($tran_cancelada)){
             $_SESSION["cancelada"] = "La transacción fue cancelada con éxito";
             $_SESSION["idTrans"] = "borrada";
+            if(isset($_SESSION["mensaje_error"])){
+                unset($_SESSION["mensaje_error"]);
+            }
             header("Location: profile.php");
             exit;
         }
