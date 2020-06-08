@@ -344,6 +344,7 @@ function cargarTransacciones1(idUsuario) {
                 $("#modalTransacc > div").html("<p>Error en el servidor</p>");
             } else {
                 var output = "";
+                var contadorTrans = 0;
                 $.each(data.transacciones, function(key, value) {
                     if (idUsuario != value['idUsuario']) {
                         var sentencia = "comentadaAnunciante";
@@ -355,6 +356,7 @@ function cargarTransacciones1(idUsuario) {
                     }
                     if (value["cancelada"] == "1") {
                         if (value[sentencia] == "0") {
+                            contadorTrans++;
                             output += "<div class='solicitudes_container'>";
                             output += "<div class='cuerpo_sol'>";
                             output += "<div class='nombre_trans'>";
@@ -367,6 +369,7 @@ function cargarTransacciones1(idUsuario) {
                         }
 
                     } else {
+                        contadorTrans++;
                         output += "<div class='solicitudes_container'>";
                         output += "<div class='cuerpo_sol'>";
                         output += "<div class='nombre_trans'>";
@@ -383,6 +386,10 @@ function cargarTransacciones1(idUsuario) {
                     }
 
                 });
+
+                if (contadorTrans == 0) {
+                    output = "<p>No tiene transacciones</p>";
+                }
 
                 $("#modalTransacc > div").html(output);
             }
