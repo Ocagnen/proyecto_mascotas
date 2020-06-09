@@ -100,11 +100,11 @@
             <div id="contenido_redes_sociales">
                 <div>
                     <img src="img/socialMedia/instagram.svg" alt="">
-                    <a href="">@proyectoMascotas</a>
+                    <a href="">@AuPet</a>
                 </div>
                 <div>
                     <img src="img/socialMedia/facebook2.svg" alt="">
-                    <a href="">ProyectoMascotas</a>
+                    <a href="">AuPet España</a>
                 </div>
             </div>
         </article>
@@ -120,7 +120,7 @@
                         <h3>¿Cómo me registro?</h3>
                     </div>
                     <div class="respuesta">
-                        <p>Respuesta RespuestaR espuesta RespuestaRespues taRespuesta Respuesta</p>
+                        <p>Desde la sección de "Registrarse" del menú superior de nuestra web podrá acceder a un formulario donde podrá registrarse.</p>
                     </div>
                 </div>
                 <div class="preguntas_frec">
@@ -128,15 +128,15 @@
                         <h3>¿Qué tipos de animales se aceptan?</h3>
                     </div>
                     <div class="respuesta">
-                        <p>Respuesta Respuest aRespuesta RespuestaRespuest aRespuesta Respuesta</p>
+                        <p>En Au Pet aceptamos todo tipo de animales. No obstante en nuestras categorías tenemos perros, gatos y otros. Todo lo que no sea un perro o un gato podrá incluirlo en otros.</p>
                     </div>
                 </div>
                 <div class="preguntas_frec">
                     <div class="pregunta">
-                        <h3>¿Dónde se introduce el código de recogida?</h3>
+                        <h3>¿Dónde se introducen los códigos de entrega y recogida?</h3>
                     </div>
                     <div class="respuesta">  
-                        <p>Respuesta RespuestaRe spuestaRespues taRespuestaR espuesta Respuesta</p>
+                        <p>En nuestro perfil debemos acceder a "Transacciones" y gestionar la transacción concreta para la que queremos subir los códigos. Una vez dentro veremos unos botones en la sección de códigos que nos permitirá subir nuestros códigos.</p>
                     </div> 
                 </div>
                 <div class="preguntas_frec">
@@ -144,15 +144,15 @@
                         <h3>¿Cómo puedo enviar una solicitud?</h3>
                     </div>
                     <div class="respuesta">
-                        <p>Respuesta RespuestaRes puestaRespues taRespuestaR espuesta Respuesta</p>
+                        <p>En primer lugar debe estar registrado en nuestra web. Una registrado, inicie sesión y pulse el botón "Solicitar" del anuncio que le interese. Deberá establecer también la tarifa que desea cobrar por sus servicios al anunciante.</p>
                     </div> 
                 </div>
                 <div class="preguntas_frec">
                     <div class="pregunta">
-                        <h3>¿Cómo puedo enviar una solicitud?</h3>
+                        <h3>¿Cómo puedo visitar mi perfil?</h3>
                     </div>
                     <div class="respuesta">
-                        <p>Respuesta RespuestaRespu estaRespue staRes puestaRespuesta Respuesta</p>
+                        <p>Deberá iniciar sesión y posteriormente pulsar la foto de su perfil que aparecerá en la parte derecha del menú superior de la web.</p>
                     </div>
                 </div>
                 <div class="preguntas_frec">
@@ -160,7 +160,7 @@
                         <h3>¿Cómo comento en el perfil de un usuario?</h3>
                     </div>
                     <div class="respuesta">
-                        <p>Respuesta RespuestaRe spuestaResp uestaRespues taRespuesta Respuesta</p>
+                        <p>Para comentar el perfil de un usuario será necesario haber iniciado una transacción con este. Una vez tengan una transacción podrá comentar el perfil al acceder a la sección de "Transacciones" de nuestro perfil y haciendo sí sobre la opción de comentar perfil de la transacción en la que está el usuario al que desea dejarle un comentario.</p>
                     </div>
                 </div>
             </div>
