@@ -338,15 +338,16 @@
             </div>
             <div>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut odio eget ex ultricies
-                    blandit ac quis dolor. Proin dignissim sodales ante ut ullamcorper. Morbi dapibus egestas eros
-                    tincidunt condimentum. Ut vel elit vitae nunc aliquam vestibulum. Curabitur ultrices faucibus 
-                    interdum. Maecenas eleifend tincidunt massa, vitae ullamcorper velit sagittis in. Proin vitae
-                    elit et ex porta consectetur. Vivamus tincidunt ligula vulputate, tincidunt mi at, pharetra nulla.
-                    Integer fringilla tincidunt sem, vel sodales felis malesuada at. Nam gravida ac erat at gravida. 
-                    In sit amet tortor ac nisl tincidunt hendrerit. Nunc ultricies, risus eu elementum fringilla, tellus
-                    augue eleifend arcu, ac porttitor urna ligula non lectus. Sed non mauris in quam dapibus ullamcorper. 
-                    Nulla pretium dolor at est ullamcorper, sit amet posuere enim mattis. 
+                    Para usar la aplicación es necesario estar registrados en ella. Una vez lo hagamos podremos iniciar sesión
+                    y hacer uso de las distintas funcionalidades que presenta. Una de ellas será el poder enviar solicitudes
+                    a los anuncios que nos interesen. También podremos acceder a nuestro perfil, donde podremos publicar anuncios,
+                    editarlos y borrarlos. Además, podremos acceder a las solicitudes que nos envíen otros usuarios a nuestro
+                    perfil y aceptarlas si nos convencen. Una vez las hayamos aceptado accederemos a una transacción, donde podremos
+                    ver los datos de contacto del otro usuario. Del mismo modo, cuando un anunciante acepte nuestra solicitud, podremos
+                    acceder a dicha transacción desde nuestro perfil. En cualquier momento podremos cancelar la transacción si lo vemos 
+                    conveniente. Aquí es donde gestionaremos el sistema de códigos para garantizar la seguridad de nuestros usuarios. 
+                    Otra de las posibilidades que tenemos al comenzar una transacción es la de comentar y valorar al otro usuario involucrado
+                    en esta.
                 </p>
             </div>
         </article>
@@ -361,15 +362,15 @@
             </div>
             <div>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut odio eget ex ultricies
-                    blandit ac quis dolor. Proin dignissim sodales ante ut ullamcorper. Morbi dapibus egestas eros
-                    tincidunt condimentum. Ut vel elit vitae nunc aliquam vestibulum. Curabitur ultrices faucibus 
-                    interdum. Maecenas eleifend tincidunt massa, vitae ullamcorper velit sagittis in. Proin vitae
-                    elit et ex porta consectetur. Vivamus tincidunt ligula vulputate, tincidunt mi at, pharetra nulla.
-                    Integer fringilla tincidunt sem, vel sodales felis malesuada at. Nam gravida ac erat at gravida. 
-                    In sit amet tortor ac nisl tincidunt hendrerit. Nunc ultricies, risus eu elementum fringilla, tellus
-                    augue eleifend arcu, ac porttitor urna ligula non lectus. Sed non mauris in quam dapibus ullamcorper. 
-                    Nulla pretium dolor at est ullamcorper, sit amet posuere enim mattis. 
+                    Sabemos la importancia de nuestras mascotas, por lo que queremos que nuestros usuarios se sientan seguros
+                    a la hora de dejarselas a desconocidos para que se hagan cargo de ellas durante un tiempo. Para ello, cada vez
+                    que se genera una transacción, los usuarios dispondran de dos códigos que deberán entregar en la sescción de
+                    transacciones. El código de entrega y el de recogida. El primero tan solo lo sabrá el usuario que haya 
+                    publicado el anuncio, mientras que el segundo solo lo sabrá el usuario que haya presentado la solicitud. La 
+                    idea es que ambos usuarios introduzcan ambos códigos, de forma que quede constancia de que la mascota se recogió 
+                    y se entregó sin percances. De esta manera, existe un registro en nuestra plataforma que nos permite garantizar
+                    que la mascota fue entregada y recogida en caso de que exista algún tipo de problema o reclamación por parte
+                    de alguno de los usuarios implicados en la trasacción.
                 </p>
             </div>
         </article>
