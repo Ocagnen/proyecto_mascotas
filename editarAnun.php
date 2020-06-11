@@ -49,7 +49,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> 
     <script src="jq/jquery-3.1.1.min.js" type="text/javascript"></script>	
     <script src="js/script.js"></script>
-    <title>Proyecto mascotas</title>
+    <title>Editar anuncio</title>
 </head>
 <body>
     <header>
